@@ -1,3 +1,10 @@
+/*
+### ROAM Railscast THEME ###
+> Many thanks to the Roam Slack community for all the resources, particularly @Anthony and @Calhistoriaan.
+> Edits by Jeff Harris
+> v1.0
+*/
+
 @import "../fonts/Inter/inter.css";
 .loading-astrolabe {
   margin: auto;
@@ -455,8 +462,6 @@ div.rm-emoji-button {
   background-color: #2d2d2d !important;
   border: 0.5px solid rgba(225, 117, 28, 0.40) !important;
   color: #aaa !important;
-  font-family: 'Calendas Plus', serif;
-  font-size: 1.2em;
 }
 .rm-emoji-block-view .rm-emoji-button .rm-emoji {
   height: 16px;
@@ -500,10 +505,6 @@ div.rm-emoji-button {
   /*background-color: white;*/
   background-color: #555; /*RR change: Grey card background color*/
   color: #6d9cbe; /*RR change: Blue ard text color*/
-}
-div.kanban-title,
-div.kanban-card {
-  font-family: 'Calendas Plus', serif; /*RR change: font*/
 }
 .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .rm-dnd-separator {
   position: relative;
@@ -581,7 +582,6 @@ body {
   color: #1189BD;
   background-color: #2f2d2a;
   padding-left: 10px;
-  font-family: 'Calendas Plus'; 
 }
 .roam-body .roam-app .roam-sidebar-container {
   position: absolute;
@@ -839,7 +839,6 @@ body {
   /*border: 1px solid grey;*/
   font-size: 0.9em; /*RR change: font size*/
   border: 1px solid #444; /*RR change: darken border*/
-  font-family: 'Calendas Plus', serif; /*RR change: theme font*/
 }
 .roam-table td {
   max-height: 20px;
@@ -955,9 +954,6 @@ span.rm-page-ref.rm-page-ref-tag:hover {
   border-bottom: 1px solid #f8c764;
   font-size: 1.0em;
 }
-div.rm-block-ref {
-  font-family: 'Calendas Plus', serif;
-}
 .rm-block-ref:hover {
   /*background-color: #f5f8fa;*/
   /*RR change: match other hover styles*/
@@ -976,8 +972,7 @@ div.rm-block-ref {
   -ms-user-select: none;
   user-select: none;
   vertical-align: bottom;
-  /*top: -6px;*/
-  top: -10px; /*RR change: minor adjustment for Calendas Plus font*/
+  top: -6px;
 }
 /* Hide the browser's default checkbox */
 .check-container input {
@@ -1125,21 +1120,10 @@ div.rm-block-ref {
   padding: 10px;
 }
 
-/*RR change: reference item page link font*/
-.rm-reference-item div {
-  font-family: 'Calendas Plus', serif;
-}
-
-/*RR change: reference font*/
-div.rm-reference-container {
-  font-family: 'Calendas Plus', serif;
-}
-
 .rm-level1 {
   font-weight: 400;
   font-size: 1.8em;
-  /*font-family: 'Inter', sans-serif;*/
-  font-family: 'Calendas Plus', serif;
+  font-family: 'Inter', sans-serif;
 }
 .rm-level1 textarea {
   line-height: 1.2;
@@ -1148,16 +1132,14 @@ div.rm-reference-container {
   line-height: 1.2;
 }
 .rm-level2 {
-  /*font-family: 'Inter', sans-serif !important;*/
+  font-family: 'Inter', sans-serif !important;
   font-weight: 400;
   font-size: 1.4em;
-  font-family: 'Calendas Plus', serif;
 }
 .rm-level3 {
   font-weight: 500;
   font-size: 1.2em;
   color: #5c7080;
-  font-family: 'Calendas Plus', serif;
 }
 .rm-title1 {
   word-break: break-word;
@@ -1486,22 +1468,14 @@ div.rm-reference-container {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-/*RR change: theme font catch-all*/
-div.roam-block {
-  font-family: 'Calendas Plus', serif;
-  font-size: 1.2em;
-}
+
 .roam-block .span-view {
   box-sizing: border-box;
 }
 .rm-block-text {
   max-width: 520px;
 }
-/*RR change: Theme body font settings*/
-div.rm-block-text {
-  font-family: 'Calendas Plus';
-  font-size: 1.2em;
-}
+
 .rm-block-input {
   line-height: 1.5em;
   width: 100%;
@@ -1713,8 +1687,8 @@ div {
   padding: 0px;
 }
 textarea {
-  font-family: 'Calendas Plus', serif;
-  font-size: 1.2em;
+  font-family: 'Inter', sans-serif;
+  font-size: 1em;
   line-height: 1.5em;
   margin: 0px;
   padding: 0px;
@@ -1867,9 +1841,6 @@ hr {
   background-color: #2b2b2b !important;
 }
 
-#all-pages-search div {
-  font-family: 'Calendas Plus', serif;
-}
 
 /* Context Menus */
 .bp3-popover .bp3-popover-content,
