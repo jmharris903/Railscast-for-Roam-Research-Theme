@@ -1771,6 +1771,7 @@ textarea {
 }
 .bp3-button.bp3-small:not([class*="bp3-minimal"]) {
   background-color: #191919;
+  color: #777;
 }
 .bp3-button.bp3-small:not([class*="bp3-minimal"]):hover {
   background-color: rgba(167,182,194,0.3);
@@ -1883,6 +1884,12 @@ div.bp3-elevation-3 {
 filter: invert(100%); /*RR change: Inverts the colors of the / and link search menus*/
 }
 
+/*RR change: Super fragile override for Block embeds to change the background color and font-size*/
+
+div[style^='overflow: hidden; margin-left: -8px; background-color: rgb(235, 241, 245); margin-top: -4px;']{
+  background-color: #3f3f3f !important;
+  font-size: 0.85em;
+}
 
 /*RR change: Codemirror adjustments*/
 
