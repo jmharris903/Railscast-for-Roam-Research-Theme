@@ -2,7 +2,7 @@
 ### ROAM Railscast THEME ###
 > Many thanks to the Roam Slack community for all the resources, particularly @Anthony and @Calhistoriaan.
 > Edits by Jeff Harris
-> v1.0
+> v1.0.1
 */
 
 @import "../fonts/Inter/inter.css";
@@ -1768,6 +1768,10 @@ textarea {
   background-color: transparent;
   background-image: none;
   background-image: none;
+  font-size: 0.85em;
+}
+.bp3-button:not([class*="bp3-intent-"]):hover {
+  background-color: rgba(167,182,194,0.3);
 }
 .bp3-button.bp3-small:not([class*="bp3-minimal"]) {
   background-color: #191919;
@@ -1781,11 +1785,11 @@ textarea {
 bp3-button bp3-minimal bp3-icon-star bp3-small
 bp3-button bp3-small block-ref-count-button*/
 
-/*RR change: override ellipsis text and word wrap instead*/
-.bp3-text-overflow-ellipsis {
+/*RR change: override ellipsis text and word wrap */
+/*.bp3-text-overflow-ellipsis {
     text-overflow: unset;
     white-space: unset;
-}
+}*/
 
 
 /*RR change: Roam Search Bar*/
@@ -1888,7 +1892,7 @@ filter: invert(100%); /*RR change: Inverts the colors of the / and link search m
 
 div[style^='overflow: hidden; margin-left: -8px; background-color: rgb(235, 241, 245); margin-top: -4px;']{
   background-color: #3f3f3f !important;
-  font-size: 0.85em;
+  font-size: 1.0em;
 }
 
 /*RR change: Codemirror adjustments*/
