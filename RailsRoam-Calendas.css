@@ -2,7 +2,7 @@
 ### ROAM Railscast THEME ###
 > Many thanks to the Roam Slack community for all the resources, particularly @Anthony and @Calhistoriaan.
 > Edits by Jeff Harris
-> v1.0.1
+> v1.0.2
 */
 
 @import "../fonts/Inter/inter.css";
@@ -1801,6 +1801,7 @@ textarea {
   background-color: transparent;
   background-image: none;
   background-image: none;
+  color: #999;
 }
 .bp3-button:not([class*="bp3-intent-"]):hover {
   background-color: rgba(167,182,194,0.3);
