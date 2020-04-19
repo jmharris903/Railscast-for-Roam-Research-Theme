@@ -1978,7 +1978,7 @@ code {
     color: #6d9cbe;
     border: 0px solid #13191e;
     padding: 3px 4px 3px 4px;
-    font-family: 'Source Code Pro';
+    font-family: 'Source Code Pro', 'Courier New', Courier, monospace;
 }
 
 
@@ -1993,7 +1993,7 @@ code {
 */
 
 div.CodeMirror .CodeMirror-code pre {
-  font-family: 'Source Code Pro';
+  font-family: 'Source Code Pro', 'Courier New', Courier, monospace;
   line-height: 1.2em;
   font-size: 0.9em;
 }
