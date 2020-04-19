@@ -1953,6 +1953,8 @@ filter: invert(100%); /*RR change: Inverts the colors of the / and link search m
   background-color: transparent !important;
 }
 
+/*RR change: This section contains a series of very specific overrides that are extremely fragile and will probably break with any minor update*/
+
 /*RR change: Super fragile override for Block embeds to change the background color and font-size*/
 
 div[style^='overflow: hidden; margin-left: -8px; background-color: rgb(235, 241, 245); margin-top: -4px;']{
@@ -1967,6 +1969,14 @@ span[style^='background-color: rgb(235, 241, 245); border-radius: 4px; cursor: a
   cursor: alias;
   color: #f8c764 !important;
   padding: 0 !important;
+}
+
+/*RR change: Very fragile override for the filter icon backgroung when a filter is applied*/
+span[style^='background-color: red;'] {
+  background-color: rgba(228, 33, 35, 0.6) !important;
+}
+span[style^='background-color: green;'] {
+  background-color: rgba(141, 187, 64, 0.50) !important;
 }
 
 /*RR change: Codemirror adjustments*/
