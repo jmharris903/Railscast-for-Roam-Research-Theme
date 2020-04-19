@@ -1,9 +1,19 @@
 /*
 ### ROAM Railscast THEME ###
-> Many thanks to the Roam Slack community for all the resources, particularly @Anthony and @Calhistoriaan.
+> Many thanks to the Roam Slack community for all the resources, particularly @Anthony, @Calhistoriaan and @Devon.
 > Edits by Jeff Harris
-> v1.0.2
+> v1.0.5
 */
+
+/*RR change: added variable to change the body font of the theme easily*/
+:root {
+  --main-font: 'Calendas Plus', serif; /* RR change: added variable to change the site font. Change this to your desired font */
+  /* --main-font: 'Inter'; */
+  --main-font-size: 1.2em; /*RR change: added variable to adjust the site font size. Change this to your desired font size */
+}
+.check-container {
+  top: -10px; /*RR change: adjust this value to move the checkbox up or down to better align with the font selected above - default font Inter uses -6px*/
+}
 
 @import "../fonts/Inter/inter.css";
 .loading-astrolabe {
@@ -462,6 +472,8 @@ div.rm-emoji-button {
   background-color: #2d2d2d !important;
   border: 0.5px solid rgba(225, 117, 28, 0.40) !important;
   color: #aaa !important;
+  font-family: var(--main-font);
+  font-size: var(--main-font-size);
 }
 .rm-emoji-block-view .rm-emoji-button .rm-emoji {
   height: 16px;
@@ -505,6 +517,10 @@ div.rm-emoji-button {
   /*background-color: white;*/
   background-color: #555; /*RR change: Grey card background color*/
   color: #6d9cbe; /*RR change: Blue ard text color*/
+}
+div.kanban-title,
+div.kanban-card {
+  font-family: var(--main-font); /*RR change: font*/
 }
 .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .rm-dnd-separator {
   position: relative;
@@ -582,6 +598,7 @@ body {
   color: #1189BD;
   background-color: #2f2d2a;
   padding-left: 10px;
+  font-family: var(--main-font); 
 }
 .roam-body .roam-app .roam-sidebar-container {
   position: absolute;
@@ -806,6 +823,7 @@ body {
 #buffer {
   display: flex;
   flex-direction: column;
+  z-index: 10000; /*RR change: make sure the help menu popup always appears on top*/
 }
 #buffer .help-title {
   color: #f5f8fa;
@@ -839,6 +857,7 @@ body {
   /*border: 1px solid grey;*/
   font-size: 0.9em; /*RR change: font size*/
   border: 1px solid #444; /*RR change: darken border*/
+  font-family: var(--main-font); /*RR change: theme font*/
 }
 .roam-table td {
   max-height: 20px;
@@ -954,6 +973,9 @@ span.rm-page-ref.rm-page-ref-tag:hover {
   border-bottom: 1px solid #f8c764;
   font-size: 1.0em;
 }
+div.rm-block-ref {
+  font-family: var(--main-font);
+}
 .rm-block-ref:hover {
   /*background-color: #f5f8fa;*/
   /*RR change: match other hover styles*/
@@ -972,7 +994,7 @@ span.rm-page-ref.rm-page-ref-tag:hover {
   -ms-user-select: none;
   user-select: none;
   vertical-align: bottom;
-  top: -6px;
+  /*top: -6px;*/ /*RR change: disabled so 'global setting' a the start of the file will work*/
 }
 /* Hide the browser's default checkbox */
 .check-container input {
@@ -1120,10 +1142,23 @@ span.rm-page-ref.rm-page-ref-tag:hover {
   padding: 10px;
 }
 
+/*RR change: reference item page link font*/
+.rm-reference-item div {
+  font-family: var(--main-font);
+}
+
+/*RR change: reference font*/
+div.rm-reference-container {
+  font-family: var(--main-font);
+  margin-bottom: 2em; /*RR change: give a little breathing room for the unreferenced links section*/
+}
+
 .rm-level1 {
   font-weight: 400;
-  font-size: 1.8em;
-  font-family: 'Inter', sans-serif;
+  /*font-size: 1.8em;*/
+  font-size: var(--main-font-size); /*RR change: font size reduction*/
+  /*font-family: 'Inter', sans-serif;*/
+  font-family: var(--main-font); /*RR change: font change*/
 }
 .rm-level1 textarea {
   line-height: 1.2;
@@ -1132,14 +1167,16 @@ span.rm-page-ref.rm-page-ref-tag:hover {
   line-height: 1.2;
 }
 .rm-level2 {
-  font-family: 'Inter', sans-serif !important;
+  /*font-family: 'Inter', sans-serif !important;*/
   font-weight: 400;
   font-size: 1.4em;
+  font-family: var(--main-font);
 }
 .rm-level3 {
   font-weight: 500;
   font-size: 1.2em;
   color: #5c7080;
+  font-family: var(--main-font);
 }
 .rm-title1 {
   word-break: break-word;
@@ -1468,14 +1505,23 @@ span.rm-page-ref.rm-page-ref-tag:hover {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-
+/*RR change: theme font catch-all*/
+div.roam-block {
+  font-family: var(--main-font);
+  font-size: var(--main-font-size);
+}
 .roam-block .span-view {
   box-sizing: border-box;
 }
 .rm-block-text {
-  max-width: 520px;
+  /*max-width: 520px;*/
+  max-width: 100%; /*RR change: make references as wide as possible*/
 }
-
+/*RR change: Theme body font settings*/
+div.rm-block-text {
+  font-family: var(--main-font);
+  font-size: var(--main-font-size);
+}
 .rm-block-input {
   line-height: 1.5em;
   width: 100%;
@@ -1645,11 +1691,11 @@ span.rm-page-ref.rm-page-ref-tag:hover {
   text-align: left;
   text-shadow: none;
 }
-.tags-input:focus {
+/* .tags-input:focus { */
   /* box-shadow: 0 0 5px rgba(81, 203, 238, 1); */
   /* border: 2px solid white; */
   /* border-bottom-color: #448cca; */
-}
+/* } */
 .tags-output {
   display: inline-block;
   margin-left: 4px;
@@ -1687,8 +1733,8 @@ div {
   padding: 0px;
 }
 textarea {
-  font-family: 'Inter', sans-serif;
-  font-size: 1em;
+  font-family: var(--main-font);
+  font-size: var(--main-font-size);
   line-height: 1.5em;
   margin: 0px;
   padding: 0px;
@@ -1768,12 +1814,12 @@ textarea {
   background-color: transparent;
   background-image: none;
   background-image: none;
-  font-size: 0.9em;
   color: #999;
 }
 .bp3-button:not([class*="bp3-intent-"]):hover {
   background-color: rgba(167,182,194,0.3);
 }
+
 .bp3-button.bp3-small:not([class*="bp3-minimal"]) {
   background-color: #191919;
   color: #777;
@@ -1786,7 +1832,7 @@ textarea {
 bp3-button bp3-minimal bp3-icon-star bp3-small
 bp3-button bp3-small block-ref-count-button*/
 
-/*RR change: override ellipsis text and word wrap */
+/*RR change: override ellipsis text and word wrap instead*/
 /*.bp3-text-overflow-ellipsis {
     text-overflow: unset;
     white-space: unset;
@@ -1821,6 +1867,7 @@ bp3-button bp3-small block-ref-count-button*/
 
 .roam-app em {
   color: #C43835;
+  /*color: #ff8880;*/
 }
 
 /*RR change: Markdown Links */
@@ -1847,6 +1894,9 @@ hr {
   background-color: #2b2b2b !important;
 }
 
+#all-pages-search div {
+  font-family: var(--main-font);
+}
 
 /* Context Menus */
 .bp3-popover .bp3-popover-content,
@@ -1889,11 +1939,34 @@ div.bp3-elevation-3 {
 filter: invert(100%); /*RR change: Inverts the colors of the / and link search menus*/
 }
 
+/*RR change: generic class for a transparent background*/
+.trans {
+  background-color: transparent;
+}
+
+.clock {
+  margin-bottom: 2em;
+}
+
+/*RR change: Breadcrumb navigation background color override*/
+.parent-path-wrapper div div {
+  background-color: transparent !important;
+}
+
 /*RR change: Super fragile override for Block embeds to change the background color and font-size*/
 
 div[style^='overflow: hidden; margin-left: -8px; background-color: rgb(235, 241, 245); margin-top: -4px;']{
   background-color: #3f3f3f !important;
-  font-size: 1.0em;
+  font-size: 0.85em;
+}
+
+/*RR change: Very fragile override for alias styes, will probably break*/
+span[style^='background-color: rgb(235, 241, 245); border-radius: 4px; cursor: alias; color: rgb(245, 86, 86); padding: 4px 6px;'] {
+  background-color: transparent !important;
+  border-radius: 0 !important;
+  cursor: alias;
+  color: #f8c764 !important;
+  padding: 0 !important;
 }
 
 /*RR change: Codemirror adjustments*/
@@ -1920,37 +1993,68 @@ code {
 */
 
 div.CodeMirror .CodeMirror-code pre {
-    font-family: 'Source Code Pro';
-    line-height: 1.2em;
-    font-size: 0.9em;
+  font-family: 'Source Code Pro';
+  line-height: 1.2em;
+  font-size: 0.9em;
 }
 
-.CodeMirror {background: #2b2b2b; color: #f4f1ed; font-size: 0.85em;
+.CodeMirror {background: #2b2b2b; color: #f4f1ed; font-size: 0.85em;}
+div.CodeMirror-selected {background: #272935 !important;}
+.CodeMirror-gutters {background: #2b2b2b; border-right: 1px solid #333;}
+.CodeMirror-linenumber {color: #5a647e;}
+.CodeMirror-cursor {border-left: 1px solid #d4cfc9 !important;}
+
+span.cm-comment {color: #bc9458;}
+span.cm-atom {color: #b6b3eb;}
+span.cm-number {color: #b6b3eb;}
+
+span.cm-property,  span.cm-attribute {color: #a5c261;}
+span.cm-keyword {color: #da4939;}
+span.cm-string {color: #ffc66d;}
+
+span.cm-variable-2 {color: #a5c261;}
+span.cm-variable {color: #6d9cbe;}
+span.cm-def {color: #cc7833;}
+span.cm-error {/*background: #da4939;*/ color: #da4939;}
+span.cm-bracket {color: #f4f1ed;}
+span.cm-tag {color: #da4939;}
+span.cm-link {color: #b6b3eb;}
+
+.cm-s-default .cm-atom { color: #2983bb;}
+
+.CodeMirror-matchingbracket { text-decoration: underline; color: white !important;}
+.CodeMirror-activeline-background { background: #303040; }
+
+.CodeMirror pre {background: #2b2b2b;}
+
+/*RR change: incorporating a great idea from @Devon to hide the tool bar when not in use.
+source: https://gist.github.com/devonzuegel/f54de76cbf0c0355d93e721c89f45787;
+ */
+
+#roam-right-sidebar-content > div {
+  border-bottom: none !important;
 }
- div.CodeMirror-selected {background: #272935 !important;}
- .CodeMirror-gutters {background: #2b2b2b; border-right: 1px solid #333;}
- .CodeMirror-linenumber {color: #5a647e;}
- .CodeMirror-cursor {border-left: 1px solid #d4cfc9 !important;}
+.check-container {
+  padding-right: 4px;
+}
+.roam-body-main {
+  height: 100% !important;
+  top: 0 !important;
+}
+.roam-topbar {
+  opacity: 0;
+  transition: opacity 200ms;
+  z-index: 1;
+  background: none;
 
- span.cm-comment {color: #bc9458;}
- span.cm-atom {color: #b6b3eb;}
- span.cm-number {color: #b6b3eb;}
-
- span.cm-property,  span.cm-attribute {color: #a5c261;}
- span.cm-keyword {color: #da4939;}
- span.cm-string {color: #ffc66d;}
-
- span.cm-variable-2 {color: #a5c261;}
- span.cm-variable {color: #6d9cbe;}
- span.cm-def {color: #cc7833;}
- span.cm-error {/*background: #da4939;*/ color: #da4939;}
- span.cm-bracket {color: #f4f1ed;}
- span.cm-tag {color: #da4939;}
- span.cm-link {color: #b6b3eb;}
-
- .CodeMirror-matchingbracket { text-decoration: underline; color: white !important;}
- .CodeMirror-activeline-background { background: #303040; }
-
- .CodeMirror pre {
-  background: #2b2b2b;
- }
+  /* Making space for the close sidebar button */
+  width: calc(100% - 40px);
+  padding: 0;
+}
+.roam-topbar:hover, .roam-topbar:focus-within {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+#right-sidebar button {
+  z-index: 100;
+}
