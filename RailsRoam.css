@@ -2,14 +2,87 @@
 ### ROAM Railscast THEME ###
 > Many thanks to the Roam Slack community for all the resources, particularly @Anthony, @Calhistoriaan and @Devon.
 > Edits by Jeff Harris
-> v1.0.5
+> v1.0.6
 */
 
-/*RR change: added variable to change the body font of the theme easily*/
+/* RR change: added variables to easily change the theme */
 :root {
-  --main-font: 'Calendas Plus', serif; /* RR change: added variable to change the site font. Change this to your desired font */
-  /* --main-font: 'Inter'; */
-  --main-font-size: 1.2em; /*RR change: added variable to adjust the site font size. Change this to your desired font size */
+  /* Primary fonts */
+  --main-font: 'Inter', sans-serif;
+  /* --main-font: 'Calendas Plus', serif; */
+  --main-font-color:#999;
+  --main-font-size: 1.2em;
+  --code-font: 'Source Code Pro', 'Courier New', Courier, monospace;
+  --code-font-color: #6d9cbe;
+
+  /* font colors */
+  --page-link-color: #eb9854;
+  --external-link-color: #8DBB40;
+  --page-brackets: rgba(228, 124, 67, 0.25);
+  --h1-font-color: #1189BD;
+  --h2-font-color: #1189BD;
+  --h3-font-color: #1189BD;
+  --strong: #508BB5;
+  --emphasis: #c43835;
+  --tag-font-color: #777;
+  --tag-font-color-hover:#fff;
+  --tag-hover-bg:#e98924;
+  --sidebar-font-color: #1189BD;
+  --sidebar-font-color-hover:#e98924;
+  --sidebar-hover-bg:#1f1f1f;
+  --block-ref-hover: #e98924;
+  --block-ref-hover-bg:#111;
+  --new-page-color: #8DBB40;
+  --highlight-font-color: #222;
+  --highlight-link-color: #ff6000;
+  --search-font-color: #e98924;
+
+  /* backgrounds and outlines */
+  --body-bg: #232323;
+  --left-sidebar-bg: #2b2b2b;
+  --right-sidebar-bg: #2b2b2b;
+  --h1-bg: #2f2d2a;
+  --hr: rgba(225, 117, 28, 0.50);
+  --code-bg: #2b2b2b;
+  --checkmark-color: #137cbd;
+  --pages-row-highlight: #292929;
+  --pages-header-row: #2d2d2d;
+  --reference-item-bg: #f2c98f1a;
+  --bullet: rgba(225, 117, 28, 0.30);
+  --bullet-closed: rgba(225, 117, 28, 0.70);
+  --bullet-outline: #404040;
+  --block-highlight: #00588e;
+  --current-block-highlight: rgba(255, 255, 255, 0.07);
+  --search-outline: #e9892475;
+  --search-bg: #252525;
+  --popover-bg:#333;
+  --select-bg:#444;
+  --datepicker-bg: transparent;
+  --datepicker-day-wrapper: #d9822b7a;
+  
+  /* fragile styles that may break with the next update */
+  --block-embed-bg: #3f3f3f;
+  --block-embed-font-size: 0.85em;
+  --alias-font-color: #f8c764;
+  --alias-bg: transparent;
+  --filter-bg-subtract: rgba(228, 33, 35, 0.6);
+  --filter-bg-add: rgba(141, 187, 64, 0.5);
+
+  /* Misc */
+  --kanban-board-bg: #333333;
+  --kanban-column-bg: #454545;
+  --kanban-card-bg: #555555;
+  --kanban-column-font-color: #e98924;
+  --kanban-card-font-color: #6d9cbe;
+
+  --table-border: #444;
+
+  --encrypted-font-color:#ff6000;
+  --encrypted-bg:#353535;
+
+  --emoji-bg: #2d2d2d;
+  --emoji-border: rgba(225, 117, 28, 0.40);
+  --emoji-color: #aaa;
 }
 .check-container {
   top: -10px; /*RR change: adjust this value to move the checkbox up or down to better align with the font selected above - default font Inter uses -6px*/
@@ -469,9 +542,9 @@ html {
 }
 /*RR change: emoji button background and border color*/
 div.rm-emoji-button {
-  background-color: #2d2d2d !important;
-  border: 0.5px solid rgba(225, 117, 28, 0.40) !important;
-  color: #aaa !important;
+  background-color: var(--emoji-bg) !important;
+  border: 0.5px solid var(--emoji-border) !important;
+  color: var(--emoji-color) !important;
   font-family: var(--main-font);
   font-size: var(--main-font-size);
 }
@@ -498,25 +571,25 @@ div.rm-emoji-button {
   padding: 8px;
   overflow-x: scroll;
   /*background-color: #a7b6c2;*/
-  background-color: #333333; /*RR change: dark background color for board*/
+  background-color: var(--kanban-board-bg); /*RR change: dark background color for board*/
 }
 .kanban-column {
   margin: 0px 4px 0px 4px;
   padding: 4px;
   min-width: 200px;
   /*background-color: #ededed;*/
-  background-color: #454545; /*RR change: column background color*/
+  background-color: var(--kanban-column-bg); /*RR change: column background color*/
 }
 .kanban-title {
   text-align: center;
-  color: #e88a24; /*RR change: Orange column title color*/
+  color: var(--kanban-column-font-color); /*RR change: Orange column title color*/
 }
 .kanban-card {
   margin: 8px;
   padding: 8px;
   /*background-color: white;*/
-  background-color: #555; /*RR change: Grey card background color*/
-  color: #6d9cbe; /*RR change: Blue ard text color*/
+  background-color: var(--kanban-card-bg); /*RR change: Grey card background color*/
+  color: var(--kanban-card-font-color); /*RR change: Blue ard text color*/
 }
 div.kanban-title,
 div.kanban-card {
@@ -581,7 +654,7 @@ body {
   height: 100vh;
   overflow: hidden;
   position: relative;
-  background-color: #232323; /*RR change: Dark background color*/
+  background-color: var(--body-bg); /*RR change: Dark background color*/
 
 }
 .roam-body .roam-app {
@@ -590,13 +663,13 @@ body {
   position: relative;
   -webkit-overflow-scrolling: touch;
   /*color: #202b33;*/
-  color: #999; /*RR change: lighter text for dark background*/
+  color: var(--main-font-color); /*RR change: lighter text for dark background*/
 }
 .roam-body .roam-app h1 {
   /*color: #202b33;*/
   /*RR change: font, blue text and background highlight*/
-  color: #1189BD;
-  background-color: #2f2d2a;
+  color: var(--h1-font-color);
+  background-color: var(--h1-bg);
   padding-left: 10px;
   font-family: var(--main-font); 
 }
@@ -610,7 +683,7 @@ body {
   transition: all 200ms ease-in;
   /*background-color: #2f3437;*/
   /*background-color: #182026;*/
-  background-color: #2b2b2b; /*RR change: darken the sidebar*/
+  background-color: var(--left-sidebar-bg); /*RR change: darken the sidebar*/
 
 }
 .roam-body .roam-app .roam-sidebar-container .roam-hover-sidebar-reveal {
@@ -637,20 +710,21 @@ body {
   /*font-size: 14px;*/
   /*color: #5c7080;*/
   /*RR change: brighten text and font size*/ 
-  color: #1189BD;
+  color: var(--sidebar-font-color);
   font-size: 1em;
 }
 .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .log-button:hover {
   /*color: #f5f8fa;*/
   /*background-color: #10161a;*/
   /*RR change: orange text */
-  color: #e98924;
-  background-color: #1f1f1f;
+  color: var(--sidebar-font-color-hover);
+  background-color: var(--sidebar-hover-bg);
 }
 .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper {
   /*color: #5c7080;*/
   /*RR change: brighten text and font size*/ 
-  color: #1189BD;
+  color: var(--sidebar-font-color);
+;
 }
 .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages {
   overflow-y: auto;
@@ -663,15 +737,15 @@ body {
   padding: 8px 0px 8px 4px;
   /*color: #5c7080;*/
   /*RR change: brighten text and font size*/ 
-  color: #1189BD;
+  color: var(--sidebar-font-color);
   font-size: 1em;
 }
 .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .page:hover {
   /*color: #f5f8fa;*/
   /*background-color: #10161a;*/
   /*RR change: orange text */
-  color: #e98924;
-  background-color: #1f1f1f;
+  color: var(--sidebar-font-color-hover);
+  background-color: var(--sidebar-hover-bg);
 }
 .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .title {
   padding: 8px;
@@ -856,7 +930,7 @@ body {
   /*font-size: 12px;*/
   /*border: 1px solid grey;*/
   font-size: 0.9em; /*RR change: font size*/
-  border: 1px solid #444; /*RR change: darken border*/
+  border: 1px solid var(--table-border); /*RR change: darken border*/
   font-family: var(--main-font); /*RR change: theme font*/
 }
 .roam-table td {
@@ -915,10 +989,10 @@ body {
   font-size: 7px;
 }
 .CodeMirror {
-  font-family: 'Source Code Pro', monospace; /*RR change: added theme font*/
+  font-family: var(--code-font); /*RR change: added theme font*/
 }
 .CodeMirror .CodeMirror-code pre {
-  font-family: 'Source Code Pro', monospace; /*RR change: added theme font*/
+  font-family: var(--code-font); /*RR change: added theme font*/
   box-shadow: none;
 }
 .block-mention {
@@ -938,7 +1012,7 @@ body {
 }
 .rm-page-ref-tag {
   /*color: #a7b6c2;*/
-  color: #777; /*RR change: theme color*/
+  color: var(--tag-font-color); /*RR change: theme color*/
   border-radius: 10px;
   padding: 2px 3px 2px 3px;
 }
@@ -946,18 +1020,18 @@ body {
 /*RR change: added tag hover style*/
 .rm-page-ref-tag:hover,
 span.rm-page-ref.rm-page-ref-tag:hover {
-  color: white !important;
-  background-color: #e88a24;
+  color: var(--tag-font-color-hover) !important;
+  background-color: var(--tag-hover-bg);
   text-decoration: none;
 
 }
 .rm-page-ref-brackets {
   /*color: #a7b6c2;*/
-  color: rgba(228, 124, 67, 0.25); /*RR change: fade back the brackets in regular text*/
+  color: var(--page-brackets); /*RR change: fade back the brackets in regular text*/
 }
 .rm-page-ref-link-color {
   /*color: #106ba3;*/
-  color: #EB9054; /*RR change: theme color*/
+  color: var(--page-link-color); /*RR change: theme color*/
 }
 .rm-page-ref-namespace-color {
   color: green;
@@ -979,8 +1053,8 @@ div.rm-block-ref {
 .rm-block-ref:hover {
   /*background-color: #f5f8fa;*/
   /*RR change: match other hover styles*/
-  background-color: #111;
-  color: #e88923;
+  background-color: var(--block-ref-hover-bg);
+  color: var(--block-ref-hover);
 }
 .check-container {
   display: inline-block;
@@ -1013,12 +1087,12 @@ div.rm-block-ref {
   border-radius: 2px;
   width: 12px;
   /*border: 1px solid #a7b6c2;*/
-  border: 1px solid #137cbd; /*RR change: added blue border*/
+  border: 1px solid var(--checkmark-color); /*RR change: added blue border*/
 }
 /* On mouse-over, add a grey background color */
 /* When the checkbox is checked, add a blue background */
 .check-container input:checked ~ .checkmark {
-  background-color: #137cbd;
+  background-color: var(--checkmark-color);
   border: none;
 }
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -1070,7 +1144,7 @@ div.rm-block-ref {
 }
 .rm-find-or-create-wrapper .rm-menu-item .rm-search-title .rm-new-page {
   /*color: #0d8050;*/
-  color: #8DBB40; /*RR change: theme color*/
+  color: var(--new-page-color); /*RR change: theme color*/
 }
 .rm-find-or-create-wrapper .rm-menu-item .rm-search-list-item {
   word-break: break-word;
@@ -1088,7 +1162,7 @@ div.rm-block-ref {
 }
 .rm-pages-row-highlight {
   /*background-color: #f5f8fa;*/
-  background-color: #292929; /*RR change: dark alternating row color*/
+  background-color: var(--pages-row-highlight); /*RR change: dark alternating row color*/
 }
 .rm-pages-row {
   display: flex;
@@ -1097,10 +1171,10 @@ div.rm-block-ref {
   align-items: flex-start;
 }
 .rm-pages-row:first-child { /*RR change: Table Header*/
-  background-color: #2d2d2d !important;
+  background-color: var(--pages-header-row) !important;
 }
 .rm-pages-row .rm-pages-title-col a strong { /*RR change: Page Title*/
-  color: #e88a24 !important;
+  color: var(--page-link-color) !important;
 }
 .rm-pages-row .rm-pages-title-col a strong:hover { /*RR change: Page Title*/
   text-decoration: underline;
@@ -1137,7 +1211,7 @@ div.rm-block-ref {
   padding-right: 8px;
   /*background-color: #f5f8fa;*/
   /*RR change: background color and spacing*/
-  background-color: #f2c98f1a;
+  background-color: var(--reference-item-bg);
   border-radius: 7px;
   padding: 10px;
 }
@@ -1255,10 +1329,10 @@ div.rm-reference-container {
   margin: -2px;
   padding: 2px;
   background-color: #fef09f;
-  color: #222; /*RR change: invert the highlighted text color*/
+  color: var(--highlight-font-color); /*RR change: invert the highlighted text color*/
 }
 .roam-highlight .rm-page-ref-link-color {
-  color: #ff6000;
+  color: var(--highlight-link-color);
 }
 .rm-line {
   width: 100%;
@@ -1269,10 +1343,10 @@ div.rm-reference-container {
 }
 .rm-encrypted-block {
   font-weight: 300;
-  color: #8a9ba8;
+  color: var(--encrypted-font-color);
   font-size: 12px;
   border-radius: 4px;
-  background-color: #f5f8fa;
+  background-color: var(--encrypted-bg);
   padding: 2px 4px;
   display: inline;
 }
@@ -1288,15 +1362,15 @@ div.rm-reference-container {
 }
 .roam-bullet-closed {
   /*background-color: #ced9e0;*/
-  background-color: rgba(225, 117, 28, 0.70); /*RR change: orange color to match open bullets*/
+  background-color: var(--bullet-closed); /*RR change: orange color to match open bullets*/
 }
 #right-sidebar .roam-bullet-closed {
   /*background-color: #a7b6c2;*/
-  background-color: rgba(225, 117, 28, 0.70); /*RR change: orange color to match open bullets*/
+  background-color: var(--bullet-closed); /*RR change: orange color to match open bullets*/
 
 }
 .rm-icon {
-  font-color: #ced9e0;
+  color: #ced9e0;
 }
 #mobile-capture {
   padding: 24px;
@@ -1402,21 +1476,21 @@ div.rm-reference-container {
 
 /*RR change: Header styles*/
 .roam-app h1 {
-  color: #1189BD;
-  background-color: #2f2d2a;
+  color: var(--h1-font-color);
+  background-color: var(--h1-bg);
   padding-left: 10px;
   margin-top: -4px !important;
 }
 .roam-app h2 {
-  color: #1189BD;
-  background-color: #2f2d2a;
+  color: var(--h2-font-color);
+  background-color: var(--h1-bg);
   padding-left: 10px;
   margin-top: -5px !important;
 }
 .roam-app h3 { 
   font-weight: bold;
-  color: #1189BD;
-  background-color: #2f2d2a;
+  color: var(--h3-font-color);
+  background-color: var(--h1-bg);
   padding-left: 10px;
   margin-top: -3px !important;
 }
@@ -1467,7 +1541,7 @@ div.rm-reference-container {
 }
 .block-highlight-blue {
   /*background-color: #7cccff;*/
-  background-color: #00588e; /*RR change: Darker Blue for readability*/
+  background-color: var(--block-highlight); /*RR change: Darker Blue for readability*/
 }
 .block-highlight-yellow {
   background-color: yellow;
@@ -1478,7 +1552,7 @@ div.rm-reference-container {
 }
 .block-border-left {
   /*border-left: 1px solid #bfccd6;*/
-  border-left: 1px solid #404040; /*RR change: lighter bullet tree outline*/
+  border-left: 1px solid var(--bullet-outline); /*RR change: lighter bullet tree outline*/
 }
 .text-align-left {
   text-align: left;
@@ -1537,7 +1611,7 @@ div.rm-block-text {
   resize: none;
   /*RR change: added a highlight color*/
   /*color: #bbb;*/
-  background-color: rgba(255, 255, 255, 0.07);
+  background-color: var(--current-block-highlight);
   padding-left: 5px;
   padding-right: 5px;
   margin-left: -5px;
@@ -1588,7 +1662,7 @@ div.rm-block-text {
   width: 5px;
   height: 5px;
   /*background-color: #394b59;*/
-  background-color: rgba(225, 117, 28, 0.30); /*RR change: dark orange bullet*/
+  background-color: var(--bullet); /*RR change: dark orange bullet*/
 }
 .version-bullet {
   background-color: #a7b6c2;
@@ -1844,41 +1918,41 @@ bp3-button bp3-small block-ref-count-button*/
 /* Roam Search Box Placeholder Text Color */
 .bp3-input::placeholder,
 .bp3-input-group > .bp3-icon {
-    color: #e78924;
+    color: var(--search-font-color);
 }
 
 /* Input Text Color */
 .bp3-input {
-  color: #e78924;
+  color: var(--search-font-color);
 }
 
 /* Roam Search Box Field and Border */
 .bp3-input,
 .bp3-input[readonly]{ 
-  background: #252525;
-  box-shadow: inset 0 0 0 1px #e9892475;
+  background: var(--search-bg);
+  box-shadow: inset 0 0 0 1px var(--search-outline);
   font-size: 0.85em;
 }
 
 /*RR change: additional text styles*/
 .roam-app strong {
-  color: #508BB5 !important;
+  color: var(--strong) !important;
 }
 
 .roam-app em {
-  color: #C43835;
+  color: var(--emphasis);
   /*color: #ff8880;*/
 }
 
 /*RR change: Markdown Links */
 
 .roam-app a {
-  color: #8DBB40;
+  color: var(--external-link-color);
 }
 
 .roam-app a:focus, 
 .roam-app a:hover {
-  color: #8DBB40;
+  color: var(--external-link-color);
   text-decoration: underline;
 }
 
@@ -1886,12 +1960,12 @@ hr {
   margin-top: 20px;
   margin-bottom: 20px;
   border: 0;
-  border-top: 1px solid rgba(225, 117, 28, 0.50);
+  border-top: 1px solid var(--hr);
 }
 
 /*RR change: Sidebar modifications*/
 #right-sidebar {
-  background-color: #2b2b2b !important;
+  background-color: var(--right-sidebar-bg) !important;
 }
 
 #all-pages-search div {
@@ -1901,26 +1975,26 @@ hr {
 /* Context Menus */
 .bp3-popover .bp3-popover-content,
 .bp3-menu {
-  background: #333;
-  color: #e98924;
+  background: var(--popover-bg);
+  color: var(--search-font-color);
   border-radius: 4px;
 }
 
 .bp3-popover .bp3-popover-arrow-fill {
-    fill: #333;
+    fill: var(--popover-bg);
 }
 
 .bp3-datepicker {
-  background-color: transparent;
+  background-color: var(--datepicker-bg);
 }
 
 .bp3-datepicker .DayPicker-Day.DayPicker-Day--isToday .bp3-datepicker-day-wrapper {
-    border: 1px solid #d9822b7a;
+    border: 1px solid var(--datepicker-day-wrapper);
 }
 
 .bp3-html-select.bp3-minimal select {
-  color: #e98924;
-  background-color: #444;  
+  color: var(--search-font-color);
+  background-color: var(--select-bg);  
 }
 
 /* Slash Popup */
@@ -1958,37 +2032,37 @@ filter: invert(100%); /*RR change: Inverts the colors of the / and link search m
 /*RR change: Super fragile override for Block embeds to change the background color and font-size*/
 
 div[style^='overflow: hidden; margin-left: -8px; background-color: rgb(235, 241, 245); margin-top: -4px;']{
-  background-color: #3f3f3f !important;
-  font-size: 0.85em;
+  background-color: var(--block-embed-bg) !important;
+  font-size: var(--block-embed-font-size);
 }
 
 /*RR change: Very fragile override for alias styes, will probably break*/
 span[style^='background-color: rgb(235, 241, 245); border-radius: 4px; cursor: alias; color: rgb(245, 86, 86); padding: 4px 6px;'] {
-  background-color: transparent !important;
+  background-color: var(--alias-bg) !important;
   border-radius: 0 !important;
   cursor: alias;
-  color: #f8c764 !important;
+  color: var(--alias-font-color) !important;
   padding: 0 !important;
 }
 
 /*RR change: Very fragile override for the filter icon backgroung when a filter is applied*/
 span[style^='background-color: red;'] {
-  background-color: rgba(228, 33, 35, 0.6) !important;
+  background-color: var(--filter-bg-subtract) !important;
 }
 span[style^='background-color: green;'] {
-  background-color: rgba(141, 187, 64, 0.50) !important;
+  background-color: var(--filter-bg-add) !important;
 }
 
 /*RR change: Codemirror adjustments*/
 
 /* RR Change: single backtick code snippets */
 code { 
-    background-color: #2b2b2b;
+    background-color: var(--code-bg);
     border-radius: 3px;
-    color: #6d9cbe;
+    color: var(--code-font-color);
     border: 0px solid #13191e;
     padding: 3px 4px 3px 4px;
-    font-family: 'Source Code Pro', 'Courier New', Courier, monospace;
+    font-family: var(--code-font);
 }
 
 
@@ -2003,12 +2077,12 @@ code {
 */
 
 div.CodeMirror .CodeMirror-code pre {
-  font-family: 'Source Code Pro', 'Courier New', Courier, monospace;
+  font-family: var(--code-font);
   line-height: 1.2em;
   font-size: 0.9em;
 }
 
-.CodeMirror {background: #2b2b2b; color: #f4f1ed; font-size: 0.85em;}
+.CodeMirror {background: var(--code-bg); color: #f4f1ed; font-size: 0.85em;}
 div.CodeMirror-selected {background: #272935 !important;}
 .CodeMirror-gutters {background: #2b2b2b; border-right: 1px solid #333;}
 .CodeMirror-linenumber {color: #5a647e;}
@@ -2041,7 +2115,7 @@ span.cm-link {color: #b6b3eb;}
 source: https://gist.github.com/devonzuegel/f54de76cbf0c0355d93e721c89f45787;
  */
 
-#roam-right-sidebar-content > div {
+/* #roam-right-sidebar-content > div {
   border-bottom: none !important;
 }
 .check-container {
@@ -2056,8 +2130,6 @@ source: https://gist.github.com/devonzuegel/f54de76cbf0c0355d93e721c89f45787;
   transition: opacity 200ms;
   z-index: 1;
   background: none;
-
-  /* Making space for the close sidebar button */
   width: calc(100% - 40px);
   padding: 0;
 }
@@ -2067,4 +2139,4 @@ source: https://gist.github.com/devonzuegel/f54de76cbf0c0355d93e721c89f45787;
 }
 #right-sidebar button {
   z-index: 100;
-}
+} */
