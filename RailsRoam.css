@@ -30,8 +30,11 @@
   --sidebar-font-color: #1189BD;
   --sidebar-font-color-hover:#e98924;
   --sidebar-hover-bg:#1f1f1f;
+  --block-ref-bg: none;
+  --block-ref-border: #f8c764;
   --block-ref-hover: #e98924;
   --block-ref-hover-bg:#111;
+  --block-ref-font-size: 1.0em;
   --new-page-color: #8DBB40;
   --highlight-font-color: #222;
   --highlight-link-color: #ff6000;
@@ -86,6 +89,7 @@
 }
 .check-container {
   top: -10px; /*RR change: adjust this value to move the checkbox up or down to better align with the font selected above - default font Inter uses -6px*/
+  padding-right: 4px;
 }
 
 @import "../fonts/Inter/inter.css";
@@ -1044,8 +1048,9 @@ span.rm-page-ref.rm-page-ref-tag:hover {
   /*border-bottom: 1px solid #ced9e0;*/
   /*font-size: 0.9em;*/
   /*RR change: keep the references blocks the same size*/
-  border-bottom: 1px solid #f8c764;
-  font-size: 1.0em;
+  border-bottom: 1px solid var(--block-ref-border);
+  font-size: var(--block-ref-font-size);
+  background-color: var(--block-ref-bg);
 }
 div.rm-block-ref {
   font-family: var(--main-font);
