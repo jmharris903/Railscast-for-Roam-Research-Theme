@@ -94,6 +94,7 @@ At the top of the CSS file is a set of variables you can use to customize the th
   --blockquote-font-color: rgba(109, 156, 190, 0.89);
   --blockquote-border-color: #444;
   --blockquote-bg: none;
+  --blockquote-cite: #777;
 
   --encrypted-font-color:#ff6000;
   --encrypted-bg:#353535;
@@ -125,4 +126,5 @@ div.roam-center > div:first-child {
     width: 100% !important;
 }
  */
+
 ```
