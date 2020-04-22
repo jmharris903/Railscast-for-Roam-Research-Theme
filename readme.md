@@ -93,5 +93,5 @@ At the top of the CSS file is a set of variables you can use to customize the th
   --emoji-bg: #2d2d2d;
   --emoji-border: rgba(225, 117, 28, 0.40);
   --emoji-color: #aaa;
-} ```
-
+} 
+```
