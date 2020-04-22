@@ -14,11 +14,15 @@ The monospaced font is [Source Code Pro](https://github.com/adobe-fonts/source-c
 ## Customization
 At the top of the CSS file is a set of variables you can use to customize the theme. Just change the color values to suit your preference.
 
-```:root {
+```
+/* RR change: added variables to easily change the theme */
+:root {
   /* Primary fonts */
   --main-font: 'Inter', sans-serif;
+  /* --main-font: 'Calendas Plus', serif; */
   --main-font-color:#999;
-  --main-font-size: 1.2em;
+  --main-font-size: 1.0em;
+  /* --main-font-size: 1.2em; */
   --code-font: 'Source Code Pro', 'Courier New', Courier, monospace;
   --code-font-color: #6d9cbe;
 
@@ -87,11 +91,38 @@ At the top of the CSS file is a set of variables you can use to customize the th
 
   --table-border: #444;
 
+  --blockquote-font-color: rgba(109, 156, 190, 0.89);
+  --blockquote-border-color: #444;
+  --blockquote-bg: none;
+
   --encrypted-font-color:#ff6000;
   --encrypted-bg:#353535;
 
   --emoji-bg: #2d2d2d;
   --emoji-border: rgba(225, 117, 28, 0.40);
   --emoji-color: #aaa;
-} 
+}
+.check-container {
+  top: -6px; /*RR change: adjust this value to move the checkbox up or down to better align with the font selected above - default font Inter uses -6px*/
+  /* top: -10px;  */
+  padding-right: 4px;
+}
+
+/*RR change: Un-comment the section below to maximize page width, line length, and images */
+
+/* 
+.roam-block-container {
+  max-width: 100% !important; 
+}
+div.roam-center > div:first-child {
+    padding-right: calc((100% - 950px) / 2) !important;
+    padding-left: calc((100% - 1500px) / 2) !important;
+}
+.hoverparent[style^='position: relative; width: 500px;'] {
+    width: 100% !important;
+}
+.hoverparent .react-resizable[style^='width: 500px;'] {
+    width: 100% !important;
+}
+ */
 ```
