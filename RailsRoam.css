@@ -2,7 +2,7 @@
 ### ROAM Railscast THEME ###
 > Many thanks to the Roam Slack community for all the resources, particularly @Anthony, @Calhistoriaan and @Devon.
 > Edits by Jeff Harris
-> v1.0.6
+> v1.0.7
 */
 
 /* RR change: added variables to easily change the theme */
@@ -88,9 +88,29 @@
   --emoji-color: #aaa;
 }
 .check-container {
-  top: -10px; /*RR change: adjust this value to move the checkbox up or down to better align with the font selected above - default font Inter uses -6px*/
+  top: -6px; /*RR change: adjust this value to move the checkbox up or down to better align with the font selected above - default font Inter uses -6px*/
+  /* top: -10px;  */
   padding-right: 4px;
 }
+
+/*RR change: Un-comment the section below to maximize page width, line length, and images */
+
+/* 
+.roam-block-container {
+  max-width: 100% !important; 
+}
+div.roam-center > div:first-child {
+    padding-right: calc((100% - 950px) / 2) !important;
+    padding-left: calc((100% - 1500px) / 2) !important;
+}
+.hoverparent[style^='position: relative; width: 500px;'] {
+    width: 100% !important;
+}
+.hoverparent .react-resizable[style^='width: 500px;'] {
+    width: 100% !important;
+}
+ */
+
 
 @import "../fonts/Inter/inter.css";
 .loading-astrolabe {
