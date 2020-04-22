@@ -84,6 +84,7 @@
   --blockquote-font-color: rgba(109, 156, 190, 0.89);
   --blockquote-border-color: #444;
   --blockquote-bg: none;
+  --blockquote-cite: #777;
 
   --encrypted-font-color:#ff6000;
   --encrypted-bg:#353535;
@@ -2067,6 +2068,13 @@ blockquote {
   min-width: 0px;
   padding: 10px 20px;
   background-color: var(--blockquote-bg);
+}
+
+blockquote .small, blockquote footer, blockquote small {
+    display: block;
+    font-size: 80%;
+    line-height: 1.42857143;
+    color: var(--blockquote-cite);
 }
 
 /*RR change: This section contains a series of very specific overrides that are extremely fragile and will probably break with any minor update*/
