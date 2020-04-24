@@ -2,7 +2,7 @@
 ### ROAM Railscast THEME ###
 > Many thanks to the Roam Slack community for all the resources, particularly @Anthony, @Calhistoriaan and @Devon.
 > Edits by Jeff Harris
-> v1.0.10
+> v1.0.11
 */
 
 /* RR change: added variables to easily change the theme */
@@ -2128,23 +2128,29 @@ code {
 
 div.CodeMirror .CodeMirror-code pre {
   font-family: var(--code-font);
-  line-height: 1.2em;
-  font-size: 0.9em;
+  line-height: 1.5em;
+  font-size: 1.1em;
 }
 
+/*<!--activeline-->*/
+.CodeMirror-activeline-background { background: #253540; }
+
 .CodeMirror {background: var(--code-bg); color: #f4f1ed; font-size: 0.85em;}
-div.CodeMirror-selected {background: #272935 !important;}
+div.CodeMirror-selected {background: #4d516d !important;}
 .CodeMirror-gutters {background: #2b2b2b; border-right: 1px solid #333;}
-.CodeMirror-linenumber {color: #5a647e;}
+.CodeMirror-linenumber {color: var(--page-link-color);}
 .CodeMirror-cursor {border-left: 1px solid #d4cfc9 !important;}
 
 span.cm-comment {color: #bc9458;}
 span.cm-atom {color: #b6b3eb;}
 span.cm-number {color: #b6b3eb;}
+.cm-s-default .cm-number {color: #b6b3eb;}
 
 span.cm-property,  span.cm-attribute {color: #a5c261;}
 span.cm-keyword {color: #da4939;}
+.cm-s-default .cm-keyword {color: #da4939;}
 span.cm-string {color: #ffc66d;}
+.cm-s-default .cm-string {color: #ffc66d;}
 
 span.cm-variable-2 {color: #a5c261;}
 span.cm-variable {color: #6d9cbe;}
@@ -2156,10 +2162,15 @@ span.cm-link {color: #b6b3eb;}
 
 .cm-s-default .cm-atom { color: #2983bb;}
 
-.CodeMirror-matchingbracket { text-decoration: underline; color: white !important;}
-.CodeMirror-activeline-background { background: #303040; }
+/* .CodeMirror-matchingbracket { text-decoration: underline; color: white !important;} */
+.CodeMirror-matchingbracket { outline:1px solid #ff9c3a; color:#fff !important; }
+.CodeMirror-activeline-background { background: #5a5acc; }
 
 .CodeMirror pre {background: #2b2b2b;}
+
+
+.CodeMirror-lines {background: #2b2b2b;}
+.CodeMirror-activeline pre {background: #253540; /* SPM ADDED */}
 
 /*RR change: incorporating a great idea from @Devon to hide the tool bar when not in use.
 source: https://gist.github.com/devonzuegel/f54de76cbf0c0355d93e721c89f45787;
