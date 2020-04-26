@@ -94,6 +94,7 @@
   /* JH overrides */
   /* --main-font: 'Calendas Plus', serif; */
   /* --main-font-size: 1.2em; */
+  
 }
 .check-container {
   top: -6px; /*RR change: adjust this value to move the checkbox up or down to better align with the font selected above - the default font Inter uses -6px*/
