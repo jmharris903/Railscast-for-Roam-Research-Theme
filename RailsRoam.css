@@ -2,7 +2,7 @@
 ### ROAM Railscast THEME ###
 > Many thanks to the Roam Slack community for all the resources, particularly @Anthony, @Calhistoriaan and @Devon.
 > Edits by Jeff Harris
-> v1.0.12
+> v1.0.13
 */
 
 /* RR change: added variables to easily change the theme */
@@ -23,6 +23,7 @@
   --h3-font-color: #1189BD;
   --strong: #508BB5;
   --emphasis: #c43835;
+  --emphasis: #FC5963;
   --tag-font-color: #777;
   --tag-font-color-hover:#fff;
   --tag-hover-bg:#e98924;
@@ -30,7 +31,8 @@
   --sidebar-font-color-hover:#e98924;
   --sidebar-hover-bg:#1f1f1f;
   --block-ref-bg: none;
-  --block-ref-border: #f8c764;
+  /* --block-ref-border: #f8c764; */
+  --block-ref-border: #FECF2B;
   --block-ref-hover: #e98924;
   --block-ref-hover-bg:#111;
   --block-ref-font-size: 1.0em;
@@ -65,7 +67,8 @@
   /* fragile styles that may break with the next update */
   --block-embed-bg: #3f3f3f;
   --block-embed-font-size: 0.85em;
-  --alias-font-color: #f8c764;
+  /* --alias-font-color: #f8c764; */
+  --alias-font-color: #FECF2B;
   --alias-bg: transparent;
   --filter-bg-subtract: rgba(228, 33, 35, 0.6);
   --filter-bg-add: rgba(141, 187, 64, 0.5);
@@ -93,14 +96,31 @@
 
   /* JH overrides */
   /* --main-font: 'Calendas Plus', serif; */
-  /* --main-font-size: 1.2em; */
+  /* --main-font-size: 1.2rem; */
   
 }
 .check-container {
   top: -6px; /*RR change: adjust this value to move the checkbox up or down to better align with the font selected above - the default font Inter uses -6px*/
-  /* top: -10px;  */
   padding-right: 4px;
 }
+
+/*RR change: decrease the line spacing in the breadcrumbs for referenced items*/
+#right-sidebar .rm-reference-item div[style*="display: flex;"] {
+  line-height: 1.0em;
+}
+
+/* JH overrides for Calendas font*/
+/* 
+.check-container {
+  top: -10px;
+}
+rm-reference-item div.rm-block-text{
+  font-size: 16px;
+}
+#right-sidebar .rm-reference-item div[style*="display: flex;"] {
+  font-size: .90em;
+}
+*/
 
 /*RR change: Un-comment the section below to maximize page width, line length, and images */
 
@@ -989,7 +1009,7 @@ body {
   font-size: 12px;
   max-height: 20px;
   padding: 8px 16px;
-  margin: 0p;
+  margin: 0;
   border: 1px solid grey;
 }
 .import-table td {
@@ -1012,7 +1032,7 @@ body {
 #info th,
 #info td {
   padding: 8px;
-  margin: 0p;
+  margin: 0;
   border: 1px solid grey;
 }
 .hoverparent:hover .hoveronly {
@@ -1077,7 +1097,7 @@ span.rm-page-ref.rm-page-ref-tag:hover {
 }
 .rm-block-ref {
   padding: 4px 2px;
-  margin: -4px 0px;
+  margin: -4px 0;
   display: inline;
   cursor: alias;
   /*border-bottom: 1px solid #ced9e0;*/
@@ -1267,9 +1287,9 @@ div.rm-reference-container {
   margin-bottom: 2em; /*RR change: give a little breathing room for the unreferenced links section*/
 }
 
-.rm-level1 {
+.rm-level1 div.rm-block-text {
   font-weight: 400;
-  font-size: 1.8em;
+  font-size: 1.2em;
   /* font-size: var(--main-font-size); RR change: font size reduction */
   /*font-family: 'Inter', sans-serif;*/
   font-family: var(--main-font); /*RR change: font change*/
@@ -1280,7 +1300,7 @@ div.rm-reference-container {
 .rm-level1 .roam-block {
   line-height: 1.2;
 }
-.rm-level2 {
+.rm-level2 div.rm-block-text{
   /*font-family: 'Inter', sans-serif !important;*/
   font-weight: 400;
   font-size: 1.4em;
@@ -1853,6 +1873,10 @@ textarea {
   margin: 0px;
   padding: 0px;
 }
+/*RR change: slight reduction in size for the textarea*/
+#right-sidebar .rm-reference-item textarea {
+font-size: 1.0em;
+}
 .xtra {
   transform: scale(3);
   border-radius: 50%;
@@ -1926,7 +1950,6 @@ textarea {
   -webkit-box-shadow: none;
   box-shadow: none;
   background-color: transparent;
-  background-image: none;
   background-image: none;
   color: #999;
 }
@@ -2082,6 +2105,8 @@ blockquote {
   min-width: 0px;
   padding: 10px 20px;
   background-color: var(--blockquote-bg);
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 blockquote .small, blockquote footer, blockquote small {
