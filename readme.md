@@ -2,7 +2,7 @@
 This is my personal version of the classic Railscast code syntax theme that I've tweaked over the years. This version has been created to work with [Roam Research](https://roamresearch.com). 
 
 ## How to install
-Install either [Stylus](https://add0n.com/stylus.html) or [Roam Toolkit](https://chrome.google.com/webstore/detail/roam-toolkit/ebckolanhdjilblnkcgcgifaikppnhba). Then copy and paste the .css file contents into the appropriate location.
+Install either [Stylus](https://add0n.com/stylus.html) or [Roam Toolkit](https://chrome.google.com/webstore/detail/roam-toolkit/ebckolanhdjilblnkcgcgifaikppnhba). Then copy and paste the contents of the [RailsRoam.css](https://github.com/jmharris903/Railscast-for-Roam-Research/blob/master/RailsRoam.css) file into the appropriate location for the method you choose.
 
 ## Screenshot
 ![screenshot](https://github.com/jmharris903/Railscast-for-Roam-Research/blob/master/Rails%20Roam%20Screenshot.jpg)
@@ -14,18 +14,18 @@ The monospaced font is [Source Code Pro](https://github.com/adobe-fonts/source-c
 ## Customization
 At the top of the CSS file is a set of variables you can use to customize the theme. Just change the color values to suit your preference.
 
+Below is an example of the variables available for customizing the theme. **Note: this is not the entire style sheet, just a snippet that contains the variables. The entire CSS file can be found [here](https://github.com/jmharris903/Railscast-for-Roam-Research/blob/master/RailsRoam.css).**
+
 ```
 /* RR change: added variables to easily change the theme */
 :root {
   /* Primary fonts */
   --main-font: 'Inter', sans-serif;
-  /* --main-font: 'Calendas Plus', serif; */
   --main-font-color:#999;
   --main-font-size: 1.0em;
-  /* --main-font-size: 1.2em; */
   --code-font: 'Source Code Pro', 'Courier New', Courier, monospace;
   --code-font-color: #6d9cbe;
-
+  
   /* font colors */
   --page-link-color: #eb9854;
   --external-link-color: #8DBB40;
@@ -35,6 +35,7 @@ At the top of the CSS file is a set of variables you can use to customize the th
   --h3-font-color: #1189BD;
   --strong: #508BB5;
   --emphasis: #c43835;
+  --emphasis: #FC5963;
   --tag-font-color: #777;
   --tag-font-color-hover:#fff;
   --tag-hover-bg:#e98924;
@@ -42,7 +43,7 @@ At the top of the CSS file is a set of variables you can use to customize the th
   --sidebar-font-color-hover:#e98924;
   --sidebar-hover-bg:#1f1f1f;
   --block-ref-bg: none;
-  --block-ref-border: #f8c764;
+  --block-ref-border: #FECF2B;
   --block-ref-hover: #e98924;
   --block-ref-hover-bg:#111;
   --block-ref-font-size: 1.0em;
@@ -50,7 +51,7 @@ At the top of the CSS file is a set of variables you can use to customize the th
   --highlight-font-color: #222;
   --highlight-link-color: #ff6000;
   --search-font-color: #e98924;
-
+  
   /* backgrounds and outlines */
   --body-bg: #232323;
   --left-sidebar-bg: #2b2b2b;
@@ -77,28 +78,28 @@ At the top of the CSS file is a set of variables you can use to customize the th
   /* fragile styles that may break with the next update */
   --block-embed-bg: #3f3f3f;
   --block-embed-font-size: 0.85em;
-  --alias-font-color: #f8c764;
+  --alias-font-color: #FECF2B;
   --alias-bg: transparent;
   --filter-bg-subtract: rgba(228, 33, 35, 0.6);
   --filter-bg-add: rgba(141, 187, 64, 0.5);
-
+  
   /* Misc */
   --kanban-board-bg: #333333;
   --kanban-column-bg: #454545;
   --kanban-card-bg: #555555;
   --kanban-column-font-color: #e98924;
   --kanban-card-font-color: #6d9cbe;
-
+  
   --table-border: #444;
-
+  
   --blockquote-font-color: rgba(109, 156, 190, 0.89);
   --blockquote-border-color: #444;
   --blockquote-bg: none;
   --blockquote-cite: #777;
-
+  
   --encrypted-font-color:#ff6000;
   --encrypted-bg:#353535;
-
+  
   --emoji-bg: #2d2d2d;
   --emoji-border: rgba(225, 117, 28, 0.40);
   --emoji-color: #aaa;
