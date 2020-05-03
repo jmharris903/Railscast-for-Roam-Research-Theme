@@ -207,7 +207,7 @@ div.roam-center > div:first-child {
   font-size: 16px;
 }
 
-/* @import "../fonts/Inter/inter.css"; */
+/*@import "../fonts/Inter/inter.css";*/
 .loading-astrolabe {
   margin: auto;
   position: relative;
@@ -1807,7 +1807,7 @@ div.rm-block-text {
   height: 13px;
   width: 13px;
   /* margin-top: 3px; */
-  margin-top: var(--bullet-position); /*DPR change: added variable for adjustment*/
+  margin-top: var(--bullet-position); /*RR change: added variable for adjustment*/
   border-radius: 50%;
   justify-content: center;
   align-items: center;
@@ -2286,7 +2286,7 @@ span[style*='background-color: green;'] {
     opacity: 80%;
 }
 
-/*DPR change: Diagram styles*/
+/*RR change: Diagram styles*/
 div[style*="position: absolute;background-color: white;border: 1px solid lightgrey;border-radius: 0px 0px 4px;padding: 5px;top: 0px;left: 0px;"], 
 div[style*="position: absolute; background-color: white; border: 1px solid lightgrey; border-radius: 0px 0px 4px; padding: 5px; top: 0px; left: 0px;"] 
 {
@@ -2304,7 +2304,7 @@ svg .rm-page-ref-brackets {
   color: #a7b6c2;
 }
 
-/*DPR change: dialog window styles*/
+/*RR change: dialog window styles*/
 .bp3-dialog {
   display: -webkit-box;
   display: -ms-flexbox;
