@@ -14,7 +14,8 @@ The monospaced font is [Source Code Pro](https://github.com/adobe-fonts/source-c
 ## Customization
 At the top of the CSS file is a set of variables you can use to customize the theme. Just change the color values to suit your preference.
 
-Below is an example of the variables available for customizing the theme. **Note: this is not the entire style sheet, just a snippet that contains the variables. The entire CSS file can be found [here](https://github.com/jmharris903/Railscast-for-Roam-Research/blob/master/RailsRoam.css).**
+Below is an example of the variables available for customizing the theme. 
+**Note: this is not the entire style sheet, just a snippet that contains the variables. The entire CSS file can be found [here](https://github.com/jmharris903/Railscast-for-Roam-Research/blob/master/RailsRoam.css).**
 
 ```
 /* RR change: added variables to easily change the theme */
