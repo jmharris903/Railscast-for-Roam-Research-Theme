@@ -34,7 +34,6 @@ Below is an example of the variables available for customizing the theme. **Note
   --h2-font-color: #1189BD;
   --h3-font-color: #1189BD;
   --strong: #508BB5;
-  --emphasis: #c43835;
   --emphasis: #FC5963;
   --tag-font-color: #777;
   --tag-font-color-hover:#fff;
@@ -49,13 +48,21 @@ Below is an example of the variables available for customizing the theme. **Note
   --block-ref-font-size: 1.0em;
   --new-page-color: #8DBB40;
   --highlight-font-color: #222;
+  --highlight-background-color: #fef09f;
   --highlight-link-color: #ff6000;
   --search-font-color: #e98924;
+  --ref-count-font-size: 12px;
+  --breadcrumb-color: #5c7080;
+  --breadcrumb-font-size: 13px;
+  --breadcrumb-line-height: 0.85em;
   
   /* backgrounds and outlines */
   --body-bg: #232323;
   --left-sidebar-bg: #2b2b2b;
   --right-sidebar-bg: #2b2b2b;
+  --icon-color: #e78924;
+  --icon-bg-hover: rgba(167,182,194,0.3);
+  --icon-color-hover: #e78924;
   --h1-bg: #2f2d2a;
   --hr: rgba(225, 117, 28, 0.50);
   --code-bg: #2b2b2b;
@@ -66,7 +73,9 @@ Below is an example of the variables available for customizing the theme. **Note
   --bullet: rgba(225, 117, 28, 0.30);
   --bullet-closed: rgba(225, 117, 28, 0.70);
   --bullet-outline: #404040;
+  --bullet-position: 4px;
   --block-highlight: #00588e;
+  --block-highlight-bg: rgba(0, 0, 0, 0.4);
   --current-block-highlight: rgba(255, 255, 255, 0.07);
   --search-outline: #e9892475;
   --search-bg: #252525;
@@ -80,8 +89,9 @@ Below is an example of the variables available for customizing the theme. **Note
   --block-embed-font-size: 0.85em;
   --alias-font-color: #FECF2B;
   --alias-bg: transparent;
-  --filter-bg-subtract: rgba(228, 33, 35, 0.6);
-  --filter-bg-add: rgba(141, 187, 64, 0.5);
+  /*RR change: no longer needed? Already broken?*/
+  /* --filter-bg-subtract: rgba(228, 33, 35, 0.6); 
+  --filter-bg-add: rgba(141, 187, 64, 0.5); */
   
   /* Misc */
   --kanban-board-bg: #333333;
@@ -103,12 +113,41 @@ Below is an example of the variables available for customizing the theme. **Note
   --emoji-bg: #2d2d2d;
   --emoji-border: rgba(225, 117, 28, 0.40);
   --emoji-color: #aaa;
+
+  /* JH overrides */
+  /* --main-font: 'Calendas Plus', serif;
+  --main-font-size: 1.2rem; 
+  */
+  
 }
 .check-container {
-  top: -6px; /*RR change: adjust this value to move the checkbox up or down to better align with the font selected above - default font Inter uses -6px*/
-  /* top: -10px;  */
+  top: -6px; /*RR change: adjust this value to move the checkbox up or down to better align with the font selected above - the default font Inter uses -6px*/
   padding-right: 4px;
 }
+
+/* JH overrides for Calendas font*/
+/* 
+.check-container {
+  top: -10px;
+}
+rm-reference-item div.rm-block-text{
+  font-size: 16px;
+}
+#right-sidebar .rm-reference-item div[style*="display: flex;"] {
+  font-size: .90em;
+}
+*/
+
+/* ----------------------------------------- */
+
+/*RR change: Wraps text when performing an inline search with [[]] or (())*/
+
+/* .bp3-text-overflow-ellipsis {
+    text-overflow: unset;
+    white-space: unset;
+} */
+
+/* ----------------------------------------- */
 
 /*RR change: Un-comment the section below to maximize page width, line length, and images */
 
@@ -126,7 +165,48 @@ div.roam-center > div:first-child {
 .hoverparent .react-resizable[style^='width: 500px;'] {
     width: 100% !important;
 }
+.react-resizable[style^='width: 580px;'] {
+  width: 100% !important;
+}
+.hoverparent[style^="position: relative; width: 580px;"] {
+  width: 100% !important;
+}
+*/ 
+
+/* ----------------------------------------- */
+
+/*RR change: Uncomment the following section to hide the tool bar when not in use. A great idea from @Devon. Source: https://gist.github.com/devonzuegel/f54de76cbf0c0355d93e721c89f45787;
  */
+
+/* 
+#roam-right-sidebar-content > div {
+  border-bottom: none !important;
+}
+.check-container {
+  padding-right: 4px;
+}
+.roam-body-main {
+  height: 100% !important;
+  top: 0 !important;
+}
+.roam-topbar {
+  opacity: 0;
+  transition: opacity 200ms;
+  z-index: 1;
+  background: none;
+  width: calc(100% - 40px);
+  padding: 0;
+}
+.roam-topbar:hover, .roam-topbar:focus-within {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+#right-sidebar button {
+  z-index: 100;
+} 
+*/
+
+/* ----------------------------------------- */
 
 ```
 
