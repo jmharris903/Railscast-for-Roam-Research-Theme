@@ -2,7 +2,7 @@
 ### ROAM Railscast THEME ###
 > Many thanks to the Roam Slack community for all the resources, particularly @Anthony, @Calhistoriaan and @Devon.
 > Edits by Jeff Harris
-> v1.0.13
+> v1.0.14
 */
 
 /* RR change: added variables to easily change the theme */
@@ -22,7 +22,6 @@
   --h2-font-color: #1189BD;
   --h3-font-color: #1189BD;
   --strong: #508BB5;
-  --emphasis: #c43835;
   --emphasis: #FC5963;
   --tag-font-color: #777;
   --tag-font-color-hover:#fff;
@@ -31,20 +30,27 @@
   --sidebar-font-color-hover:#e98924;
   --sidebar-hover-bg:#1f1f1f;
   --block-ref-bg: none;
-  /* --block-ref-border: #f8c764; */
   --block-ref-border: #FECF2B;
   --block-ref-hover: #e98924;
   --block-ref-hover-bg:#111;
   --block-ref-font-size: 1.0em;
   --new-page-color: #8DBB40;
   --highlight-font-color: #222;
+  --highlight-background-color: #fef09f;
   --highlight-link-color: #ff6000;
   --search-font-color: #e98924;
+  --ref-count-font-size: 12px;
+  --breadcrumb-color: #5c7080;
+  --breadcrumb-font-size: 13px;
+  --breadcrumb-line-height: 0.85em;
   
   /* backgrounds and outlines */
   --body-bg: #232323;
   --left-sidebar-bg: #2b2b2b;
   --right-sidebar-bg: #2b2b2b;
+  --icon-color: #e78924;
+  --icon-bg-hover: rgba(167,182,194,0.3);
+  --icon-color-hover: #e78924;
   --h1-bg: #2f2d2a;
   --hr: rgba(225, 117, 28, 0.50);
   --code-bg: #2b2b2b;
@@ -55,7 +61,9 @@
   --bullet: rgba(225, 117, 28, 0.30);
   --bullet-closed: rgba(225, 117, 28, 0.70);
   --bullet-outline: #404040;
+  --bullet-position: 4px;
   --block-highlight: #00588e;
+  --block-highlight-bg: rgba(0, 0, 0, 0.4);
   --current-block-highlight: rgba(255, 255, 255, 0.07);
   --search-outline: #e9892475;
   --search-bg: #252525;
@@ -67,11 +75,11 @@
   /* fragile styles that may break with the next update */
   --block-embed-bg: #3f3f3f;
   --block-embed-font-size: 0.85em;
-  /* --alias-font-color: #f8c764; */
   --alias-font-color: #FECF2B;
   --alias-bg: transparent;
-  --filter-bg-subtract: rgba(228, 33, 35, 0.6);
-  --filter-bg-add: rgba(141, 187, 64, 0.5);
+  /*RR change: no longer needed? Already broken?*/
+  /* --filter-bg-subtract: rgba(228, 33, 35, 0.6); 
+  --filter-bg-add: rgba(141, 187, 64, 0.5); */
   
   /* Misc */
   --kanban-board-bg: #333333;
@@ -95,18 +103,14 @@
   --emoji-color: #aaa;
 
   /* JH overrides */
-  /* --main-font: 'Calendas Plus', serif; */
-  /* --main-font-size: 1.2rem; */
+  /* --main-font: 'Calendas Plus', serif;
+  --main-font-size: 1.2rem; 
+  */
   
 }
 .check-container {
   top: -6px; /*RR change: adjust this value to move the checkbox up or down to better align with the font selected above - the default font Inter uses -6px*/
   padding-right: 4px;
-}
-
-/*RR change: decrease the line spacing in the breadcrumbs for referenced items*/
-#right-sidebar .rm-reference-item div[style*="display: flex;"] {
-  line-height: 1.0em;
 }
 
 /* JH overrides for Calendas font*/
@@ -121,6 +125,17 @@ rm-reference-item div.rm-block-text{
   font-size: .90em;
 }
 */
+
+/* ----------------------------------------- */
+
+/*RR change: Wraps text when performing an inline search with [[]] or (())*/
+
+/* .bp3-text-overflow-ellipsis {
+    text-overflow: unset;
+    white-space: unset;
+} */
+
+/* ----------------------------------------- */
 
 /*RR change: Un-comment the section below to maximize page width, line length, and images */
 
@@ -143,11 +158,56 @@ div.roam-center > div:first-child {
 }
 .hoverparent[style^="position: relative; width: 580px;"] {
   width: 100% !important;
- }
+}
 */ 
 
+/* ----------------------------------------- */
 
-@import "../fonts/Inter/inter.css";
+/*RR change: Uncomment the following section to hide the tool bar when not in use. A great idea from @Devon. Source: https://gist.github.com/devonzuegel/f54de76cbf0c0355d93e721c89f45787;
+ */
+
+/* 
+#roam-right-sidebar-content > div {
+  border-bottom: none !important;
+}
+.check-container {
+  padding-right: 4px;
+}
+.roam-body-main {
+  height: 100% !important;
+  top: 0 !important;
+}
+.roam-topbar {
+  opacity: 0;
+  transition: opacity 200ms;
+  z-index: 1;
+  background: none;
+  width: calc(100% - 40px);
+  padding: 0;
+}
+.roam-topbar:hover, .roam-topbar:focus-within {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+#right-sidebar button {
+  z-index: 100;
+} 
+*/
+
+/* ----------------------------------------- */
+
+/*RR change: decrease the line spacing in the breadcrumbs for referenced items*/
+.rm-reference-item div[style*="display: flex;"] {
+    line-height: var(--breadcrumb-line-height);
+    font-size: var(--breadcrumb-font-size);
+    color: var(--breadcrumb-color) !important; /*RR change: Added variable for the breadcrumb navigation in reference blocks*/
+}
+/*RR change: reference block font size adjustment*/
+.rm-reference-item div.rm-block-text{
+  font-size: 16px;
+}
+
+/* @import "../fonts/Inter/inter.css"; */
 .loading-astrolabe {
   margin: auto;
   position: relative;
@@ -272,7 +332,7 @@ div.roam-center > div:first-child {
   overflow-y: scroll;
   margin-bottom: 25px;
 }
-#scroll-1::-webkit-scrollbar-track {
+#scroll-1::-webkit-scrollbar-track {  
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 8px;
   background-color: #F5F5F5;
@@ -992,6 +1052,9 @@ body {
   border: 1px solid var(--table-border); /*RR change: darken border*/
   font-family: var(--main-font); /*RR change: theme font*/
 }
+.roam-table div {
+  font-family: var(--main-font); /*RR change: theme font*/
+}
 .roam-table td {
   max-height: 20px;
   overflow: scroll;
@@ -1072,7 +1135,7 @@ body {
 .rm-page-ref-tag {
   /*color: #a7b6c2;*/
   color: var(--tag-font-color); /*RR change: theme color*/
-  border-radius: 10px;
+  border-radius: 3px;
   padding: 2px 3px 2px 3px;
 }
 
@@ -1096,7 +1159,8 @@ span.rm-page-ref.rm-page-ref-tag:hover {
   color: green;
 }
 .rm-block-ref {
-  padding: 4px 2px;
+  /* padding: 4px 2px; */
+  padding: 0 2px; /*RR change: reduced top and bottom padding*/
   margin: -4px 0;
   display: inline;
   cursor: alias;
@@ -1281,6 +1345,11 @@ div.rm-block-ref {
   font-family: var(--main-font);
 }
 
+/*RR change: adjusting disclosure arrow position for references*/
+.rm-reference-item .controls .block-expand {
+  margin-top: 0;
+}
+
 /*RR change: reference font*/
 div.rm-reference-container {
   font-family: var(--main-font);
@@ -1300,7 +1369,8 @@ div.rm-reference-container {
 .rm-level1 .roam-block {
   line-height: 1.2;
 }
-.rm-level2 div.rm-block-text{
+/* .rm-level2 div.rm-block-text{ */
+.rm-level2 {
   /*font-family: 'Inter', sans-serif !important;*/
   font-weight: 400;
   font-size: 1.4em;
@@ -1388,7 +1458,8 @@ div.rm-reference-container {
 .roam-highlight {
   margin: -2px;
   padding: 2px;
-  background-color: #fef09f;
+  /* background-color: #fef09f; */
+  background-color: var(--highlight-background-color);
   color: var(--highlight-font-color); /*RR change: invert the highlighted text color*/
 }
 .roam-highlight .rm-page-ref-link-color {
@@ -1506,6 +1577,26 @@ div.rm-reference-container {
   letter-spacing: normal;
   /*-ms-font-feature-settings:    'ss20' 1;*/
 }
+
+/*RR change: added missing style*/
+.level2 {
+    /* font-family: Roboto,sans-serif; */
+    font-family: var(--main-font);
+    font-weight: 200;
+    font-size: 26px;
+    /* color: rgba(0,0,0,1); */
+    color: var(--h2-font-color);
+    letter-spacing: .001em;
+  }
+  .level3 {
+    /* font-family: Roboto,sans-serif; */
+    font-family: var(--main-font);
+    font-weight: 500;
+    font-size: 15px;
+    /* color: rgba(68,68,68,1); */
+    color: var(--h3-font-color);
+    letter-spacing: .002em;
+}
 .rm-pm-editor {
   padding: 5px;
   min-height: 100px;
@@ -1555,7 +1646,6 @@ div.rm-reference-container {
   margin-top: -3px !important;
 }
 
-
 .rm-pm-editor img {
   max-width: 100%;
 }
@@ -1604,7 +1694,8 @@ div.rm-reference-container {
   background-color: var(--block-highlight); /*RR change: Darker Blue for readability*/
 }
 .block-highlight-yellow {
-  background-color: yellow;
+  /* background-color: yellow; */
+  background-color: var(--block-highlight-bg); /*RR change: added variable*/
 }
 .block-bullet-view {
   flex: 1 1 100%;
@@ -1644,6 +1735,9 @@ div.roam-block {
   font-family: var(--main-font);
   font-size: var(--main-font-size);
 }
+#roam-right-sidebar-content div {
+  font-family: var(--main-font);
+}
 .roam-block .span-view {
   box-sizing: border-box;
 }
@@ -1663,7 +1757,7 @@ div.rm-block-text {
   overflow-wrap: break-spaces;
   vertical-align: top;
   margin-top: -1px;
-  background-color: transparent;
+  /* background-color: transparent; */
   padding-top: 4px;
   padding-bottom: 4px;
   letter-spacing: inherit;
@@ -1712,7 +1806,8 @@ div.rm-block-text {
   display: flex;
   height: 13px;
   width: 13px;
-  margin-top: 3px;
+  /* margin-top: 3px; */
+  margin-top: var(--bullet-position); /*DPR change: added variable for adjustment*/
   border-radius: 50%;
   justify-content: center;
   align-items: center;
@@ -1789,7 +1884,8 @@ div.rm-block-text {
   background-color: #bfccd6;
 }
 .block-ref-count-button {
-  font-size: 0.9em;
+  /* font-size: 0.9em; */
+  font-size: var(--ref-count-font-size); /*RR change: added variable*/
 }
 .rm-grey-text {
   color: #8a9ba8;
@@ -1929,6 +2025,12 @@ font-size: 1.0em;
 }
 
 /*RR change: Icon color*/
+.bp3-button .bp3-icon, 
+.bp3-button .bp3-icon-standard, 
+.bp3-button 
+.bp3-icon-large {
+  color: var(--icon-color);
+}
 
 .bp3-icon-graph:before,
 .bp3-icon-star:before,
@@ -1939,7 +2041,7 @@ font-size: 1.0em;
 .bp3-minimal:before, 
 .bp3-small:before, 
 .bp3-icon-filter {
-  color: #e78924 !important;
+  color: var(--icon-color);
 }
 
 .bp3-button.bp3-minimal {
@@ -1951,18 +2053,28 @@ font-size: 1.0em;
   box-shadow: none;
   background-color: transparent;
   background-image: none;
-  color: #999;
+  /* color: #999; */
+  color: var(--icon-color);
+  font-weight: 700;
 }
 .bp3-button:not([class*="bp3-intent-"]):hover {
-  background-color: rgba(167,182,194,0.3);
+  /* background-color: rgba(167,182,194,0.3); */
+  background-color: var(--icon-bg-hover);
+  color: var(--icon-color-hover);
 }
 
 .bp3-button.bp3-small:not([class*="bp3-minimal"]) {
   background-color: #191919;
-  color: #777;
+  color: var(--icon-color);
 }
 .bp3-button.bp3-small:not([class*="bp3-minimal"]):hover {
-  background-color: rgba(167,182,194,0.3);
+  /* background-color: rgba(167,182,194,0.3); */
+  background-color: var(--icon-bg-hover);
+  color: var(--icon-color-hover);
+}
+
+.bp3-button[class*="bp3-icon-"]::before {
+    color: inherit;
 }
 
 /*bp3-button bp3-minimal bp3-small bp3-icon-standard bp3-icon-menu-open
@@ -2004,7 +2116,6 @@ bp3-button bp3-small block-ref-count-button*/
 
 .roam-app em {
   color: var(--emphasis);
-  /*color: #ff8880;*/
 }
 
 /*RR change: Markdown Links */
@@ -2117,8 +2228,8 @@ blockquote .small, blockquote footer, blockquote small {
 }
 
 select {
-  background-color: #444 !important;
-  border-color: #777;
+  background-color: var(--select-bg) !important;
+  border-color: var(--search-outline);
 }
 
 /*RR change: This section contains a series of very specific overrides that are extremely fragile and will probably break with any minor update*/
@@ -2140,11 +2251,97 @@ span[style^='background-color: rgb(235, 241, 245); border-radius: 4px; cursor: a
 }
 
 /*RR change: Very fragile override for the filter icon backgroung when a filter is applied*/
-span[style^='background-color: red;'] {
+/* these might already be broken */
+span[style*='background-color: red;'] {
   background-color: var(--filter-bg-subtract) !important;
 }
-span[style^='background-color: green;'] {
+span[style*='background-color: green;'] {
   background-color: var(--filter-bg-add) !important;
+}
+
+/*RR change: Very fragile overrides for a page embed*/
+.roam-block div[style*="background-color: rgb(235, 241, 245);" ] {
+  background-color: var(--reference-item-bg) !important;
+  font-size: 0.8em;
+  padding: 10px;
+  padding-top: 17px;
+}
+.roam-block div[style*="background-color: rgb(235, 241, 245);" ] .bp3-button {
+  margin-top: -7px;
+}
+
+.bp3-button.bp3-intent-primary {
+    -webkit-box-shadow: inset 0 0 0 1px rgba(16,22,26,0.4), inset 0 -1px 0 rgba(16,22,26,0.2);
+    box-shadow: inset 0 0 0 1px rgba(16,22,26,0.4), inset 0 -1px 0 rgba(16,22,26,0.2);
+    background-color: var(--checkmark-color);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(rgba(255,255,255,0.1)),to(rgba(255,255,255,0)));
+    background-image: linear-gradient(to bottom,rgba(255,255,255,0.1),rgba(255,255,255,0));
+    color: #fff;
+}
+
+.bp3-button.bp3-intent-primary:hover {
+    -webkit-box-shadow: inset 0 0 0 1px rgba(16,22,26,0.4), inset 0 -1px 0 rgba(16,22,26,0.2);
+    box-shadow: inset 0 0 0 1px rgba(16,22,26,0.4), inset 0 -1px 0 rgba(16,22,26,0.2);
+    background-color: var(--checkmark-color);
+    opacity: 80%;
+}
+
+/*DPR change: Diagram styles*/
+div[style*="position: absolute;background-color: white;border: 1px solid lightgrey;border-radius: 0px 0px 4px;padding: 5px;top: 0px;left: 0px;"], 
+div[style*="position: absolute; background-color: white; border: 1px solid lightgrey; border-radius: 0px 0px 4px; padding: 5px; top: 0px; left: 0px;"] 
+{
+  background-color: var(--kanban-board-bg) !important;
+  border-color: var(--kanban-card-bg) !important;
+}
+.roam-body .roam-app svg div{
+  /* color: var(--strong); */
+    color: #202b33;
+}
+svg .rm-page-ref-link-color {
+  color: #106ba3;
+}
+svg .rm-page-ref-brackets {
+  color: #a7b6c2;
+}
+
+/*DPR change: dialog window styles*/
+.bp3-dialog {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin: 30px 0;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 0 0 1px rgba(16,22,26,0.1), 0 4px 8px rgba(16,22,26,0.2), 0 18px 46px 6px rgba(16,22,26,0.2);
+  box-shadow: 0 0 0 1px rgba(16,22,26,0.1), 0 4px 8px rgba(16,22,26,0.2), 0 18px 46px 6px rgba(16,22,26,0.2);
+  background: #333 !important;
+  color: #eee;
+  width: 500px;
+  padding-bottom: 20px;
+  pointer-events: all;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+input, button {
+  line-height: normal;
+  background-color: var(--reference-item-bg);
+  border: 1px solid var(--bullet);
+  padding: 5px;
+}
+  
+button[style*="border: 0.5px solid rgb(206, 217, 224);"] {
+  background-color: var(--reference-item-bg) !important;
+  border: 1px solid var(--reference-item-bg) !important;
+}
+button[style*="background-color: rgba(72, 176, 240, 0.5);"]{
+  background-color: var(--reference-item-bg) !important;
+  border: 1px solid var(--icon-color) !important;
 }
 
 /*RR change: Codemirror adjustments*/
@@ -2215,33 +2412,3 @@ span.cm-link {color: #b6b3eb;}
 
 .CodeMirror-lines {background: #2b2b2b;}
 .CodeMirror-activeline pre {background: #253540; /* SPM ADDED */}
-
-/*RR change: incorporating a great idea from @Devon to hide the tool bar when not in use.
-source: https://gist.github.com/devonzuegel/f54de76cbf0c0355d93e721c89f45787;
- */
-
-/* #roam-right-sidebar-content > div {
-  border-bottom: none !important;
-}
-.check-container {
-  padding-right: 4px;
-}
-.roam-body-main {
-  height: 100% !important;
-  top: 0 !important;
-}
-.roam-topbar {
-  opacity: 0;
-  transition: opacity 200ms;
-  z-index: 1;
-  background: none;
-  width: calc(100% - 40px);
-  padding: 0;
-}
-.roam-topbar:hover, .roam-topbar:focus-within {
-  opacity: 1;
-  transition: opacity 200ms;
-}
-#right-sidebar button {
-  z-index: 100;
-} */
