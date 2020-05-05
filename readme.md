@@ -212,4 +212,7 @@ div.roam-center > div:first-child {
 
 ```
 
+## Other great themes worth checking out
+https://github.com/vandermerwed/Roam-Research-Dark
 
+https://github.com/apg-dev/roam-theme-bear
