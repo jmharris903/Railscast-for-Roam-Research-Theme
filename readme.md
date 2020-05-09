@@ -30,7 +30,9 @@ Below is an example of the variables available for customizing the theme.
   
   /* font colors */
   --page-link-color: #eb9854;
+  --daily-notes-link-color:#eb9854;
   --external-link-color: #8DBB40;
+  --sidebar-link-color: #8DBB40;
   --page-brackets: rgba(228, 124, 67, 0.25);
   --h1-font-color: #1189BD;
   --h2-font-color: #1189BD;
@@ -44,8 +46,8 @@ Below is an example of the variables available for customizing the theme.
   --sidebar-font-color-hover:#e98924;
   --sidebar-hover-bg:#1f1f1f;
   --block-ref-bg: none;
-  --block-ref-border: #FECF2B;
-  --block-ref-hover: #e98924;
+  --block-ref-border: rgba(254, 207, 43, .6);
+  --block-ref-hover: #eb9854;
   --block-ref-hover-bg:#111;
   --block-ref-font-size: 1.0em;
   --new-page-color: #8DBB40;
@@ -53,10 +55,16 @@ Below is an example of the variables available for customizing the theme.
   --highlight-background-color: #fef09f;
   --highlight-link-color: #ff6000;
   --search-font-color: #e98924;
+  --search-body-font-color: #8a9ba8;
   --ref-count-font-size: 12px;
   --breadcrumb-color: #5c7080;
   --breadcrumb-font-size: 13px;
   --breadcrumb-line-height: 0.85em;
+
+  /* Saving icon colors */
+  --saving-local: #99280f;
+  --saving-remote: #d9822b;
+  --synched: #0f9960;
   
   /* backgrounds and outlines */
   --body-bg: #232323;
@@ -65,9 +73,9 @@ Below is an example of the variables available for customizing the theme.
   --icon-color: #e78924;
   --icon-bg-hover: rgba(167,182,194,0.3);
   --icon-color-hover: #e78924;
-  --h1-bg: #2f2d2a;
+  /* --h1-bg: #1189BD1a; */
   --hr: rgba(225, 117, 28, 0.50);
-  --code-bg: #2b2b2b;
+  --code-bg: #333;
   --checkmark-color: #137cbd;
   --pages-row-highlight: #292929;
   --pages-header-row: #2d2d2d;
@@ -81,6 +89,7 @@ Below is an example of the variables available for customizing the theme.
   --current-block-highlight: rgba(255, 255, 255, 0.07);
   --search-outline: #e9892475;
   --search-bg: #252525;
+  --inline-search-bg: #333;
   --popover-bg:#333;
   --select-bg:#444;
   --datepicker-bg: transparent;
@@ -116,9 +125,16 @@ Below is an example of the variables available for customizing the theme.
   --emoji-border: rgba(225, 117, 28, 0.40);
   --emoji-color: #aaa;
 
+  --no-query-results: "Query returned no results";
+  --no-query-results-color: #FC5963;
+
+  /* Scrollbar settings - to disable set values to none */
+  --scrollbar-track: #2b2b2b;
+  --scrollbar-thumb: rgba(153, 153, 153, 0.1);
+
   /* JH overrides */
   /* --main-font: 'Calendas Plus', serif;
-  --main-font-size: 1.2rem; 
+  --main-font-size: 1.2em; 
   */
   
 }
@@ -167,10 +183,12 @@ div.roam-center > div:first-child {
 .hoverparent .react-resizable[style^='width: 500px;'] {
     width: 100% !important;
 }
-.react-resizable[style^='width: 580px;'] {
+.react-resizable[style^='width: 580px;'] 
+.react-resizable[style^='width: 720px;'], {
   width: 100% !important;
 }
-.hoverparent[style^="position: relative; width: 580px;"] {
+.hoverparent[style^="position: relative; width: 580px;"],
+.hoverparent[style^="position: relative; width: 720px;"] {
   width: 100% !important;
 }
 */ 
@@ -207,6 +225,21 @@ div.roam-center > div:first-child {
   z-index: 100;
 } 
 */
+
+
+/* ----------------------------------------- */
+
+/*RR change: Make scroll bars visible*/
+
+div::-webkit-scrollbar {
+  width: 10px;
+}
+div::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-track) !important;
+}
+div::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb) !important;
+}
 
 /* ----------------------------------------- */
 
