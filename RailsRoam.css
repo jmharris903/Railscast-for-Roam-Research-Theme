@@ -2,7 +2,7 @@
 ### ROAM Railscast THEME ###
 > Many thanks to the Roam Slack community for all the resources, particularly @Anthony, @Calhistoriaan and @Devon.
 > Edits by Jeff Harris
-> v1.0.14
+> v1.0.15
 */
 
 /* RR change: added variables to easily change the theme */
@@ -16,6 +16,7 @@
   
   /* font colors */
   --page-link-color: #eb9854;
+  --daily-notes-link-color:#eb9854;
   --external-link-color: #8DBB40;
   --sidebar-link-color: #8DBB40;
   --page-brackets: rgba(228, 124, 67, 0.25);
@@ -31,8 +32,8 @@
   --sidebar-font-color-hover:#e98924;
   --sidebar-hover-bg:#1f1f1f;
   --block-ref-bg: none;
-  --block-ref-border: #FECF2B;
-  --block-ref-hover: #e98924;
+  --block-ref-border: rgba(254, 207, 43, .6);
+  --block-ref-hover: #eb9854;
   --block-ref-hover-bg:#111;
   --block-ref-font-size: 1.0em;
   --new-page-color: #8DBB40;
@@ -40,10 +41,16 @@
   --highlight-background-color: #fef09f;
   --highlight-link-color: #ff6000;
   --search-font-color: #e98924;
+  --search-body-font-color: #8a9ba8;
   --ref-count-font-size: 12px;
   --breadcrumb-color: #5c7080;
   --breadcrumb-font-size: 13px;
   --breadcrumb-line-height: 0.85em;
+
+  /* Saving icon colors */
+  --saving-local: #99280f;
+  --saving-remote: #d9822b;
+  --synched: #0f9960;
   
   /* backgrounds and outlines */
   --body-bg: #232323;
@@ -54,7 +61,7 @@
   --icon-color-hover: #e78924;
   /* --h1-bg: #1189BD1a; */
   --hr: rgba(225, 117, 28, 0.50);
-  --code-bg: #2b2b2b;
+  --code-bg: #333;
   --checkmark-color: #137cbd;
   --pages-row-highlight: #292929;
   --pages-header-row: #2d2d2d;
@@ -107,9 +114,13 @@
   --no-query-results: "Query returned no results";
   --no-query-results-color: #FC5963;
 
+  /* Scrollbar settings - to disable set values to none */
+  --scrollbar-track: #2b2b2b;
+  --scrollbar-thumb: rgba(153, 153, 153, 0.1);
+
   /* JH overrides */
   /* --main-font: 'Calendas Plus', serif;
-  --main-font-size: 1.2rem; 
+  --main-font-size: 1.2em; 
   */
   
 }
@@ -142,6 +153,20 @@ rm-reference-item div.rm-block-text{
 
 /* ----------------------------------------- */
 
+/*RR change: Make scroll bars visible*/
+
+div::-webkit-scrollbar {
+  width: 10px;
+}
+div::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-track) !important;
+}
+div::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb) !important;
+}
+
+/* ----------------------------------------- */
+
 /*RR change: Un-comment the section below to maximize page width, line length, and images */
 
 /* 
@@ -158,10 +183,12 @@ div.roam-center > div:first-child {
 .hoverparent .react-resizable[style^='width: 500px;'] {
     width: 100% !important;
 }
-.react-resizable[style^='width: 580px;'] {
+.react-resizable[style^='width: 580px;'] 
+.react-resizable[style^='width: 720px;'], {
   width: 100% !important;
 }
-.hoverparent[style^="position: relative; width: 580px;"] {
+.hoverparent[style^="position: relative; width: 580px;"],
+.hoverparent[style^="position: relative; width: 720px;"] {
   width: 100% !important;
 }
 */ 
@@ -215,7 +242,8 @@ div.roam-center > div:first-child {
 /* Show empty query message */
 .rm-block-text .rm-reference-main div:first-child:empty:after {
   content: var(--no-query-results);
-  color: var(--no-query-results-color)
+  color: var(--no-query-results-color);
+  font-family: var(--main-font);
 }
 
 /*@import "../fonts/Inter/inter.css";*/
@@ -696,18 +724,18 @@ div.rm-emoji-button {
   font-weight: 600;
 }
 .kanban-board {
+  /*background-color: #a7b6c2;*/
   min-width: 100%;
   min-height: 48px;
   padding: 8px;
   overflow-x: scroll;
-  /*background-color: #a7b6c2;*/
   background-color: var(--kanban-board-bg); /*RR change: dark background color for board*/
 }
 .kanban-column {
+  /*background-color: #ededed;*/
   margin: 0px 4px 0px 4px;
   padding: 4px;
   min-width: 200px;
-  /*background-color: #ededed;*/
   background-color: var(--kanban-column-bg); /*RR change: column background color*/
 }
 .kanban-title {
@@ -715,9 +743,9 @@ div.rm-emoji-button {
   color: var(--kanban-column-font-color); /*RR change: Orange column title color*/
 }
 .kanban-card {
+  /*background-color: white;*/
   margin: 8px;
   padding: 8px;
-  /*background-color: white;*/
   background-color: var(--kanban-card-bg); /*RR change: Grey card background color*/
   color: var(--kanban-card-font-color); /*RR change: Blue ard text color*/
 }
@@ -785,7 +813,6 @@ body {
   overflow: hidden;
   position: relative;
   background-color: var(--body-bg); /*RR change: Dark background color*/
-
 }
 .roam-body .roam-app {
   height: 100%;
@@ -799,9 +826,8 @@ body {
   /*color: #202b33;*/
   /*RR change: font, blue text and background highlight*/
   color: var(--h1-font-color);
-  /* background-color: var(--h1-bg); */
-  padding-left: 10px;
-  font-family: var(--main-font); 
+  font-family: var(--main-font);
+  
 }
 .roam-body .roam-app .roam-sidebar-container {
   position: absolute;
@@ -1053,11 +1079,11 @@ body {
 .roam-table th,
 .roam-table td,
 .roam-table tr {
+  /*font-size: 12px;*/
   min-width: 100px;
   max-height: 20px;
   padding: 8px 16px;
   margin: 0;
-  /*font-size: 12px;*/
   /*border: 1px solid grey;*/
   font-size: 0.9em; /*RR change: font size*/
   border: 1px solid var(--table-border); /*RR change: darken border*/
@@ -1122,9 +1148,11 @@ body {
   font-size: 7px;
 }
 .CodeMirror {
+  /* font-family: monospace; */
   font-family: var(--code-font); /*RR change: added theme font*/
 }
 .CodeMirror .CodeMirror-code pre {
+  /* font-family: monospace; */
   font-family: var(--code-font); /*RR change: added theme font*/
   box-shadow: none;
 }
@@ -1166,17 +1194,20 @@ span.rm-page-ref.rm-page-ref-tag:hover {
   /*color: #106ba3;*/
   color: var(--page-link-color); /*RR change: theme color*/
 }
+
+/*RR change: added option to change the ref link color on Daily Notes page */
+.roam-log-page .rm-page-ref-link-color {
+  color: var(--daily-notes-link-color);    
+}
 .rm-page-ref-namespace-color {
   color: green;
 }
 .rm-block-ref {
-  /* padding: 4px 2px; */
-  padding: 0 2px; /*RR change: reduced top and bottom padding*/
+  padding: 2px 2px; /*RR change: reduced top and bottom padding*/
   margin: -4px 0;
   display: inline;
+  /* border-bottom: 0.5px solid #d8e1e8; */
   cursor: alias;
-  /*border-bottom: 1px solid #ced9e0;*/
-  /*font-size: 0.9em;*/
   /*RR change: keep the references blocks the same size*/
   border-bottom: 1px solid var(--block-ref-border);
   font-size: var(--block-ref-font-size);
@@ -1283,7 +1314,8 @@ div.rm-block-ref {
 }
 .rm-find-or-create-wrapper .rm-menu-item .rm-search-list-item {
   word-break: break-word;
-  color: #8a9ba8; /*red RR change: this is the search results body text color*/
+  /* color: #8a9ba8;  */
+  color: var(--search-body-font-color); /*RR change: this is the search results body text color*/
   overflow-wrap: break-spaces;
   margin-left: -20px;
 }
@@ -1343,8 +1375,8 @@ div.rm-block-ref {
   margin-right: 8px;
   flex: 1 1 100%;
   word-break: break-word;
-  padding-right: 8px;
   /*background-color: #f5f8fa;*/
+  padding-right: 8px;
   /*RR change: background color and spacing*/
   background-color: var(--reference-item-bg);
   border-radius: 7px;
@@ -1366,42 +1398,68 @@ div.rm-reference-container {
   font-family: var(--main-font);
   margin-bottom: 2em; /*RR change: give a little breathing room for the unreferenced links section*/
 }
-
-.rm-level1 div.rm-block-text {
-  font-weight: 400;
-  font-size: 1.2em;
-  /* font-size: var(--main-font-size); RR change: font size reduction */
+.rm-level1 {
   /*font-family: 'Inter', sans-serif;*/
+  font-weight: 400;
+  font-size: 1.8em;
+  /* color: var(--h1-font-color); */
   font-family: var(--main-font); /*RR change: font change*/
+  /* background-color: var(--h1-bg); */
+  /* padding-left: 10px; */
+  /* margin-top: -4px !important; */
 }
 .rm-level1 textarea {
   line-height: 1.2;
-  font-size: 1.2em;
 }
 .rm-level1 .roam-block {
   line-height: 1.2;
 }
-/* .rm-level2 div.rm-block-text{ */
-.rm-level2 div.rm-block-text {
-  /*font-family: 'Inter', sans-serif !important;*/
+.rm-level2 {
+  /* font-family: 'Inter', sans-serif !important; */
   font-weight: 400;
-  font-size: 1.4em;
+  font-size: 1.6em;
   font-family: var(--main-font);
+  color: var(--h2-font-color);
+  /* margin-top: -5px !important; */
 }
 .rm-level2 textarea {
   line-height: 1.2;
-  font-size: 1.4em;
+  margin-top: 3px;
+  /* font-size: 1.4em; */
 }
-.rm-level3 div.rm-block-text {
-  font-weight: 500;
-  font-size: 1.2em;
+.rm-level3 {
+  font-weight: 700;
+  font-size: 1.1em;
   /* color: #5c7080; */
+    color: var(--h3-font-color);
   font-family: var(--main-font);
 }
 .rm-level3 textarea {
   line-height: 1.2;
-  font-size: 1.2em;
-  font-weight: normal;
+  margin-top: 2px;
+  /* font-size: 1.2em; */
+  /* font-weight: normal; */
+}
+
+/*RR change: Header styles*/
+.roam-app h1 {
+  /* color: var(--h1-font-color); */
+  /* background-color: var(--h1-bg); */
+  /* padding-left: 10px; */
+  margin-top: -4px !important;
+}
+.roam-app h2 {
+  /* color: var(--h2-font-color); */
+  /* background-color: var(--h1-bg); */
+  /* padding-left: 10px; */
+  margin-top: -5px !important;
+}
+.roam-app h3 { 
+  /* font-weight: bold; */
+  /* color: var(--h3-font-color); */
+  /* background-color: var(--h1-bg); */
+  /* padding-left: 10px; */
+  margin-top: 3px !important;
 }
 
 .rm-title1 {
@@ -1478,9 +1536,9 @@ div.rm-reference-container {
   padding: 2px;
 }
 .roam-highlight {
+  /* background-color: #fef09f; */
   margin: -2px;
   padding: 2px;
-  /* background-color: #fef09f; */
   background-color: var(--highlight-background-color);
   color: var(--highlight-font-color); /*RR change: invert the highlighted text color*/
 }
@@ -1496,9 +1554,11 @@ div.rm-reference-container {
 }
 .rm-encrypted-block {
   font-weight: 300;
+  /* color: #8a9ba8; */
   color: var(--encrypted-font-color);
   font-size: 12px;
   border-radius: 4px;
+  /* background-color: #f5f8fa; */
   background-color: var(--encrypted-bg);
   padding: 2px 4px;
   display: inline;
@@ -1591,6 +1651,30 @@ div.rm-reference-container {
   margin-top: 20px;
   width: 70%;
 }
+.rm-saving-icon {
+  height: 24px;
+  width: 24px;
+  align-items: center;
+  justify-content: center;
+}
+.rm-saving-icon .rm-saving-inner-icon {
+  border-radius: 50%;
+  opacity: 0.7;
+  width: 10px;
+  height: 10px;
+}
+.rm-saving-icon .rm-saving-local {
+  /* background-color: #99280f; */
+  background-color: var(--saving-local); /*RR change: added variable*/
+}
+.rm-saving-icon .rm-saving-remote {
+  background-color: #d9822b;
+  background-color: var(--saving-remote); /*RR change: added variable*/
+}
+.rm-saving-icon .rm-synced {
+  background-color: #0f9960;
+  background-color: var(--synched); /*RR change: added variable*/
+}
 .level1 {
   font-family: Roboto, sans-serif;
   font-weight: 200;
@@ -1600,7 +1684,7 @@ div.rm-reference-container {
   /*-ms-font-feature-settings:    'ss20' 1;*/
 }
 
-/*RR change: added missing style*/
+/*RR change: added missing styles*/
 .level2 {
   /* font-family: Roboto,sans-serif; */
   font-family: var(--main-font);
@@ -1644,34 +1728,11 @@ div.rm-reference-container {
   font-weight: 400;
   font-size: 1.4em;
 }
-
 .rm-pm-editor h3 {
   font-weight: 500;
   font-size: 1.2em;
   color: #5c7080;
 }
-
-/*RR change: Header styles*/
-.roam-app h1 {
-  color: var(--h1-font-color);
-  /* background-color: var(--h1-bg); */
-  padding-left: 10px;
-  margin-top: -4px !important;
-}
-.roam-app h2 {
-  color: var(--h2-font-color);
-  /* background-color: var(--h1-bg); */
-  padding-left: 10px;
-  margin-top: -5px !important;
-}
-.roam-app h3 { 
-  font-weight: bold;
-  color: var(--h3-font-color);
-  /* background-color: var(--h1-bg); */
-  padding-left: 10px;
-  margin-top: -3px !important;
-}
-
 .rm-pm-editor img {
   max-width: 100%;
 }
@@ -1744,7 +1805,8 @@ div.rm-reference-container {
   text-align: justify;
 }
 .roam-block {
-  min-height: calc(1.5em + 8px);
+  /* min-height: calc(1.5em + 8px); */
+  min-height: 1.5em;
   box-sizing: border-box;
   white-space: pre-wrap;
   overflow-wrap: break-word;
@@ -1757,7 +1819,8 @@ div.rm-reference-container {
   padding-bottom: 4px;
 }
 /*RR change: theme font catch-all*/
-div.roam-block {
+/* div.roam-block { */
+.roam-block {
   font-family: var(--main-font);
   font-size: var(--main-font-size);
 }
@@ -1772,7 +1835,8 @@ div.roam-block {
   max-width: 100%; /*RR change: make references as wide as possible*/
 }
 /*RR change: Theme body font settings*/
-div.rm-block-text {
+/* div.rm-block-text { */
+.rm-block-text {
   font-family: var(--main-font);
   font-size: var(--main-font-size);
 }
@@ -1910,7 +1974,9 @@ div.rm-block-text {
   background-color: #bfccd6;
 }
 .block-ref-count-button {
-  /* font-size: 0.9em; */
+  /* font-size: 0.8em; */
+  /* opacity: 0.5; */
+  cursor: pointer;
   font-size: var(--ref-count-font-size); /*RR change: added variable*/
 }
 .rm-grey-text {
@@ -1989,6 +2055,8 @@ div {
   padding: 0px;
 }
 textarea {
+  font-family: 'Inter', sans-serif;
+  font-size: 1em;
   font-family: var(--main-font);
   font-size: var(--main-font-size);
   line-height: 1.5em;
@@ -2014,6 +2082,9 @@ font-size: 1.0em;
 .display-inline-flex {
   display: -webkit-inline-flex;
   display: inline-flex;
+}
+.flex {
+  flex: 1;
 }
 .react-resizable {
   position: relative;
@@ -2410,10 +2481,7 @@ div.CodeMirror .CodeMirror-code pre {
   font-size: 1.1em;
 }
 
-/*<!--activeline-->*/
-.CodeMirror-activeline-background { background: #253540; }
-
-.CodeMirror {background: var(--code-bg); color: #f4f1ed; font-size: 0.85em;}
+.CodeMirror {background: var(--code-bg); color: #f4f1ed; font-size: 0.85em; border-radius: 8px;}
 div.CodeMirror-selected {background: #4d516d !important;}
 .CodeMirror-gutters {background: #2b2b2b; border-right: 1px solid #333;}
 .CodeMirror-linenumber {color: var(--page-link-color);}
@@ -2438,14 +2506,19 @@ span.cm-bracket {color: #f4f1ed;}
 span.cm-tag {color: #da4939;}
 span.cm-link {color: #b6b3eb;}
 
-.cm-s-default .cm-atom { color: #2983bb;}
+
+/*RR change: Added styles*/
 
 /* .CodeMirror-matchingbracket { text-decoration: underline; color: white !important;} */
 .CodeMirror-matchingbracket { outline:1px solid #ff9c3a; color:#fff !important; }
 .CodeMirror-activeline-background { background: #5a5acc; }
 
+/*<!--activeline-->*/
+.CodeMirror-activeline-background { background: #253540; }
+
 .CodeMirror pre {background: #2b2b2b;}
-
-
 .CodeMirror-lines {background: #2b2b2b;}
 .CodeMirror-activeline pre {background: #253540; /* SPM ADDED */}
+
+.cm-s-default .cm-atom { color: #2983bb;}
+.cm-s-default .cm-builtin {color: #db6bff;}
