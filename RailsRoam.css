@@ -1,6 +1,6 @@
 /*
 ### ROAM Railscast THEME ###
-> Many thanks to the Roam Slack community for all the resources, particularly @Anthony, @Calhistoriaan and @Devon.
+> Many thanks to the Roam Slack community for all the resources, particularly @Anthony, @Calhistoriaan, @Devon, @Murf and @Malcolm Ocean.
 > Edits by Jeff Harris
 > v1.0.15
 */
@@ -153,20 +153,6 @@ rm-reference-item div.rm-block-text{
 
 /* ----------------------------------------- */
 
-/*RR change: Make scroll bars visible*/
-
-div::-webkit-scrollbar {
-  width: 10px;
-}
-div::-webkit-scrollbar-track {
-  background-color: var(--scrollbar-track) !important;
-}
-div::-webkit-scrollbar-thumb {
-  background-color: var(--scrollbar-thumb) !important;
-}
-
-/* ----------------------------------------- */
-
 /*RR change: Un-comment the section below to maximize page width, line length, and images */
 
 /* 
@@ -225,6 +211,21 @@ div.roam-center > div:first-child {
   z-index: 100;
 } 
 */
+
+
+/* ----------------------------------------- */
+
+/*RR change: Make scroll bars visible*/
+
+div::-webkit-scrollbar {
+  width: 10px;
+}
+div::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-track) !important;
+}
+div::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb) !important;
+}
 
 /* ----------------------------------------- */
 
