@@ -249,3 +249,5 @@ div::-webkit-scrollbar-thumb {
 https://github.com/vandermerwed/Roam-Research-Dark
 
 https://github.com/apg-dev/roam-theme-bear
+
+https://www.roamtips.com/home/roam-research-css-styles
