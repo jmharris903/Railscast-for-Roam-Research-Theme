@@ -1,8 +1,8 @@
 /*
 ### ROAM Railscast THEME ###
-> Many thanks to the Roam Slack community for all the resources, particularly @Anthony, @Calhistoriaan, @Devon, @Murf and @Malcolm Ocean.
+> Many thanks to the Roam Slack community for all the resources, particularly @Anthony, @Calhistoriaan, @Devon, @Murf, @Malcolm Ocean, and @David Cranall.
 > Edits by Jeff Harris
-> v1.0.15
+> v1.0.16
 */
 
 /* RR change: added variables to easily change the theme */
@@ -36,12 +36,13 @@
   --block-ref-hover: #eb9854;
   --block-ref-hover-bg:#111;
   --block-ref-font-size: 1.0em;
-  --new-page-color: #8DBB40;
   --highlight-font-color: #222;
   --highlight-background-color: #fef09f;
   --highlight-link-color: #ff6000;
-  --search-font-color: #e98924;
+  --search-font-color: #af671c;
   --search-body-font-color: #8a9ba8;
+  --new-page-color: #8DBB40;
+  --popover-font-color: #e98924;
   --ref-count-font-size: 12px;
   --breadcrumb-color: #5c7080;
   --breadcrumb-font-size: 13px;
@@ -124,10 +125,16 @@
   */
   
 }
+
+/* ----------------------------------------- */
+
+/*RR change: adjust the 'top' value to move the checkbox up or down to better align with the font selected above - the default font Inter uses -6px*/
 .check-container {
-  top: -6px; /*RR change: adjust this value to move the checkbox up or down to better align with the font selected above - the default font Inter uses -6px*/
+  top: -6px; 
   padding-right: 4px;
 }
+
+/* ----------------------------------------- */
 
 /* JH overrides for Calendas font*/
 /* 
@@ -144,6 +151,32 @@ rm-reference-item div.rm-block-text{
 
 /* ----------------------------------------- */
 
+/*RR change: Comment/un-comment this section to toggle between a 50/50 layout between the main section and the sidebar.
+inspried by David Cranall https://davidcrandallwrites.com/split-screen-and-rtl-custom-css-scripts-for-roam/*/
+
+.roam-center {
+  flex-basis: 50% !important;
+}
+
+/* ----------------------------------------- */
+
+/* RR change: Comment/un-comment this section to make the searchbar full width */ 
+
+.rm-find-or-create-wrapper {
+  flex: 0 1 100% !important;
+}
+
+/* ----------------------------------------- */
+
+/* RR change: Comment/un-comment to remove checkboxes in breadcrumb navigation */
+
+.roam-reference-item > div:first-child:not(.roam-log-container) > div:first-child label.check-container,
+.roam-article > div:first-child:not(.roam-log-container) > div:first-child label.check-container {
+  display: none;
+}
+
+/* ----------------------------------------- */
+
 /*RR change: Wraps text when performing an inline search with [[]] or (())*/
 
 /* .bp3-text-overflow-ellipsis {
@@ -153,7 +186,7 @@ rm-reference-item div.rm-block-text{
 
 /* ----------------------------------------- */
 
-/*RR change: Un-comment the section below to maximize page width, line length, and images */
+/*RR change: Un-comment the section below to maximize page width, line length, and images widths */
 
 /* 
 .roam-block-container {
@@ -215,7 +248,8 @@ div.roam-center > div:first-child {
 
 /* ----------------------------------------- */
 
-/*RR change: Make scroll bars visible*/
+/*RR change: Comment/un-comment this section to toggle scrollbars on or off
+inspired by @Malcolm Ocean*/
 
 div::-webkit-scrollbar {
   width: 10px;
@@ -230,7 +264,7 @@ div::-webkit-scrollbar-thumb {
 /* ----------------------------------------- */
 
 /*RR change: decrease the line spacing in the breadcrumbs for referenced items*/
-.rm-reference-item div[style*="display: flex;"] {
+.rm-reference-item div[style*="display: flex; flex-wrap: wrap; margin-left: 4px;"] {
     line-height: var(--breadcrumb-line-height);
     font-size: var(--breadcrumb-font-size);
     color: var(--breadcrumb-color) !important; /*RR change: Added variable for the breadcrumb navigation in reference blocks*/
@@ -244,6 +278,10 @@ div::-webkit-scrollbar-thumb {
 .rm-block-text .rm-reference-main div:first-child:empty:after {
   content: var(--no-query-results);
   color: var(--no-query-results-color);
+  font-family: var(--main-font);
+}
+
+.roam-article div {
   font-family: var(--main-font);
 }
 
@@ -1284,11 +1322,24 @@ div.rm-block-ref {
   -ms-transform: rotate(45deg);
   transform: rotate(40deg) scale(0.8);
 }
+
+/*RR change: align checkboxes in zoomed-in headings */
+
+.rm-level1 label.check-container {
+  margin-bottom: 17px;
+  margin-right: -3px;
+}
+
 #roam-sidebar-logo a {
   text-decoration: none;
 }
 #roam-sidebar-logo:hover {
   background-color: #10161a;
+}
+/* RR change: more subtle logo */
+#roam-sidebar-logo img,
+#roam-sidebar-logo span {
+  opacity: 0.4;
 }
 .rm-find-or-create-wrapper {
   position: relative;
@@ -2196,17 +2247,24 @@ bp3-button bp3-small block-ref-count-button*/
 
 /* Input Text Color */
 .bp3-input {
-  color: var(--search-font-color);
+  color: var(--popover-font-color);
 }
 
 /* Roam Search Box Field and Border */
 .bp3-input,
 .bp3-input[readonly]{ 
   background: var(--search-bg);
-  box-shadow: inset 0 0 0 1px var(--search-outline);
+  /* box-shadow: inset 0 0 0 1px var(--search-outline); */
+  box-shadow: none;
   font-size: 0.85em;
 }
-
+.bp3-input:focus, .bp3-input.bp3-active {
+  /* -webkit-box-shadow: 0 0 0 1px #137cbd, 0 0 0 3px rgba(19,124,189,0.3), inset 0 1px 1px rgba(16,22,26,0.2); */
+  box-shadow: 0 0 0 1px var(--search-outline);
+  /* -webkit-box-shadow: none; */
+  /* box-shadow: none; */
+  border: var(--search-outline);
+}
 /*RR change: additional text styles*/
 .roam-app strong {
   color: var(--strong) !important;
@@ -2256,7 +2314,7 @@ hr {
 .bp3-popover .bp3-popover-content,
 .bp3-menu {
   background: var(--popover-bg);
-  color: var(--search-font-color);
+  color: var(--popover-font-color);
   border-radius: 4px;
 }
 
@@ -2273,14 +2331,14 @@ hr {
 }
 
 .bp3-html-select.bp3-minimal select {
-  color: var(--search-font-color);
+  color: var(--popover-font-color);
   background-color: var(--select-bg);  
 }
 
 /* Slash Popup */
 div.bp3-elevation-3 {
   /* color: #1775db; */
-  color: var(--search-font-color);
+  color: var(--popover-font-color);
   background-color: var(--inline-search-bg) !important;
   font-size: 0.85em;
   border-radius: 4px;
@@ -2289,7 +2347,7 @@ div.bp3-elevation-3 {
 }
 [title~=Search] {
   color: #1775db !important; /*RR change: Bi-directional place holder text*/
-  color: var(--search-font-color) !important; /*RR change: Bi-directional place holder text*/
+  color: var(--popover-font-color) !important; /*RR change: Bi-directional place holder text*/
 }
 .bp3-elevation-3 .dont-unfocus-block[style*="background-color: rgb(213, 218, 223);"],
 .bp3-popover-content .rm-menu-item[style*="background-color: rgb(213, 218, 223);"]  {
