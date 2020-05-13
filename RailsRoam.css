@@ -2,17 +2,23 @@
 ### ROAM Railscast THEME ###
 > Many thanks to the Roam Slack community for all the resources, particularly @Anthony, @Calhistoriaan, @Devon, @Murf, @Malcolm Ocean, and @David Cranall.
 > Edits by Jeff Harris
-> v1.0.16
+> v1.0.17
 */
 
 /* RR change: added variables to easily change the theme */
 :root {
+  /* Raom default variables */
+  --primary-color: #137cbd;
+  --s1: 8px;
+  --background-color: #e1e8ed;
+
   /* Primary fonts */
   --main-font: 'Inter', sans-serif;
   --main-font-color:#999;
   --main-font-size: 1.0em;
   --code-font: 'Source Code Pro', 'Courier New', Courier, monospace;
   --code-font-color: #6d9cbe;
+  --code-font-size: 1.0em;
   
   /* font colors */
   --page-link-color: #eb9854;
@@ -121,7 +127,8 @@
 
   /* JH overrides */
   /* --main-font: 'Calendas Plus', serif;
-  --main-font-size: 1.2em; 
+  --main-font-size: 1.2em;
+  --code-font-size: 0.9em; 
   */
   
 }
@@ -275,12 +282,29 @@ div::-webkit-scrollbar-thumb {
 }
 
 /* Show empty query message */
-.rm-block-text .rm-reference-main div:first-child:empty:after {
+.rm-block-text .rm-reference-main .rm-mentions:empty:after {
   content: var(--no-query-results);
   color: var(--no-query-results-color);
   font-family: var(--main-font);
+  padding: var(--s1);
 }
 
+.rm-query {
+  border: 0.5px solid #38332e;
+  padding-bottom: var(--s1);
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  border-radius: 7px;
+}
+
+.rm-query .rm-query-title {
+  color: var(--primary-color);
+  background-color: #38332e;
+  padding: var(--s1);
+  font-size: .8em;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
 .roam-article div {
   font-family: var(--main-font);
 }
@@ -810,6 +834,25 @@ div.kanban-card {
   border-radius: 10px;
   /*background-color: #5c7080;*/
 }
+.CodeMirror-activeline-background {
+  background: transparent !important;
+}
+.CodeMirror-focused .CodeMirror-activeline-background {
+  background: rgba(100, 100, 100, 0.1) !important;
+}
+html[data-roam-layout-theme="Compact"] {
+  --s1: 4px;
+}
+html[data-roam-layout-theme="Cozy"] {
+  --s1: 12px;
+}
+html[data-roam-color-theme="Roam-Classic"] {
+  --primary-color: #137cbd;
+}
+html[data-roam-color-theme="Alexandretta"] {
+  --primary-color: #48aff0;
+  --background-color: #30404d;
+}
 html {
   font-family: 'Inter', sans-serif;
 }
@@ -817,6 +860,11 @@ html {
   html {
     font-family: 'Inter var', sans-serif;
   }
+}
+:root {
+  /* --primary-color: #137cbd;
+  --s1: 8px;
+  --background-color: #e1e8ed; */
 }
 body {
   overscroll-behavior: none;
@@ -1422,6 +1470,9 @@ div.rm-block-ref {
   padding: 8px 4px;
   flex: 1 0 15%;
 }
+.rm-reference-main {
+  padding-top: 8px;
+}
 .rm-reference-item {
   margin-top: 8px;
   margin-right: 8px;
@@ -1632,7 +1683,92 @@ div.rm-reference-container {
 #right-sidebar .roam-bullet-closed {
   /*background-color: #a7b6c2;*/
   background-color: var(--bullet-closed); /*RR change: orange color to match open bullets*/
-
+}
+#right-sidebar .rm-reference-main {
+  border: none;
+  padding: none;
+}
+.rm-inline-img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.zoom-path-view {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: -12px;
+  margin-left: 4px;
+  margin-bottom: 12px;
+}
+.zoom-path-view .rm-zoom-mask {
+  mix-blend-mode: saturation;
+  background-color: white;
+  flex: 1 1 100%;
+}
+.zoom-mentions-view {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 12px;
+  margin-left: 8px;
+}
+.zoom-mentions-view .rm-inline-img {
+  max-height: 20px;
+  width: 20px;
+}
+.zoom-mentions-view .rm-mention-icon {
+  font-size: 8px;
+}
+.rm-zoom .rm-resize-img {
+  max-width: 24px !important;
+}
+.rm-zoom .rm-resize-img .hoveronly {
+  display: none;
+}
+.rm-zoom .rm-inline-img {
+  max-height: 24px;
+  max-width: 24px;
+}
+.rm-zoom .parent-path-wrapper {
+  max-height: 48px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rm-zoom .parent-path-wrapper .roam-table {
+  display: none;
+}
+.rm-zoom .parent-path-wrapper .rm-query {
+  display: none;
+}
+.rm-query {
+  border: 0.5px solid #38332e;
+  padding-bottom: var(--s1);
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  border-radius: 7px;
+}
+.rm-query .rm-query-title {
+  color: #508bb5;
+  background-color: #38332e;
+  padding: var(--s1);
+  font-size: .8em;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  display: none;
+}
+.rm-mentions .rm-ref-page-view {
+  margin-top: 4px;
+  margin-left: 4px;
+}
+.rm-mentions .rm-ref-page-view .rm-ref-page-view-title {
+  font-size: 16px;
+}
+.rm-mentions .rm-ref-page-view .rm-title-arrow-wrapper {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+}
+.rm-mentions .rm-ref-page-view .rm-title-arrow-wrapper .rm-caret {
+  padding: 2px;
 }
 .rm-icon {
   color: #ced9e0;
@@ -1726,6 +1862,12 @@ div.rm-reference-container {
 .rm-saving-icon .rm-synced {
   background-color: #0f9960;
   background-color: var(--synched); /*RR change: added variable*/
+  }
+.rm-theme-selector div {
+  padding: var(--s1);
+}
+.rm-theme-selector div button {
+  margin: var(--s1);
 }
 .level1 {
   font-family: Roboto, sans-serif;
@@ -2537,10 +2679,10 @@ code {
 div.CodeMirror .CodeMirror-code pre {
   font-family: var(--code-font);
   line-height: 1.5em;
-  font-size: 1.1em;
+  font-size: var(--code-font-size);
 }
 
-.CodeMirror {background: var(--code-bg); color: #f4f1ed; font-size: 0.85em; border-radius: 8px;}
+.CodeMirror {background: var(--code-bg); color: #f4f1ed; font-size: var(--code-font-size); border-radius: 8px;}
 div.CodeMirror-selected {background: #4d516d !important;}
 .CodeMirror-gutters {background: #2b2b2b; border-right: 1px solid #333;}
 .CodeMirror-linenumber {color: var(--page-link-color);}
