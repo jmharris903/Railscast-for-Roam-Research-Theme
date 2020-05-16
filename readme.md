@@ -21,12 +21,18 @@ Below is an example of the variables available for customizing the theme.
 ```
 /* RR change: added variables to easily change the theme */
 :root {
+  /* Roam default variables */
+  --primary-color: #137cbd;
+  --s1: 8px;
+  --background-color: #e1e8ed;
+
   /* Primary fonts */
   --main-font: 'Inter', sans-serif;
   --main-font-color:#999;
   --main-font-size: 1.0em;
   --code-font: 'Source Code Pro', 'Courier New', Courier, monospace;
   --code-font-color: #6d9cbe;
+  --code-font-size: 1.0em;
   
   /* font colors */
   --page-link-color: #eb9854;
@@ -50,12 +56,13 @@ Below is an example of the variables available for customizing the theme.
   --block-ref-hover: #eb9854;
   --block-ref-hover-bg:#111;
   --block-ref-font-size: 1.0em;
-  --new-page-color: #8DBB40;
   --highlight-font-color: #222;
   --highlight-background-color: #fef09f;
   --highlight-link-color: #ff6000;
-  --search-font-color: #e98924;
+  --search-font-color: #af671c;
   --search-body-font-color: #8a9ba8;
+  --new-page-color: #8DBB40;
+  --popover-font-color: #e98924;
   --ref-count-font-size: 12px;
   --breadcrumb-color: #5c7080;
   --breadcrumb-font-size: 13px;
@@ -89,6 +96,7 @@ Below is an example of the variables available for customizing the theme.
   --current-block-highlight: rgba(255, 255, 255, 0.07);
   --search-outline: #e9892475;
   --search-bg: #252525;
+  --search-selected-row: #4c4c4c;
   --inline-search-bg: #333;
   --popover-bg:#333;
   --select-bg:#444;
@@ -127,6 +135,7 @@ Below is an example of the variables available for customizing the theme.
 
   --no-query-results: "Query returned no results";
   --no-query-results-color: #FC5963;
+  --query-results-border: #f2c98f1a;
 
   /* Scrollbar settings - to disable set values to none */
   --scrollbar-track: #2b2b2b;
@@ -134,31 +143,64 @@ Below is an example of the variables available for customizing the theme.
 
   /* JH overrides */
   /* --main-font: 'Calendas Plus', serif;
-  --main-font-size: 1.2em; 
+  --main-font-size: 1.2em;
+  --code-font-size: 0.9em; 
   */
   
 }
+
+/* ----------------------------------------- */
+
+/*RR change: CHECKBOX ALGINMENT - adjust the 'top' value to move the checkbox up or down to better align with the font selected above - the default font Inter uses -6px*/
 .check-container {
-  top: -6px; /*RR change: adjust this value to move the checkbox up or down to better align with the font selected above - the default font Inter uses -6px*/
+  top: -6px; 
   padding-right: 4px;
 }
+
+/* ----------------------------------------- */
 
 /* JH overrides for Calendas font*/
 /* 
 .check-container {
   top: -10px;
 }
-rm-reference-item div.rm-block-text{
+.rm-reference-item div.rm-block-text{
   font-size: 16px;
 }
 #right-sidebar .rm-reference-item div[style*="display: flex;"] {
-  font-size: .90em;
+
+}
+
+.roam-block div[style*="background-color: rgb(235, 241, 245);" ],
+.roam-block div[style*="background-color: rgb(235, 241, 245);" ] div {
+  font-size: 0.8em;
+  font-size: 16px;
+}
+.rm-reference-item textarea {
+  font-size: 16px;
 }
 */
 
 /* ----------------------------------------- */
 
-/*RR change: Wraps text when performing an inline search with [[]] or (())*/
+/*RR change: SIDEBAR WIDTH - Comment/un-comment this section to toggle between a 50/50 layout between the main section and the sidebar.
+inspried by David Cranall https://davidcrandallwrites.com/split-screen-and-rtl-custom-css-scripts-for-roam/*/
+
+.roam-center {
+  flex-basis: 50% !important;
+}
+
+/* ----------------------------------------- */
+
+/* RR change: SEARCHBAR - Comment/un-comment this section to make the search bar full width */ 
+
+.rm-find-or-create-wrapper {
+  flex: 0 1 100% !important;
+}
+
+/* ----------------------------------------- */
+
+/*RR change: SEARCH RESULTS WRAPPING - Wraps text when performing an inline search with [[]] or (())*/
 
 /* .bp3-text-overflow-ellipsis {
     text-overflow: unset;
@@ -167,7 +209,7 @@ rm-reference-item div.rm-block-text{
 
 /* ----------------------------------------- */
 
-/*RR change: Un-comment the section below to maximize page width, line length, and images */
+/*RR change: PAGE WIDTH - Un-comment the section below to maximize page width, line length, and images widths */
 
 /* 
 .roam-block-container {
@@ -195,7 +237,7 @@ div.roam-center > div:first-child {
 
 /* ----------------------------------------- */
 
-/*RR change: Uncomment the following section to hide the tool bar when not in use. A great idea from @Devon. Source: https://gist.github.com/devonzuegel/f54de76cbf0c0355d93e721c89f45787;
+/*RR change: SEARCH/TOOLBAR - Uncomment the following section to hide the tool bar when not in use. A great idea from @Devon. Source: https://gist.github.com/devonzuegel/f54de76cbf0c0355d93e721c89f45787;
  */
 
 /* 
@@ -226,10 +268,10 @@ div.roam-center > div:first-child {
 } 
 */
 
-
 /* ----------------------------------------- */
 
-/*RR change: Make scroll bars visible*/
+/*RR change: SCROLLBARS - Comment/un-comment this section to toggle scrollbars on or off
+inspired by @Malcolm Ocean*/
 
 div::-webkit-scrollbar {
   width: 10px;
@@ -239,6 +281,76 @@ div::-webkit-scrollbar-track {
 }
 div::-webkit-scrollbar-thumb {
   background-color: var(--scrollbar-thumb) !important;
+}
+
+/* ----------------------------------------- */
+
+/*RR change: BREADCRUMBS - */
+.rm-reference-item div[style*="display: flex; flex-wrap: wrap; margin-left: 4px;"] {
+    /* line-height: var(--breadcrumb-line-height);
+    font-size: var(--breadcrumb-font-size);
+    color: var(--breadcrumb-color) !important;  */
+    /*RR change: Added variable for the breadcrumb navigation in reference blocks*/
+}
+/*RR change: decrease the line spacing in the breadcrumbs for referenced items*/
+
+.zoom-mentions-view span {
+padding-top: 0 !important;
+padding-bottom: 0 !important;
+}
+
+/* RR change: Comment/un-comment to remove checkboxes in breadcrumb navigation */
+
+.roam-reference-item > div:first-child:not(.roam-log-container) > div:first-child label.check-container,
+.roam-article > div:first-child:not(.roam-log-container) > div:first-child label.check-container {
+  display: none;
+}
+
+/* ----------------------------------------- */
+
+/* ----------------------------------------- */
+/* RR change: QUERIES - Query results options */
+
+/* Show empty query message */
+.rm-block-text .rm-reference-main .rm-mentions:empty:after {
+  content: var(--no-query-results);
+  color: var(--no-query-results-color);
+  font-family: var(--main-font);
+  padding: var(--s1);
+}
+.rm-query {
+  /* border: 0.5px solid #38332e; */
+  padding-bottom: var(--s1);
+  /* border-top-left-radius: 7px;
+  border-top-right-radius: 7px; */
+  border-radius: 7px;
+  border: 0.75px solid var(--query-results-border);
+}
+.rm-query .rm-query-title {
+  /* color: #508bb5; */
+  /* background-color: #38332e; */
+  padding: var(--s1);
+  font-size: .8em;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  background-color: var(--reference-item-bg);
+  color: var(--breadcrumb-color);
+}
+
+/*RR change: HIDE QUERY SCRIPT - Comment/uncomment to hide the original query and revert back to legacy behavior */
+/* 
+.rm-query .rm-query-title {
+  display: none;
+}
+ */
+
+/* RR change: Minimal queries: add the tag #minimal before the beginning of your query (in the same block), and then add this code to your user stylesheet to get a minimal query absent context about parent and page. courtesy of Matt Goldenberg */
+
+[data-tag="minimal"], [data-tag="minimal"] + .rm-query .rm-title-arrow-wrapper, [data-tag="minimal"] + .rm-query .zoom-mentions-view {
+  display:none!important;
+}
+[data-tag="minimal"] + .rm-query .rm-query-title::after{
+  content: " #minimal"
 }
 
 /* ----------------------------------------- */

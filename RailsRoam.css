@@ -2,12 +2,12 @@
 ### ROAM Railscast THEME ###
 > Many thanks to the Roam Slack community for all the resources, particularly @Anthony, @Calhistoriaan, @Devon, @Murf, @Malcolm Ocean, and @David Cranall.
 > Edits by Jeff Harris
-> v1.0.17
+> v1.0.18
 */
 
 /* RR change: added variables to easily change the theme */
 :root {
-  /* Raom default variables */
+  /* Roam default variables */
   --primary-color: #137cbd;
   --s1: 8px;
   --background-color: #e1e8ed;
@@ -82,6 +82,7 @@
   --current-block-highlight: rgba(255, 255, 255, 0.07);
   --search-outline: #e9892475;
   --search-bg: #252525;
+  --search-selected-row: #4c4c4c;
   --inline-search-bg: #333;
   --popover-bg:#333;
   --select-bg:#444;
@@ -120,6 +121,7 @@
 
   --no-query-results: "Query returned no results";
   --no-query-results-color: #FC5963;
+  --query-results-border: #f2c98f1a;
 
   /* Scrollbar settings - to disable set values to none */
   --scrollbar-track: #2b2b2b;
@@ -135,7 +137,7 @@
 
 /* ----------------------------------------- */
 
-/*RR change: adjust the 'top' value to move the checkbox up or down to better align with the font selected above - the default font Inter uses -6px*/
+/*RR change: CHECKBOX ALGINMENT - adjust the 'top' value to move the checkbox up or down to better align with the font selected above - the default font Inter uses -6px*/
 .check-container {
   top: -6px; 
   padding-right: 4px;
@@ -148,17 +150,26 @@
 .check-container {
   top: -10px;
 }
-rm-reference-item div.rm-block-text{
+.rm-reference-item div.rm-block-text{
   font-size: 16px;
 }
 #right-sidebar .rm-reference-item div[style*="display: flex;"] {
-  font-size: .90em;
+
+}
+
+.roam-block div[style*="background-color: rgb(235, 241, 245);" ],
+.roam-block div[style*="background-color: rgb(235, 241, 245);" ] div {
+  font-size: 0.8em;
+  font-size: 16px;
+}
+.rm-reference-item textarea {
+  font-size: 16px;
 }
 */
 
 /* ----------------------------------------- */
 
-/*RR change: Comment/un-comment this section to toggle between a 50/50 layout between the main section and the sidebar.
+/*RR change: SIDEBAR WIDTH - Comment/un-comment this section to toggle between a 50/50 layout between the main section and the sidebar.
 inspried by David Cranall https://davidcrandallwrites.com/split-screen-and-rtl-custom-css-scripts-for-roam/*/
 
 .roam-center {
@@ -167,7 +178,7 @@ inspried by David Cranall https://davidcrandallwrites.com/split-screen-and-rtl-c
 
 /* ----------------------------------------- */
 
-/* RR change: Comment/un-comment this section to make the searchbar full width */ 
+/* RR change: SEARCHBAR - Comment/un-comment this section to make the search bar full width */ 
 
 .rm-find-or-create-wrapper {
   flex: 0 1 100% !important;
@@ -175,16 +186,7 @@ inspried by David Cranall https://davidcrandallwrites.com/split-screen-and-rtl-c
 
 /* ----------------------------------------- */
 
-/* RR change: Comment/un-comment to remove checkboxes in breadcrumb navigation */
-
-.roam-reference-item > div:first-child:not(.roam-log-container) > div:first-child label.check-container,
-.roam-article > div:first-child:not(.roam-log-container) > div:first-child label.check-container {
-  display: none;
-}
-
-/* ----------------------------------------- */
-
-/*RR change: Wraps text when performing an inline search with [[]] or (())*/
+/*RR change: SEARCH RESULTS WRAPPING - Wraps text when performing an inline search with [[]] or (())*/
 
 /* .bp3-text-overflow-ellipsis {
     text-overflow: unset;
@@ -193,7 +195,7 @@ inspried by David Cranall https://davidcrandallwrites.com/split-screen-and-rtl-c
 
 /* ----------------------------------------- */
 
-/*RR change: Un-comment the section below to maximize page width, line length, and images widths */
+/*RR change: PAGE WIDTH - Un-comment the section below to maximize page width, line length, and images widths */
 
 /* 
 .roam-block-container {
@@ -221,7 +223,7 @@ div.roam-center > div:first-child {
 
 /* ----------------------------------------- */
 
-/*RR change: Uncomment the following section to hide the tool bar when not in use. A great idea from @Devon. Source: https://gist.github.com/devonzuegel/f54de76cbf0c0355d93e721c89f45787;
+/*RR change: SEARCH/TOOLBAR - Uncomment the following section to hide the tool bar when not in use. A great idea from @Devon. Source: https://gist.github.com/devonzuegel/f54de76cbf0c0355d93e721c89f45787;
  */
 
 /* 
@@ -252,10 +254,9 @@ div.roam-center > div:first-child {
 } 
 */
 
-
 /* ----------------------------------------- */
 
-/*RR change: Comment/un-comment this section to toggle scrollbars on or off
+/*RR change: SCROLLBARS - Comment/un-comment this section to toggle scrollbars on or off
 inspired by @Malcolm Ocean*/
 
 div::-webkit-scrollbar {
@@ -270,16 +271,30 @@ div::-webkit-scrollbar-thumb {
 
 /* ----------------------------------------- */
 
-/*RR change: decrease the line spacing in the breadcrumbs for referenced items*/
-.rm-reference-item div[style*="display: flex; flex-wrap: wrap; margin-left: 4px;"] {
+/*RR change: BREADCRUMBS - */
+/* .rm-reference-item div[style*="display: flex; flex-wrap: wrap; margin-left: 4px;"] {
     line-height: var(--breadcrumb-line-height);
     font-size: var(--breadcrumb-font-size);
-    color: var(--breadcrumb-color) !important; /*RR change: Added variable for the breadcrumb navigation in reference blocks*/
+    color: var(--breadcrumb-color) !important;  */
+    /*RR change: Added variable for the breadcrumb navigation in reference blocks*/
+
+/*RR change: decrease the line spacing in the breadcrumbs for referenced items*/
+.zoom-mentions-view span {
+padding-top: 0 !important;
+padding-bottom: 0 !important;
 }
-/*RR change: reference block font size adjustment*/
-.rm-reference-item div.rm-block-text{
-  font-size: 16px;
+
+/* RR change: Comment/un-comment to remove checkboxes in breadcrumb navigation */
+
+.roam-reference-item > div:first-child:not(.roam-log-container) > div:first-child label.check-container,
+.roam-article > div:first-child:not(.roam-log-container) > div:first-child label.check-container {
+  display: none;
 }
+
+/* ----------------------------------------- */
+
+/* ----------------------------------------- */
+/* RR change: QUERIES - Query results options */
 
 /* Show empty query message */
 .rm-block-text .rm-reference-main .rm-mentions:empty:after {
@@ -288,26 +303,52 @@ div::-webkit-scrollbar-thumb {
   font-family: var(--main-font);
   padding: var(--s1);
 }
-
 .rm-query {
-  border: 0.5px solid #38332e;
+  /* border: 0.5px solid #38332e; */
   padding-bottom: var(--s1);
-  border-top-left-radius: 7px;
-  border-top-right-radius: 7px;
+  /* border-top-left-radius: 7px;
+  border-top-right-radius: 7px; */
   border-radius: 7px;
+  border: 0.75px solid var(--query-results-border);
 }
-
 .rm-query .rm-query-title {
-  color: var(--primary-color);
-  background-color: #38332e;
+  /* color: #508bb5; */
+  /* background-color: #38332e; */
   padding: var(--s1);
   font-size: .8em;
   border-top-left-radius: 7px;
   border-top-right-radius: 7px;
+  background-color: var(--reference-item-bg);
+  color: var(--breadcrumb-color);
 }
+
+/*RR change: HIDE QUERY SCRIPT - Comment/uncomment to hide the original query and revert back to legacy behavior */
+/* 
+.rm-query .rm-query-title {
+  display: none;
+}
+ */
+
+/* RR change: Minimal queries: add the tag #minimal before the beginning of your query (in the same block), and then add this code to your user stylesheet to get a minimal query absent context about parent and page. courtesy of Matt Goldenberg */
+
+[data-tag="minimal"], [data-tag="minimal"] + .rm-query .rm-title-arrow-wrapper, [data-tag="minimal"] + .rm-query .zoom-mentions-view {
+  display:none!important;
+}
+[data-tag="minimal"] + .rm-query .rm-query-title::after{
+  content: " #minimal"
+}
+
+/* ----------------------------------------- */
+
 .roam-article div {
   font-family: var(--main-font);
 }
+
+
+/* ----------------------------------------- */
+/* Start of standard Roam Styles */
+/* ----------------------------------------- */
+
 
 /*@import "../fonts/Inter/inter.css";*/
 .loading-astrolabe {
@@ -861,11 +902,11 @@ html {
     font-family: 'Inter var', sans-serif;
   }
 }
-:root {
-  /* --primary-color: #137cbd;
+/* :root {
+  --primary-color: #137cbd;
   --s1: 8px;
-  --background-color: #e1e8ed; */
-}
+  --background-color: #e1e8ed; 
+} */
 body {
   overscroll-behavior: none;
 }
@@ -1739,6 +1780,7 @@ div.rm-reference-container {
 .rm-zoom .parent-path-wrapper .rm-query {
   display: none;
 }
+/* RR change: moved section to top of CSS for user options
 .rm-query {
   border: 0.5px solid #38332e;
   padding-bottom: var(--s1);
@@ -1753,8 +1795,7 @@ div.rm-reference-container {
   font-size: .8em;
   border-top-left-radius: 7px;
   border-top-right-radius: 7px;
-  display: none;
-}
+} */
 .rm-mentions .rm-ref-page-view {
   margin-top: 4px;
   margin-left: 4px;
@@ -1999,8 +2040,8 @@ div.rm-reference-container {
   text-align: justify;
 }
 .roam-block {
-  /* min-height: calc(1.5em + 8px); */
-  min-height: 1.5em;
+  min-height: calc(1.5em + 8px);
+  /* min-height: 1.5em; */
   box-sizing: border-box;
   white-space: pre-wrap;
   overflow-wrap: break-word;
@@ -2058,8 +2099,9 @@ div.rm-reference-container {
 .controls {
   display: flex;
   flex: 0 0 40px;
-  padding-top: 4px;
+  /* padding-top: 4px; */
   padding-left: 4px;
+  padding-top: 2px; /*RR change: slight adjustment for bullet position*/
 }
 .controls .block-expand {
   transform: scale(1);
@@ -2315,6 +2357,11 @@ font-size: 1.0em;
   /* Non-prefixed version, currently */
 }
 
+/* ----------------------------------------- */
+/* End of standard Roam Styles */
+/* ----------------------------------------- */
+
+
 /*RR change: Icon color*/
 .bp3-button .bp3-icon, 
 .bp3-button .bp3-icon-standard, 
@@ -2493,7 +2540,7 @@ div.bp3-elevation-3 {
 }
 .bp3-elevation-3 .dont-unfocus-block[style*="background-color: rgb(213, 218, 223);"],
 .bp3-popover-content .rm-menu-item[style*="background-color: rgb(213, 218, 223);"]  {
-  background-color: #4c4c4c !important;    
+  background-color: var(--search-selected-row) !important;    
 /*filter: invert(100%); /*RR change: Inverts the colors of the / and link search menus*/
 
 }
@@ -2544,7 +2591,7 @@ select {
 
 div[style^='overflow: hidden; margin-left: -8px; background-color: rgb(235, 241, 245); margin-top: -4px;']{
   background-color: var(--block-embed-bg) !important;
-  font-size: var(--block-embed-font-size);
+  /* font-size: var(--block-embed-font-size); */
 }
 
 /*RR change: Very fragile override for alias styes, will probably break*/
@@ -2568,7 +2615,7 @@ span[style*='background-color: green;'] {
 /*RR change: Very fragile overrides for a page embed*/
 .roam-block div[style*="background-color: rgb(235, 241, 245);" ] {
   background-color: var(--reference-item-bg) !important;
-  font-size: 0.8em;
+  /* font-size: 0.8em; */
   padding: 10px;
   padding-top: 17px;
 }
@@ -2717,8 +2764,8 @@ span.cm-link {color: #b6b3eb;}
 /*<!--activeline-->*/
 .CodeMirror-activeline-background { background: #253540; }
 
-.CodeMirror pre {background: #2b2b2b;}
-.CodeMirror-lines {background: #2b2b2b;}
+.CodeMirror pre {background: var(--code-bg);}
+.CodeMirror-lines {background: var(--code-bg);}
 .CodeMirror-activeline pre {background: #253540; /* SPM ADDED */}
 
 .cm-s-default .cm-atom { color: #2983bb;}
