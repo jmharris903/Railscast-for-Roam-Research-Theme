@@ -93,7 +93,7 @@ Below is an example of the variables available for customizing the theme.
   --bullet-position: 4px;
   --block-highlight: #00588e;
   --block-highlight-bg: rgba(0, 0, 0, 0.4);
-  --current-block-highlight: rgba(255, 255, 255, 0.07);
+  --current-block-highlight: rgba(255, 255, 255, 0.05);
   --search-outline: #e9892475;
   --search-bg: #252525;
   --search-selected-row: #4c4c4c;
@@ -286,14 +286,13 @@ div::-webkit-scrollbar-thumb {
 /* ----------------------------------------- */
 
 /*RR change: BREADCRUMBS - */
-.rm-reference-item div[style*="display: flex; flex-wrap: wrap; margin-left: 4px;"] {
-    /* line-height: var(--breadcrumb-line-height);
+/* .rm-reference-item div[style*="display: flex; flex-wrap: wrap; margin-left: 4px;"] {
+    line-height: var(--breadcrumb-line-height);
     font-size: var(--breadcrumb-font-size);
     color: var(--breadcrumb-color) !important;  */
     /*RR change: Added variable for the breadcrumb navigation in reference blocks*/
-}
-/*RR change: decrease the line spacing in the breadcrumbs for referenced items*/
 
+/*RR change: decrease the line spacing in the breadcrumbs for referenced items*/
 .zoom-mentions-view span {
 padding-top: 0 !important;
 padding-bottom: 0 !important;
@@ -338,20 +337,50 @@ padding-bottom: 0 !important;
 }
 
 /*RR change: HIDE QUERY SCRIPT - Comment/uncomment to hide the original query and revert back to legacy behavior */
+
 /* 
 .rm-query .rm-query-title {
   display: none;
 }
  */
 
-/* RR change: Minimal queries: add the tag #minimal before the beginning of your query (in the same block), and then add this code to your user stylesheet to get a minimal query absent context about parent and page. courtesy of Matt Goldenberg */
+/* RR change: MINIMIZE QUERIES: add any one of the following tags before the beginning of your query (in the same block):
 
-[data-tag="minimal"], [data-tag="minimal"] + .rm-query .rm-title-arrow-wrapper, [data-tag="minimal"] + .rm-query .zoom-mentions-view {
-  display:none!important;
+  #min-title = hides the page reference link / page title
+  #min-con = hides the contextual reference infromation (breadcrumbs)
+  #minimal = hides both the title and the context
+  #min-q = hides the query string, similar to legacy behavior
+  #min-all = hides everything — title, context, and query string
+
+inspired by Matt Goldenberg */
+
+[data-tag="minimal"], 
+[data-tag="minimal"] + .rm-query .rm-title-arrow-wrapper,
+[data-tag="minimal"] + .rm-query .zoom-mentions-view {
+  display:none!important; /* hide page reference (title) and mention context (breadcrumbs) */
 }
-[data-tag="minimal"] + .rm-query .rm-query-title::after{
-  content: " #minimal"
+[data-tag="min-title"], [data-tag="min-title"] + .rm-query .rm-title-arrow-wrapper {
+display:none!important; /* hide page reference (title) */
 }
+[data-tag="min-con"], [data-tag="min-con"] + .rm-query .zoom-mentions-view {
+  display:none !important;  /* hide mention context (breadcrumbs) */
+}
+[data-tag="min-q"], 
+[data-tag="min-q"] + .rm-query .rm-query-title {
+  display:none !important;  /* hide the query string */
+}
+[data-tag="min-all"], 
+[data-tag="min-all"] + .rm-query .zoom-mentions-view,
+[data-tag="min-all"] + .rm-query .rm-title-arrow-wrapper,
+[data-tag="min-all"] + .rm-query .rm-query-title {
+  display:none !important;  /* hide everything */
+}
+[data-tag="minimal"] + .rm-query .rm-query-title::after,
+[data-tag="min-title"] + .rm-query .rm-query-title::after,
+[data-tag="min-con"] + .rm-query .rm-query-title::after{
+  content: " #minimal" /* add a tag to the query string to indicate this query has been minimized */
+}
+
 
 /* ----------------------------------------- */
 
