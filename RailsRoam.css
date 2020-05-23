@@ -2,7 +2,7 @@
 ### ROAM Railscast THEME ###
 > Many thanks to the Roam Slack community for all the resources, particularly @Anthony, @Calhistoriaan, @Devon, @Murf, @Malcolm Ocean, and @David Cranall.
 > Edits by Jeff Harris
-> v1.0.19
+> v1.1.0
 */
 
 /* RR change: added variables to easily change the theme */
@@ -129,7 +129,7 @@
 
   /* JH overrides */
   /* --main-font: 'Calendas Plus', serif;
-  --main-font-size: 1.2em;
+  --main-font-size: 16px;
   --code-font-size: 0.9em; 
   */
   
@@ -332,11 +332,11 @@ padding-bottom: 0 !important;
 
 /* RR change: MINIMIZE QUERIES: add any one of the following tags before the beginning of your query (in the same block):
 
-  #min-title = hides the page reference link / page title
-  #min-con = hides the contextual reference infromation (breadcrumbs)
-  #minimal = hides both the title and the context
-  #min-q = hides the query string, similar to legacy behavior
-  #min-all = hides everything — title, context, and query string
+    #min-title = hides the page reference link / page title
+    #min-con = hides the contextual reference information (breadcrumbs)
+    #minimal = hides both the title and the context
+    #min-q = hides the query string, similar to legacy behavior
+    #min-all = hides everything — title, context, and query string
 
 inspired by Matt Goldenberg */
 
@@ -369,6 +369,51 @@ display:none!important; /* hide page reference (title) */
 
 /* ----------------------------------------- */
 
+/*RR change: CUSTOM TAGS: Customize the section below to have unique styles for specific tags */
+
+/* span[data-tag="Meeting"] {
+  background-color: #F00;
+} */
+
+/* ----------------------------------------- */
+
+/*RR change: SIDEBAR IMAGE - comment/uncomment this section to add a backgound image to the sidebar - by Daniel van der Merwe*/
+
+/* 
+.roam-sidebar-container {
+  overflow: hidden !important;
+}
+.roam-sidebar-container.noselect:before {
+  background-image: url(https://images.unsplash.com/photo-1589809489704-71becdce06f0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80);
+  width: 100%;
+  height: 100%;
+  content: "";
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: 75% 40%;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  opacity: 0.3;
+  filter: blur(4px);
+}
+ */
+
+
+/* ----------------------------------------- */
+
+/*RR change: DEFAULT TEXT - a small addition to the placeholder text to Daily Notes or Pages to help get you started */
+div#block-input-ghost span:before {
+  content: "Cmd+enter or ";
+}
+
+/* ----------------------------------------- */
+
+.roam-article div {
+  font-family: var(--main-font);
+}
+
+/* ----------------------------------------- */
 
 /* ----------------------------------------- */
 /* Start of standard Roam Styles */
@@ -854,13 +899,21 @@ div.rm-emoji-button {
 }
 .kanban-board {
   /*background-color: #a7b6c2;*/
-  min-width: 100%;
+  max-width: 100vw;
+  padding: 12px;
+  /* min-width: 100%;
   min-height: 48px;
-  padding: 8px;
-  overflow-x: scroll;
+  overflow-x: scroll; */
   background-color: var(--kanban-board-bg); /*RR change: dark background color for board*/
 }
+.kanban-board .kanban-column-container {
+  display: flex;
+  overflow-x: scroll;
+}
 .kanban-column {
+  cursor: pointer;
+  flex: 1 0 200px;
+  flex-wrap: nowrap;
   /*background-color: #ededed;*/
   margin: 0px 4px 0px 4px;
   padding: 4px;
@@ -869,6 +922,12 @@ div.rm-emoji-button {
 }
 .kanban-title {
   text-align: center;
+  overflow: hidden;
+  min-height: 40px;
+  max-height: 40px;
+  padding: 4px 0px 8px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #5c7080;
   color: var(--kanban-column-font-color); /*RR change: Orange column title color*/
 }
 .kanban-card {
@@ -881,6 +940,43 @@ div.rm-emoji-button {
 div.kanban-title,
 div.kanban-card {
   font-family: var(--main-font); /*RR change: font*/
+}
+.rm-embed-container {
+  position: relative;
+  display: flex;
+  /* background-color: #ebf1f5; */
+  margin-top: -3px;
+  margin-left: -7px;
+  padding-left: 4px;
+  margin-bottom: -3px;
+  background-color: var(--reference-item-bg); /*RR change: added customization variable*/
+}
+.rm-embed-container .rm-embed-container {
+  background-color: #f5f8fa;
+  background-color: var(--reference-item-bg);
+}
+.rm-embed-container .rm-embed-container .rm-embed-container {
+  /* background-color: #ced9e0; */
+  background-color: var(--reference-item-bg);
+}
+.rm-embed-container .rm-embed-edit {
+  position: absolute;
+  opacity: 0;
+}
+.rm-embed-container:hover > .rm-embed-edit {
+  cursor: text;
+  top: 0px;
+  right: 20px;
+  opacity: 1;
+  transition: all 300ms ease-in;
+}
+.rm-embed-inner-block-hide {
+  cursor: auto;
+  margin-left: -42px;
+  transition: all 200ms ease-in;
+}
+.rm-embed-inner-block-hide:hover {
+  margin-left: -8px;
 }
 .roam-sidebar-container .roam-sidebar-content .starred-pages-wrapper .starred-pages .rm-dnd-separator {
   position: relative;
@@ -1570,7 +1666,7 @@ div.rm-reference-container {
 .rm-level1 {
   /*font-family: 'Inter', sans-serif;*/
   font-weight: 400;
-  font-size: 1.8em;
+  font-size: 1.6em;
   /* color: var(--h1-font-color); */
   font-family: var(--main-font); /*RR change: font change*/
   /* background-color: var(--h1-bg); */
@@ -1582,6 +1678,9 @@ div.rm-reference-container {
 }
 .rm-level1 .roam-block {
   line-height: 1.2;
+}
+.rm-level1 .rm-block-text {
+  font-size: 1.6em;
 }
 .rm-level2 {
   /* font-family: 'Inter', sans-serif !important; */
@@ -1807,15 +1906,15 @@ div.rm-reference-container {
 }
 /* RR change: moved this section to top of CSS for user options
 .rm-query {
-  border: 0.5px solid #38332e;
+  border: 0.5px solid #bfccd6;
   padding-bottom: var(--s1);
   border-top-left-radius: 7px;
   border-top-right-radius: 7px;
   border-radius: 7px;
 }
 .rm-query .rm-query-title {
-  color: #508bb5;
-  background-color: #38332e;
+  color: var(--primary-color);
+  background-color: var(--background-color);
   padding: var(--s1);
   font-size: .8em;
   border-top-left-radius: 7px;
@@ -2735,6 +2834,7 @@ code {
     border: 0px solid #13191e;
     padding: 3px 4px 3px 4px;
     font-family: var(--code-font);
+    font-size: var(--code-font-size);
 }
 
 
