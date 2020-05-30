@@ -143,7 +143,7 @@ Below is an example of the variables available for customizing the theme.
 
   /* JH overrides */
   /* --main-font: 'Calendas Plus', serif;
-  --main-font-size: 1.2em;
+  --main-font-size: 16px;
   --code-font-size: 0.9em; 
   */
   
@@ -225,8 +225,8 @@ div.roam-center > div:first-child {
 .hoverparent .react-resizable[style^='width: 500px;'] {
     width: 100% !important;
 }
-.react-resizable[style^='width: 580px;'] 
-.react-resizable[style^='width: 720px;'], {
+.react-resizable[style^='width: 580px;'], 
+.react-resizable[style^='width: 720px;'] {
   width: 100% !important;
 }
 .hoverparent[style^="position: relative; width: 580px;"],
@@ -346,11 +346,11 @@ padding-bottom: 0 !important;
 
 /* RR change: MINIMIZE QUERIES: add any one of the following tags before the beginning of your query (in the same block):
 
-  #min-title = hides the page reference link / page title
-  #min-con = hides the contextual reference infromation (breadcrumbs)
-  #minimal = hides both the title and the context
-  #min-q = hides the query string, similar to legacy behavior
-  #min-all = hides everything — title, context, and query string
+    #min-title = hides the page reference link / page title
+    #min-con = hides the contextual reference information (breadcrumbs)
+    #minimal = hides both the title and the context
+    #min-q = hides the query string, similar to legacy behavior
+    #min-all = hides everything — title, context, and query string
 
 inspired by Matt Goldenberg */
 
@@ -381,7 +381,104 @@ display:none!important; /* hide page reference (title) */
   content: " #minimal" /* add a tag to the query string to indicate this query has been minimized */
 }
 
+/* ----------------------------------------- */
 
+/*RR change: CUSTOM TAGS: Uncomment to use the section below to create custom styles for specific tags. Change "Meeting" to match some portion of the title of the tag you want to customize. Adjust the background-color value ("F00") and color value ("fff") to suite your preferences. Duplicate the section for each new tag to be customized */
+
+/* 
+span[data-tag*="Meeting"] {
+  background-color: #F00;
+  color: #fff;
+  padding: 3px 7px;
+  line-height: 2em;
+  font-weight: 500;
+
+}
+ */
+
+
+ /*RR change: CUSTOM LINKS: Uncomment to use the section below to create custom styles for specific links. Change "Theme" to match some portion of the title of the link you want to customize. Adjust the background-color value ("F00") and color value ("fff") to suite your preferences. Duplicate the section for each new link to be customized*/
+
+/* 
+span[data-link-title*="Theme"] .rm-page-ref-link-color {
+  background-color: #F00;
+  color: #fff;
+  padding: 3px 7px;
+  line-height: 2em;
+  font-weight: 500;
+}
+ */
+
+
+/* ----------------------------------------- */
+
+/*RR change: ATTRIBUTE STYLES: Uncomment and customize this section to style all attributes */
+
+/* .roam-block span strong[style*='cursor: pointer;'] {
+    color: #f00 !important;
+} */
+
+/* ----------------------------------------- */
+
+/*RR change: SIDEBAR IMAGE - comment/uncomment this section to add a backgound image to the sidebar - by Daniel van der Merwe*/
+
+/* 
+.roam-sidebar-container {
+  overflow: hidden !important;
+}
+.roam-sidebar-container.noselect:before {
+  background-image: url(https://images.unsplash.com/photo-1589809489704-71becdce06f0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80);
+  width: 100%;
+  height: 100%;
+  content: "";
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: 75% 40%;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  opacity: 0.3;
+  filter: blur(4px);
+}
+ */
+
+
+/* ----------------------------------------- */
+
+/*RR change: DEFAULT TEXT - a small addition to the placeholder text to Daily Notes or Pages to help get you started */
+div#block-input-ghost span:before {
+  content: "Cmd+enter or ";
+}
+
+/* ----------------------------------------- */
+
+.roam-article div {
+  font-family: var(--main-font);
+}
+
+/* ----------------------------------------- */
+
+/*RR change: POMODORO - Comment/un-comment this section to apply custom styling to the the Pomodoro timer */
+/* ------------- Red Pomodoro ------------- */
+.rm-pomodoro {
+  background: var(--reference-item-bg) !important;
+  color: #FC5963 !important;
+  padding: 2px 12px;
+  line-height: 1.7em;
+  font-weight: 600;
+  border-radius: 2em;
+  border: 1px solid #FC596370;
+}
+
+.rm-pomodoro::first-letter {
+  margin-right: 4px;
+}
+
+/* ----------------------------------------- */
+
+.rm-reference-container span[style*="color: red;"] {
+    color: var(--main-font-color) !important;
+}
 /* ----------------------------------------- */
 
 ```

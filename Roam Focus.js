@@ -4,17 +4,13 @@
 // @match       https://roamresearch.com/#/app
 // @grant       none
 // @version     1.0
-// @author      Kalen Jorden https://kalenjordan.com/keyboard-shortcuts
+// @author      Jeff Harris modified from Kalen Jordan's chrome extension https://kalenjordan.com/keyboard-shortcuts
 // @description 5/23/2020, 9:32:38 AM
 // ==/UserScript==
 
-let version = 0.3;
-console.log("KJ Keyboard Shortcuts v" + version + " (domain: " + document.domain + ")");
 
 document.addEventListener('keydown', function (e) {
-    if (document.domain === 'twitter.com') {
-        twitterEventListener(e);
-    } else if (document.domain === 'roamresearch.com') {
+    if (document.domain === 'roamresearch.com') {
         roamEventListener(e);
     }
 });
@@ -42,6 +38,8 @@ function roamEventListener(e) {
         roamSelectFirstAutocompleteOption(activeElement, e);
     } else if (e.code === 'ArrowDown' && e.altKey) {
         roamSelectLastBullet(activeElement, e);
+    } else if (e.code === 'KeyS' && e.altKey) {
+        roamToggleSideBar(activeElement, e);
     }
 }
 
@@ -63,29 +61,89 @@ function roamAutocompleteIsOpen() {
     return document.querySelector('.bp3-elevation-3') !== null;
 }
 
-function roamToggleFocus(activeElement, e) {
-    let newVisibility = roamIsFocusModeEnabled() ? 'visible' : 'hidden';
+function roamToggleSideBar(activeElement, e) {
     let sidebarFlex = roamIsSideBarActive() ? '0 0 0' : '1 0 40%';
 
-    document.querySelector('.roam-sidebar-container').style.visibility = newVisibility;
-    document.querySelector('.roam-topbar').style.visibility = newVisibility;
     document.querySelector('#right-sidebar').style.flex = sidebarFlex;
-    document.querySelector('#buffer').style.visibility = newVisibility;
-    document.querySelector('.rm-reference-main').style.visibility = newVisibility;
-    document.querySelector('.roam-log-preview').style.visibility = newVisibility;
 
-    // document.querySelector('.roam-body-main').style.right = roamIsFocusModeEnabled() ? '91px' : 0;
+    e.preventDefault();
+}
+
+function roamToggleFocus(activeElement, e) {
+
+    if (roamIsFocusModeEnabled() && roamIsSideBarActive()) { // hidden & open
+        let newVisibility = 'visible';
+        let sidebarFlex = '1 0 40%';
+
+        document.querySelector('.roam-sidebar-container').style.visibility = newVisibility;
+        document.querySelector('.roam-topbar').style.visibility = newVisibility;
+
+        document.querySelector('#right-sidebar').style.flex = sidebarFlex;
+
+        document.querySelector('#buffer').style.visibility = newVisibility;
+        document.querySelector('.rm-reference-main').style.visibility = newVisibility;
+        document.querySelector('.roam-log-preview').style.visibility = newVisibility;
+
+        // document.querySelector('.roam-body-main').style.right = roamIsFocusModeEnabled() ? '91px' : 0;
 
 
-    document.querySelector('#right-sidebar .bp3-button').style.visibility = newVisibility;
+        document.querySelector('#right-sidebar .bp3-button').style.visibility = newVisibility;
+
+    } else if (!roamIsFocusModeEnabled() && roamIsSideBarActive()) { //visible & open
+        let newVisibility = 'hidden';
+        let sidebarFlex = '0 0 0';
+
+        document.querySelector('.roam-sidebar-container').style.visibility = newVisibility;
+        document.querySelector('.roam-topbar').style.visibility = newVisibility;
+
+        document.querySelector('#right-sidebar').style.flex = sidebarFlex;
+
+        document.querySelector('#buffer').style.visibility = newVisibility;
+        document.querySelector('.rm-reference-main').style.visibility = newVisibility;
+        document.querySelector('.roam-log-preview').style.visibility = newVisibility;
 
 
+        document.querySelector('#right-sidebar .bp3-button').style.visibility = newVisibility;
+
+    } else if (roamIsFocusModeEnabled() && !roamIsSideBarActive()) { //hidden & closed
+        let newVisibility = 'visible';
+        let sidebarFlex = '1 0 40%';
+
+        document.querySelector('.roam-sidebar-container').style.visibility = newVisibility;
+        document.querySelector('.roam-topbar').style.visibility = newVisibility;
+
+        document.querySelector('#right-sidebar').style.flex = sidebarFlex;
+
+        document.querySelector('#buffer').style.visibility = newVisibility;
+        document.querySelector('.rm-reference-main').style.visibility = newVisibility;
+        document.querySelector('.roam-log-preview').style.visibility = newVisibility;
+
+
+        document.querySelector('#right-sidebar .bp3-button').style.visibility = newVisibility;
+
+
+    } else { //hidden & open
+        let newVisibility = 'hidden';
+        let sidebarFlex = '0 0 0';
+
+        document.querySelector('.roam-sidebar-container').style.visibility = newVisibility;
+        document.querySelector('.roam-topbar').style.visibility = newVisibility;
+
+        document.querySelector('#right-sidebar').style.flex = sidebarFlex;
+
+        document.querySelector('#buffer').style.visibility = newVisibility;
+        document.querySelector('.rm-reference-main').style.visibility = newVisibility;
+        document.querySelector('.roam-log-preview').style.visibility = newVisibility;
+
+
+        document.querySelector('#right-sidebar .bp3-button').style.visibility = newVisibility;
+    }
 
     e.preventDefault();
 }
 
 function roamClickLeftNav(activeElement, e) {
     console.log('click left nav');
-    document.querySelector('.roam-topbar .bp3-button').click();
+    document.querySelector('.roam-sidebar-container .bp3-button').click();
     e.preventDefault();
 }
