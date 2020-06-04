@@ -2952,7 +2952,7 @@ span.cm-link {color: #b6b3eb;}
 /*<!--activeline-->*/
 .CodeMirror-activeline-background { background: #253540; }
 
-.CodeMirror pre {background: var(--code-bg);}
+./*CodeMirror pre {background: var(--code-bg);}*/
 .CodeMirror-lines {background: var(--code-bg);}
 .CodeMirror-activeline pre {background: #253540; /* SPM ADDED */}
 
