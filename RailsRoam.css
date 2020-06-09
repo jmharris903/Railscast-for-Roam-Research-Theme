@@ -2,7 +2,7 @@
 ### ROAM Railscast THEME ###
 > Many thanks to the Roam Slack community for all the resources, particularly @Anthony, @Calhistoriaan, @Devon, @Murf, @Malcolm Ocean, and @David Cranall.
 > Edits by Jeff Harris
-> v1.1.2
+> v1.1.3
 */
 
 /* RR change: added variables to easily change the theme */
@@ -34,8 +34,8 @@
   --tag-font-color: #777;
   --tag-font-color-hover:#fff;
   --tag-hover-bg:#e98924;
-  --tag-radius: 3px;
-  --tag-padding: 2px 3px;
+  --tag-radius: 2em;
+  --tag-padding: 0.25em 0.4375em;
   --sidebar-font-color: #1189BD;
   --sidebar-font-color-hover:#e98924;
   --sidebar-hover-bg:#1f1f1f;
@@ -55,7 +55,7 @@
   --breadcrumb-color: #5c7080;
   --breadcrumb-font-size: 13px;
   --breadcrumb-line-height: 0.85em;
-
+  
   /* Saving icon colors */
   --saving-local: #99280f;
   --saving-remote: #d9822b;
@@ -65,6 +65,7 @@
   --body-bg: #232323;
   --left-sidebar-bg: #2b2b2b;
   --right-sidebar-bg: #2b2b2b;
+  --top-border-color: none;
   --icon-color: #e78924;
   --icon-bg-hover: rgba(167,182,194,0.3);
   --icon-color-hover: #e78924;
@@ -72,8 +73,6 @@
   --hr: rgba(225, 117, 28, 0.50);
   --code-bg: #333;
   --checkmark-color: #137cbd;
-  --pages-row-highlight: #292929;
-  --pages-header-row: #2d2d2d;
   --reference-item-bg: #f2c98f1a;
   --bullet: rgba(225, 117, 28, 0.30);
   --bullet-closed: rgba(225, 117, 28, 0.70);
@@ -90,6 +89,15 @@
   --select-bg:#444;
   --datepicker-bg: transparent;
   --datepicker-day-wrapper: #d9822b7a;
+  /* --pages-row-highlight: #292929; */
+  --pages-header-row: #2d2d2d;
+  --pages-search-bg: #3a3a3a;
+  --pages-search-outline: var(--search-outline);
+  --pages-mentions-color: #ff6000;
+  --pages-table-border: #293035;
+  --pages-mentions-bg-empty: #3a3a3a;
+  --pages-mentions-color-empty: #737373;
+  --pages-delete-bg: #222;
 
   
   /* fragile styles that may break with the next update */
@@ -134,8 +142,7 @@
   /* --main-font: 'Calendas Plus', serif;
   --main-font-size: 16px;
   --code-font-size: 0.9em; 
-  */
-  
+  */  
 }
 
 /* ----------------------------------------- */
@@ -191,12 +198,31 @@ inspried by David Cranall https://davidcrandallwrites.com/split-screen-and-rtl-c
 
 /*RR change: SEARCH RESULTS WRAPPING - Wraps text when performing an inline search with [[]] or (())*/
 
-/* .bp3-text-overflow-ellipsis {
+.bp3-text-overflow-ellipsis {
     text-overflow: unset;
     white-space: unset;
+}
+
+/* ----------------------------------------- */
+
+/* .roam-center div:first-child {
+  padding-right: calc((100% - 900px) / 2) !important;
+}
+.roam-block-container {
+  max-width: calc(1024px - 80px);        
+}
+.roam-center .roam-article .rm-block-text {
+ max-width: 680px;
+}
+#right-sidebar #roam-right-sidebar-content .rm-block-text {
+  max-width: 680px; 
 } */
 
 /* ----------------------------------------- */
+
+.rm-block-text {
+ max-width: 100%;
+}
 
 /*RR change: PAGE WIDTH - Un-comment the section below to maximize page width, line length, and images widths */
 
@@ -222,7 +248,7 @@ div.roam-center > div:first-child {
 .hoverparent[style^="position: relative; width: 720px;"] {
   width: 100% !important;
 }
-*/ 
+*/
 
 /* ----------------------------------------- */
 
@@ -374,15 +400,15 @@ display:none!important; /* hide page reference (title) */
 
 /*RR change: CUSTOM TAGS: Uncomment to use the section below to create custom styles for specific tags. Change "Meeting" to match some portion of the title of the tag you want to customize. Adjust the background-color value ("F00") and color value ("fff") to suite your preferences. Duplicate the section for each new tag to be customized */
 
-/* 
+ 
 span[data-tag*="Meeting"] {
-  background-color: #F00;
-  color: #fff;
-  padding: 3px 7px;
-  line-height: 2em;
+  background-color: #1189BD;
+  color: #bbb;
+  padding: 0.3125em 0.625em 0.1875em;
+  line-height: 1.2em;
   font-weight: 500;
 }
- */
+
 
 
  /*RR change: CUSTOM LINKS: Uncomment to use the section below to create custom styles for specific links. Change "Theme" to match some portion of the title of the link you want to customize. Adjust the background-color value ("F00") and color value ("fff") to suite your preferences. Duplicate the section for each new link to be customized*/
@@ -397,7 +423,6 @@ span[data-link-title*="Theme"] .rm-page-ref-link-color {
 }
  */
 
-
 /* ----------------------------------------- */
 
 /*RR change: ATTRIBUTE STYLES: Uncomment and customize this section to style all attributes */
@@ -405,6 +430,22 @@ span[data-link-title*="Theme"] .rm-page-ref-link-color {
 /* .roam-block span strong[style*='cursor: pointer;'] {
     color: #f00 !important;
 } */
+
+/* ----------------------------------------- */
+
+/*RR change: PAGE LINK STYLES: Uncomment to use the section below to create custom styles for specific links. Change "X" to match some portion of the title of the link you want to customize. Adjust the background-color value ("F00") and color value ("fff") to suite your preferences. Duplicate the section for each new link to be customized*/
+
+/* 
+span[data-link-title*="X"] .rm-page-ref-link-color,
+span[data-link-title*="X"] .rm-page-ref-namespace-color {
+  background-color: #F00;
+  color: #fff;
+  padding: 0.3125em 0.625em 0.1875em;  
+  line-height: 2em;
+  font-weight: 500;
+  border-radius: 0.1875em;
+}
+*/
 
 /* ----------------------------------------- */
 
@@ -469,15 +510,19 @@ div#block-input-ghost span:before {
 }
 /* ----------------------------------------- */
 
+/*RR change: PAGE TITLE default settings*/
 
+h1,
+h1 textarea.rm-title-textarea {
+    font-size: 2.25rem;
+}
 
 
 /* ----------------------------------------- */
 /* Start of standard Roam Styles */
 /* ----------------------------------------- */
 
-
-/*@import "../fonts/Inter/inter.css";*/
+/* @import "../fonts/Inter/inter.css"; */
 .loading-astrolabe {
   margin: auto;
   position: relative;
@@ -602,7 +647,7 @@ div#block-input-ghost span:before {
   overflow-y: scroll;
   margin-bottom: 25px;
 }
-#scroll-1::-webkit-scrollbar-track {  
+#scroll-1::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 8px;
   background-color: #F5F5F5;
@@ -998,6 +1043,9 @@ div.kanban-title,
 div.kanban-card {
   font-family: var(--main-font); /*RR change: font*/
 }
+.rm-full-width {
+  margin-right: -20%;
+}
 .rm-embed-container {
   position: relative;
   display: flex;
@@ -1007,6 +1055,8 @@ div.kanban-card {
   padding-left: 4px;
   margin-bottom: -3px;
   background-color: var(--reference-item-bg); /*RR change: added customization variable*/
+  border-radius: 6px; /*RR change: rounded corners*/
+
 }
 .rm-embed-container .rm-embed-container {
   background-color: #f5f8fa;
@@ -1030,7 +1080,7 @@ div.kanban-card {
 .rm-embed-inner-block-hide {
   cursor: auto;
   margin-left: -42px;
-  transition: all 200ms ease-in;
+  transition: all 100ms ease-in;
 }
 .rm-embed-inner-block-hide:hover {
   margin-left: -8px;
@@ -1133,7 +1183,6 @@ body {
   /*RR change: font, blue text and background highlight*/
   color: var(--h1-font-color);
   font-family: var(--main-font);
-  
 }
 .roam-body .roam-app .roam-sidebar-container {
   position: absolute;
@@ -1146,7 +1195,6 @@ body {
   /*background-color: #2f3437;*/
   /*background-color: #182026;*/
   background-color: var(--left-sidebar-bg); /*RR change: darken the sidebar*/
-
 }
 .roam-body .roam-app .roam-sidebar-container .roam-hover-sidebar-reveal {
   position: absolute;
@@ -1247,6 +1295,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  /* border-bottom: 1px solid #eee; */ 
+  border-color: var(--top-border-color); /*RR change: removed border*/
   background-color: transparent; /*RR change: allow background to show through*/
 }
 .trunc {
@@ -1358,8 +1408,9 @@ body {
 }
 #buffer {
   display: flex;
+  /* z-index: 2; */
   flex-direction: column;
-  z-index: 10000; /*RR change: make sure the help menu popup always appears on top*/
+  z-index: 1000; /*RR change: make sure the help menu popup always appears on top*/
 }
 #buffer .help-title {
   color: #f5f8fa;
@@ -1490,7 +1541,6 @@ span.rm-page-ref.rm-page-ref-tag:hover {
   color: var(--tag-font-color-hover) !important;
   background-color: var(--tag-hover-bg);
   text-decoration: none;
-
 }
 .rm-page-ref-brackets {
   /*color: #a7b6c2;*/
@@ -1589,14 +1639,11 @@ div.rm-block-ref {
   -ms-transform: rotate(45deg);
   transform: rotate(40deg) scale(0.8);
 }
-
 /*RR change: align checkboxes in zoomed-in headings */
-
 .rm-level1 label.check-container {
   margin-bottom: 17px;
   margin-right: -3px;
 }
-
 #roam-sidebar-logo a {
   text-decoration: none;
 }
@@ -1641,6 +1688,8 @@ div.rm-block-ref {
 .rm-fill {
   width: 100%;
 }
+
+/* ----- section removed from latest style sheet ----- */
 .rm-pages-sort-menu-item {
   padding-right: 16px;
   padding-left: 16px;
@@ -1689,6 +1738,288 @@ div.rm-block-ref {
   padding: 8px 4px;
   flex: 1 0 15%;
 }
+
+/* ----- END section removed from latest style sheet ----- */
+
+
+.bp3-icon-export {
+  margin-left: 30px; /*RR change: added a little space between export and delete buttons */
+}
+.bp3-control .bp3-control-indicator {
+    background-clip: padding-box;
+    background-color: #555;
+    background-image: -webkit-gradient(linear,left top,left bottom,from(rgba(82, 82, 82, 0.8)),to(rgba(0,0,0,0)));
+    /* background-image: none; */
+    border: 0;
+    -webkit-box-shadow: inset 0 0 0 1px rgba(16,22,26,0.2), inset 0 -1px 0 rgba(16,22,26,0.1);
+    box-shadow: inset 0 0 0 1px rgba(16,22,26,0.2), inset 0 -1px 0 rgba(16,22,26,0.1);
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    height: 1em;
+    margin-right: 10px;
+    margin-top: -3px;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    vertical-align: middle;
+    width: 1em;
+    /* border: 1px solid #137cbd; */
+}
+.bp3-control:hover .bp3-control-indicator {
+  background-color: #137cbd;
+  background-image: none;
+}
+
+.rm-all-pages {
+  height: 100%;
+  padding: 16px 50px 50px;
+}
+.rm-all-pages.mobile {
+  padding: 16px 25px 50px;
+}
+.rm-all-pages .table {
+  height: 100%;
+  overflow-y: scroll;
+  margin-top: 8px;
+}
+.rm-all-pages .table .rm-pages-row {
+  display: flex;
+  flex: 0 0 auto;
+  /* border-bottom: 1px solid #e1e8ed; */
+  border-bottom: 1px solid var(--pages-table-border); /*RR change: added variable*/
+  width: auto;
+  z-index: 1;
+  min-width: 720px;
+  justify-content: space-between;
+  align-items: flex-start;
+  color: #8a9ba8;
+}
+.rm-all-pages .table .rm-pages-row.rm-pages-row-header {
+  background-color: #e1e8ed;
+  border-radius: 4px;
+  overflow-y: hidden;
+  position: sticky;
+  top: 0;
+  color: #bfccd6;
+  font-size: 12px;
+}
+.rm-all-pages .table .rm-pages-row .rm-pages-title-col {
+  /* color: #bfccd6; */
+  color: var(--main-font-color); /*RR change: added variable*/
+  padding: 8px 4px;
+  flex: 2 0 0 ;
+  text-overflow: ellipsis;
+}
+.bp3-text-overflow-ellipsis .title-children-text {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.rm-all-pages .table .rm-pages-row .rm-pages-checkbox-col {
+  padding: 8px 8px;
+  flex: none;
+}
+.rm-all-pages .table .rm-pages-row .rm-pages-checkbox-col .checkbox-header {
+  margin-bottom: 0px;
+}
+.rm-all-pages .table .rm-pages-row .rm-pages-col {
+  padding: 8px 4px;
+  flex: 0 0 140px;
+  text-align: center;
+}
+.rm-all-pages .table .rm-pages-row .rm-pages-more-col {
+  padding: 8px 8px;
+  flex: none;
+}
+.sorted-header-text {
+  /* color: #5c7080; */
+  color: var(--strong);
+  font-weight: 600;
+}
+.sorting-button-group {
+  display: inline-block;
+}
+.sorting-button-group .sort-button {
+  padding-bottom: 2px;
+  padding-left: 2px;
+}
+.sorting-button-group .sort-button.desc {
+  padding-left: 0px;
+}
+.sorting-button-group .sort-button.focused {
+  font-weight: 600;
+  /* color: #5c7080; */
+  color: var(--strong);
+}
+.rm-clickable-pill {
+  display: inline-block;
+  width: max-content;
+  font-size: 0.8em;
+  font-weight: 500;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-radius: 24px;
+  padding: 2px 10px;
+  color: white;
+  opacity: 0.6;
+  /* background-color: #2b95d6; */
+  background-color: var(--pages-mentions-color);
+  cursor: pointer;
+}
+.rm-clickable-pill.empty-pill {
+  /* color: #0e5a8a; */
+  color: var(--pages-mentions-color-empty);
+  opacity: 1;
+  pointer-events: none;
+  /* background-color: white; */
+  background-color: var(--pages-mentions-bg-empty);
+}
+.rm-clickable-pill.level1-pill {
+  opacity: 0.6;
+  background-color: #137cbd;
+  background-color: var(--pages-mentions-color);
+
+}
+.rm-clickable-pill.level2-pill {
+  opacity: 0.7;
+  background-color: #137cbd;
+  background-color: var(--pages-mentions-color);
+
+}
+.rm-clickable-pill.level3-pill {
+  opacity: 0.8;
+  background-color: #137cbd;
+  background-color: var(--pages-mentions-color);
+
+}
+.rm-pages-more-info-popover {
+  padding: 8px 8px;
+}
+.button-disabled-strong {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.rm-pages-toolbar {
+  justify-content: space-between;
+  padding-bottom: 8px;
+}
+.rm-pages-toolbar .toolbar-action-button-group {
+  height: 30px;
+  display: flex;
+}
+.rm-pages-toolbar .toolbar-search-group {
+  display: flex;
+}
+.rm-pages-toolbar .toolbar-search-group .filter-button {
+  margin: 0px;
+  padding: 0px;
+  min-width: 30px;
+  min-height: 30px;
+}
+.rm-pages-toolbar .toolbar-search-group .filter-button .filter-icon {
+  font-size: 16px;
+}
+.rm-pages-toolbar .toolbar-search-group .filter-button .filter-icon.filtered {
+  color: #a82a2a;
+}
+.rm-pages-toolbar .toolbar-search-group .search-icon {
+  /* color: #bfccd6; */
+  color: var(--search-font-color); /*RR change: added variable and reduced opacity*/
+  opacity: 0.8;
+}
+.rm-pages-toolbar .toolbar-search-group .search-icon.focused {
+  /* color: #8a9ba8; */
+  color: var(--search-font-color);
+  opacity: 1.0;
+}
+.rm-pages-toolbar .toolbar-search-group .search-input {
+  margin-right: 4px;
+  box-shadow: none;
+  /* background-color: #f5f8fa; */
+  background-color: var(--pages-search-bg); /*RR change: added variable*/
+  border: 1px solid var(--pages-search-bg); /*RR change: added invisible border to get rid of the "jump" that occurs when selecting the control*/
+}
+.rm-pages-toolbar .toolbar-search-group .search-input.focused {
+  border: 1px solid #8a9ba8;
+  border: 1px solid var(--pages-search-outline);
+}
+.rm-pages-toolbar .toolbar-search-group .bp3-input-group {
+  margin-right: 10px; /*RR change: added margin to move it way from the other icons*/
+}
+.delete-all-dialog-list {
+  align-items: center;
+  width: 100%;
+  overflow-y: scroll;
+  justify-content: space-between;
+  margin: 4px 0px;
+  border-color: red;
+}
+.delete-all-dialog-items {
+  margin: 4px 0px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  /* border-bottom-color: #d8e1e8; */
+  border-bottom-color: var(--pages-table-border); /*RR change: added variable*/
+}
+.delete-all-dialog-items.last-item {
+  margin: 0px;
+  border-bottom-color: transparent;
+}
+.delete-all-dialog-secondary-text {
+  color: #bfccd6;
+}
+.confirmation-content-dialog {
+  padding: 12px;
+  max-width: 80vw;
+}
+.confirmation-content-dialog .confirmation-content-header {
+  align-items: center;
+  justify-content: space-between;
+  margin: 12px;
+}
+.confirmation-content-dialog .confirmation-content {
+  margin: 12px;
+  max-height: 40vh;
+  /* background-color: #f5f8fa; */
+  background-color: var(--pages-delete-bg);
+  border-radius: 4px;
+  padding: 0px 4px;
+}
+.confirmation-content-dialog .confirmation-content-buttons {
+  margin: 12px;
+  align-items: center;
+  justify-content: flex-end;
+}
+.confirmation-content-dialog .confirmation-content-buttons .cancel-button {
+  border-color: #bfccd6;
+  color: #bfccd6;
+  margin-right: 8px;
+  font-size: 1em;
+}
+.confirmation-content-dialog .confirmation-content-buttons .confirm-button {
+  box-shadow: none;
+  font-size: 1em;
+}
+.rm-pages-sort-menu-item {
+  padding-right: 16px;
+  padding-left: 16px;
+  font-weight: bold;
+}
+.rm-pages-row-highlight {
+  background-color: #f5f8fa;
+}
+.rm-pages-title-text {
+  color: black;
+  margin-right: 8px;
+}
+.rm-pages-title-text.title-children-text {
+  color: #bfccd6;
+  font-size: 12px;
+  margin-right: 0px;
+}
 .rm-reference-main {
   padding-top: 8px;
 }
@@ -1709,12 +2040,10 @@ div.rm-block-ref {
 .rm-reference-item div {
   font-family: var(--main-font);
 }
-
 /*RR change: adjusting disclosure arrow position for references*/
 .rm-reference-item .controls .block-expand {
   margin-top: 0;
 }
-
 /*RR change: reference font*/
 div.rm-reference-container {
   font-family: var(--main-font);
@@ -1723,7 +2052,7 @@ div.rm-reference-container {
 .rm-level1 {
   /*font-family: 'Inter', sans-serif;*/
   font-weight: 400;
-  font-size: 1.6em;
+  font-size: 1.8rem;
   /* color: var(--h1-font-color); */
   font-family: var(--main-font); /*RR change: font change*/
   /* background-color: var(--h1-bg); */
@@ -1737,12 +2066,12 @@ div.rm-reference-container {
   line-height: 1.2;
 }
 .rm-level1 .rm-block-text {
-  font-size: 1.6em;
+  font-size: 1.8rem;
 }
 .rm-level2 {
   /* font-family: 'Inter', sans-serif !important; */
   font-weight: 400;
-  font-size: 1.3em;
+  font-size: 1.4rem;
   font-family: var(--main-font);
   color: var(--h2-font-color);
   /* margin-top: -5px !important; */
@@ -1753,11 +2082,11 @@ div.rm-reference-container {
   /* font-size: 1.4em; */
 }
 .rm-level2 .rm-block-text {
-  font-size: 1.6em;
+  font-size: 1.4rem;
 }
 .rm-level3 {
   font-weight: 700;
-  font-size: 1.1em;
+  font-size: 1.2rem;
   /* color: #5c7080; */
     color: var(--h3-font-color);
   font-family: var(--main-font);
@@ -1911,7 +2240,7 @@ div.rm-reference-container {
 }
 #right-sidebar .rm-reference-main {
   border: none;
-  padding: none;
+  padding: 0;
 }
 .rm-inline-img {
   max-width: 100%;
@@ -2254,11 +2583,9 @@ div.rm-reference-container {
 }
 .rm-block-text {
   /*max-width: 520px;*/
-  max-width: 100%; /*RR change: make references as wide as possible*/
-}
+  /*max-width: 100%; /*RR change: moved to top of sheet for easier configuration*/
+
 /*RR change: Theme body font settings*/
-/* div.rm-block-text { */
-.rm-block-text {
   font-family: var(--main-font);
   font-size: var(--main-font-size);
 }
@@ -2423,6 +2750,9 @@ div.rm-reference-container {
 .flex-justify-start {
   justify-content: flex-start;
 }
+.flex-align-self-flex-end {
+  align-self: flex-end;
+}
 .tags-input {
   display: inline-block;
   width: 10em;
@@ -2478,10 +2808,10 @@ div {
   padding: 0px;
 }
 textarea {
-  font-family: 'Inter', sans-serif;
-  font-size: 1em;
-  font-family: var(--main-font);
-  font-size: var(--main-font-size);
+  /* font-family: 'Inter', sans-serif; */
+  /* font-size: 1em; */
+  font-family: var(--main-font); /*RR change: added variable*/
+  font-size: var(--main-font-size); /*RR change: added variable*/
   line-height: 1.5em;
   margin: 0px;
   padding: 0px;
@@ -2542,6 +2872,9 @@ font-size: 1.0em;
   /* Internet Explorer/Edge */
   user-select: none;
   /* Non-prefixed version, currently */
+}
+.margin-none {
+  margin: 0;
 }
 
 /* ----------------------------------------- */
@@ -2671,8 +3004,8 @@ bp3-button bp3-small block-ref-count-button*/
   text-decoration: underline;
 }
 hr {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 0.5625em;
+  margin-bottom: 2.5em;
   border: 0;
   border-top: 1px solid var(--hr);
 }
@@ -2826,7 +3159,7 @@ background-color: transparent;
     -webkit-box-shadow: inset 0 0 0 1px rgba(16,22,26,0.4), inset 0 -1px 0 rgba(16,22,26,0.2);
     box-shadow: inset 0 0 0 1px rgba(16,22,26,0.4), inset 0 -1px 0 rgba(16,22,26,0.2);
     background-color: var(--checkmark-color);
-    opacity: 80%;
+    opacity: .8;
 }
 
 /*RR change: Diagram styles*/
@@ -2952,7 +3285,7 @@ span.cm-link {color: #b6b3eb;}
 /*<!--activeline-->*/
 .CodeMirror-activeline-background { background: #253540; }
 
-.CodeMirror pre {background: var(--code-bg);}
+/*.CodeMirror pre {background: var(--code-bg);}*/
 .CodeMirror-lines {background: var(--code-bg);}
 .CodeMirror-activeline pre {background: #253540; /* SPM ADDED */}
 
