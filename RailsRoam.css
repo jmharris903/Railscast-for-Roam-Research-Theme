@@ -1572,6 +1572,11 @@ textarea {
   font-size: var(--main-font-size);
 }
 
+h1 textarea {
+  font-size: 36px;
+  font-family: var(--h1-font);
+}
+
 .rm-level1,
 .rm-heading-level-1 > .rm-block__self .rm-block__input {
   color: var(--h1-font-color);
