@@ -183,6 +183,7 @@
   /* Fonts */
   --alias-bg: transparent;
   --alias-font-color: #fecf2b;
+  --attr-font-color: rgba(17, 137, 189, 0.65);
   --block-ref-bg: none;
   --block-ref-border: rgba(254, 207, 43, 0.6);
   --block-ref-font-size: 1em;
@@ -501,6 +502,25 @@
   color: var(--alias-font-color) !important;
   cursor: alias;
   padding: 0 !important;
+}
+
+.rm-alias-tooltip__content {
+  max-width: 500px;
+  font-family: var(--main-font);
+  font-size: var(--main-font-size);
+}
+
+/* Attributes */
+.rm-attr-ref {
+  color: var(--attr-font-color);
+  font-weight: 700;
+}
+.rm-attr-ref:hover {
+  cursor: pointer;
+}
+
+.rm-block-ref span .rm-attr-ref {
+  pointer-events: pointer;
 }
 
 /* Block Reference */
@@ -879,8 +899,13 @@ a:hover {
 .rm-spacer {
   font-size: 1.1em;
   position: relative;
-  top: 2px;
+  top: 3px;
   color: var(--icon-color);
+  fill: var(--icon-color);
+}
+.rm-spacer svg {
+  height: 16px;
+  width: 16px;
 }
 .rm-spacer:hover {
   color: var(--icon-color);
@@ -1673,6 +1698,10 @@ strong,
 .rm-bold {
   color: var(--strong) !important;
   font-weight: 700;
+}
+
+.rm-strikethrough {
+  opacity: 0.6;
 }
 
 .rm-highlight {
