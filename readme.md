@@ -4,10 +4,12 @@ This is my personal version of the classic Railscast code syntax theme that I've
 
 ## How to install
 
-In Roam, create a page called `roam/css` (all lowercase) and then paste in the following
-`@import url('https://jmharris903.github.io/Railscast-for-Roam-Research-Theme/RailsRoam.css');`
+1. In Roam, create a page called `roam/css` (all lowercase)
+2. Create a code block using ` ``` `
+3. Paste in the following into the code block
+   `@import url('https://jmharris903.github.io/Railscast-for-Roam-Research-Theme/RailsRoam.css');`
 
-Then change the menu option to `css`
+4. Then change the menu option to `css`
 
 Other ways to install
 Install either [Stylus](https://add0n.com/stylus.html) or [Roam Toolkit](https://chrome.google.com/webstore/detail/roam-toolkit/ebckolanhdjilblnkcgcgifaikppnhba). Then copy and paste the contents of the [RailsRoam.css](https://github.com/jmharris903/Railscast-for-Roam-Research/blob/master/RailsRoam.css) file into the appropriate location for the method you choose.
