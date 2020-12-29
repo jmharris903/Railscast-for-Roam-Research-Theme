@@ -2,170 +2,10 @@
 ### ROAM Railscast THEME ###
 > Many thanks to the Roam Slack community for all the resources, particularly @Anthony, @Calhistoriaan, @Devon, @Murf, @Malcolm Ocean, and @David Cranall.
 > Edits by Jeff Harris
-> v2.0
+> v2.0.1
 */
 
 @charset "UTF-8";
-:root {
-  /* Roam default variables */
-  --primary-color: #137cbd;
-  --s1: 8px;
-  --background-color: #e1e8ed;
-  /* Primary fonts */
-  --main-font: "Inter", sans-serif;
-  --main-font-color: #202b33;
-  --main-font-size: 14px;
-  --code-font: monospace;
-  --code-font-color: #6d9cbe;
-  --code-font-size: 1em;
-  --caret-color: #0080ff;
-  /* Fonts */
-  --alias-bg: rgb(235, 241, 245);
-  --alias-font-color: rgb(245, 86, 86);
-  --block-ref-bg: none;
-  --block-ref-border: #d8e1e8;
-  --block-ref-font-size: 1em;
-  --block-ref-hover: inherit;
-  --block-ref-hover-bg: #f5f8fa;
-  --breadcrumb-bg: white;
-  --breadcrumb-color: #5c7080;
-  --breadcrumb-font-size: 0.857142857rem;
-  --breadcrumb-line-height: 0.85rem;
-  --calculation-color: #ff6000;
-  --db-menu-bg: inherit;
-  --db-menu-border: inherit;
-  --db-menu-header: #182026;
-  --db-menu-item: #182026;
-  --db-title-font-color: #ced9e0;
-  --db-title-hover: #5c7080;
-  --dialog-bg: #333;
-  --dialog-font-color: #eee;
-  --emphasis: inherit;
-  --external-link-color: inherit;
-  --h1-font: var(--main-font);
-  --h1-font-color: #202b33;
-  --h1-font-size: 1.8rem;
-  --h2-font: var(--h1-font);
-  --h2-font-color: #202b33;
-  --h2-font-size: 1.4rem;
-  --h3-font: var(--h1-font);
-  --h3-font-color: #5c7080;
-  --h3-font-size: 1.2rem;
-  --highlight-background-color: #fef09f;
-  --highlight-font-color: inherit;
-  --highlight-link-color: inherit;
-  --left-sidebar-font-color: #5c7080;
-  --left-sidebar-font-color-hover: #f5f8fa;
-  --left-sidebar-font-size: 14px;
-  --left-sidebar-shortcuts-color: var(--left-sidebar-font-color);
-  --left-sidebar-shortcuts-font-size: 14px;
-  --left-sidebar-shortcuts-title-color: var(--left-sidebar-font-color);
-  --page-brackets: #a7b6c2;
-  --page-link-color: #106ba3;
-  --page-link-namespace-color: green;
-  --popover-font-color: inherit;
-  --popover-bg: #fff;
-  --ref-count-font-size: 0.8em;
-  --right-sidebar-link-color: inherit;
-  --right-sidebar-bg: rgb(216, 225, 232);
-  --right-sidebar-masonry-bg: inherit;
-  --right-sidebar-masonry-outline: inherit;
-  --right-sidebar-section-border-color: rgb(138, 155, 168);
-  --search-bg: inherit;
-  --search-body-font-color: #8a9ba8;
-  --search-font-color: #bfccd6;
-  --search-new-page-color: #0d8050;
-  --search-outline: 0 0 0 1px #137cbd, 0 0 0 3px rgba(19, 124, 189, 0.3),
-    inset 0 1px 1px rgba(16, 22, 26, 0.2);
-  --search-selected-row: rgb(213, 218, 223);
-  --strong: inherit;
-  --tag-font-color: #a7b6c2;
-  --tag-font-color-hover: inherit;
-  --tag-hover-bg: inherit;
-  --tag-padding: inherit;
-  --tag-radius: inherit;
-  /* Backgrounds and objects */
-  --block-highlight: #7cccff;
-  --block-highlight-current: transparent;
-  --block-highlight-bg: yellow;
-  --body-bg: white;
-  --bullet: #394b59;
-  --bullet-closed: #ced9e0;
-  --bullet-closed-right-sidebar: #a7b6c2;
-  --bullet-outline: #bfccd6;
-  --bullet-outline-highlight: inherit;
-  --bullet-position: 3px;
-  --bullet-version: rgb(16, 107, 163);
-  --checkmark-border: #a7b6c2;
-  --checkmark-bg: #fff;
-  --checkmark-color: #137cbd;
-  --code-bg: #eee;
-  --datepicker-bg: #fff;
-  --datepicker-day-wrapper: rgba(16, 22, 26, 0.15);
-  --datepicker-font-color: var(--popover-font-color);
-  --datepicker-select-bg: initial;
-  --hr: #eee;
-  --icon-bg-hover: rgba(167, 182, 194, 0.3);
-  --icon-color: #5c7080;
-  --icon-color-hover: #182026;
-  --inline-search-bg: white;
-  --left-sidebar-bg: #182026;
-  --left-sidebar-hover-bg: #10161a;
-  --reference-item-bg: #ebf1f5;
-  --reference-item-bg-2: #f5f8fa;
-  --reference-item-bg-3: #ced9e0;
-  --section-border-color: #738694;
-  --select-bg: inherit;
-  --topbar-bg: white;
-  --topbar-border-color: #eee;
-  /* Misc */
-  --pages-delete-bg: #f5f8fa;
-  --pages-delete-border-color: #d8e1e8;
-  --pages-header-row-bg: #e1e8ed;
-  --pages-header-row-font-color: #bfccd6;
-  --pages-mentions-bg-empty: white;
-  --pages-mentions-color: #2b95d6;
-  --pages-mentions-color-empty: #0e5a8a;
-  --pages-search-bg: #f5f8fa;
-  --pages-search-outline: #8a9ba8;
-  --pages-table-border: #e1e8ed;
-  --pages-sorted-color: #5c7080;
-  --table-border: grey;
-  --table-font-size: var(--main-font-size);
-  --kanban-board-bg: #a7b6c2;
-  --kanban-card-bg: white;
-  --kanban-card-font-color: #6d9cbe;
-  --kanban-column-bg: #ededed;
-  --kanban-column-font-color: #5c7080;
-  --encrypted-font-color: #8a9ba8;
-  --encrypted-bg: #f5f8fa;
-  --pomodoro-bg: transparent;
-  --pomodoro-color: #fc5963;
-  --pomodoro-border: #fc596370;
-  --blockquote-font-color: rgba(109, 156, 190, 0.89);
-  --blockquote-font-size: 14px;
-  --blockquote-border-color: #30404d;
-  --blockquote-bg: none;
-  --blockquote-cite: #777;
-  --emoji-bg: rgba(226, 236, 243, 0.6);
-  --emoji-border: rgb(19, 124, 189);
-  --emoji-color: rgb(14, 90, 138);
-  --no-query-results: "Query returned no results";
-  --no-query-results-color: #fc5963;
-  --query-results-border: #f2c98f1a;
-  /* Quarterly date page links */
-  --q1: #50b2c0;
-  --q2: #c5d86d;
-  --q3: #ff6b6b;
-  --q4: #ca7d4a;
-  /* Scrollbar settings - to disable set values to none */
-  --scrollbar-track: #2b2b2b;
-  --scrollbar-thumb: rgba(153, 153, 153, 0.1);
-  /* Saving icon colors */
-  --saving-local: #99280f;
-  --saving-remote: #d9822b;
-  --synched: #0f9960;
-}
 
 :root {
   /* Roam default variables */
@@ -1056,6 +896,11 @@ button[style*="background-color: rgba(72, 176, 240, 0.5);"] {
 button[style*="border: 0.5px solid rgb(206, 217, 224);"] {
   background-color: var(--reference-item-bg) !important;
   border: 1px solid var(--reference-item-bg) !important;
+}
+
+/* Save Status */
+.bp3-transition-container {
+  z-index: 1000;
 }
 
 .bp3-card {
