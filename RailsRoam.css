@@ -2,7 +2,7 @@
 ### ROAM Railscast THEME ###
 > Many thanks to the Roam Slack community for all the resources, particularly @Anthony, @Calhistoriaan, @Devon, @Murf, @Malcolm Ocean, and @David Cranall.
 > Edits by Jeff Harris
-> v2.0.1
+> v2.0.2
 */
 
 @charset "UTF-8";
@@ -1227,7 +1227,13 @@ span.flatpickr-weekday {
 }
 
 .tribute-container ul {
-  background-color: var(--bg-popover);
+  background-color: var(--pages-search-bg) !important;
+  color: var(--main-font-color);
+  font-family: var(--main-font);
+}
+.tribute-container ul .highlight {
+  background: var(--search-outline) !important;
+  color: #fff;
 }
 
 .jsPanel .jsPanel-content {
