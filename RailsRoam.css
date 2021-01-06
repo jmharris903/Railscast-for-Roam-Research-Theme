@@ -2,7 +2,7 @@
 ### ROAM Railscast THEME ###
 > Many thanks to the Roam Slack community for all the resources, particularly @Anthony, @Calhistoriaan, @Devon, @Murf, @Malcolm Ocean, and @David Cranall.
 > Edits by Jeff Harris
-> v2.0.2
+> v2.0.3
 */
 
 @charset "UTF-8";
@@ -86,6 +86,7 @@
   --strong: #508bb5;
   --tag-font-color: #777;
   --tag-font-color-hover: #fff;
+  --tag-hashtag: #e9892475;
   --tag-hover-bg: #e98924;
   --tag-padding: 0.071428571em 0.428571429em 0.214285714em;
   --tag-radius: 2em;
@@ -971,18 +972,6 @@ button[style*="border: 0.5px solid rgb(206, 217, 224);"] {
   color: var(--h3-font__link--color);
 }
 
-/* CUSTOM LINKS: Uncomment to use the section below to create custom styles for specific links. Change "Theme" to match some portion of the title of the link you want to customize. Adjust the background-color value ("ff6000") and color value ("fff") to suite your preferences. Duplicate the section for each new link to be customized */
-/* 
-span[data-link-title*="Theme"] .rm-page-ref-link-color,
-span[data-link-title*="Theme"] .rm-page-ref-namespace-color {
-  background-color: #ff6000;
-  color: #fff;
-  padding: 3px 7px;
-  line-height: 2em;
-  font-weight: 500;
-  border-radius: 0.1875em;
-}
- */
 /* Page date link - organized by quarter */
 span[data-link-title^="January "] .rm-page-ref-link-color,
 span[data-link-title^="February "] .rm-page-ref-link-color,
@@ -1313,18 +1302,47 @@ span.rm-page-ref.rm-page-ref--tag:hover {
   text-decoration: none;
 }
 
+/* Hashtag color */
+.rm-page-ref--tag[data-tag="42SmartBlock"]:before {
+  content: "#";
+  color: var(--tag-hashtag);
+  margin: 5px 0 0 -7px;
+  position: absolute;
+  visibility: visible;
+}
+
 /* It is probably best to move these out and be used in roam/css code block */
-/*RR change: CUSTOM TAGS: Uncomment to use the section below to create custom styles for specific tags. Change "Meeting" to match some portion of the title of the tag you want to customize. Adjust the background-color value ("F00") and color value ("fff") to suite your preferences. Duplicate the section for each new tag to be customized */
+/* CUSTOM LINKS: Uncomment to use the section below to create custom styles for specific links. Change "Theme" to match some portion of the title of the link you want to customize. Adjust the background-color value ("ff6000") and color value ("fff") to suite your preferences. Duplicate the section for each new link to be customized */
 /* 
-span[data-tag*="Meeting"] {
-  background-color: #1189BD;
-  border-radius: 2em;
-  color: #bbb;
+span[data-link-title*="Theme"] .rm-page-ref-link-color,
+span[data-link-title*="Theme"] .rm-page-ref-namespace-color {
+  background-color: #ff6000;
+  color: #fff;
+  padding: 3px 7px;
+  line-height: 2em;
   font-weight: 500;
-  line-height: 1.2em;
-  padding: .071428571em .428571429em .214285714em;
+  border-radius: 0.1875em;
 }
  */
+/* Template for creating tags in the shape of flags */
+span[data-tag*="Meeting"] {
+  visibility: hidden;
+  padding-right: 28px;
+  padding-left: 0;
+}
+
+span[data-tag*="Meeting"]:before {
+  content: "Meeting";
+  visibility: visible;
+  background-color: #1189bd;
+  position: absolute;
+  color: #ddd;
+  padding-right: 24px;
+  padding-left: 10px;
+  clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%);
+  border-radius: 4px 0 0 4px;
+}
+
 /* Todo checkmark */
 .checkmark {
   border: 1px solid var(--checkmark-color);
@@ -1332,6 +1350,11 @@ span[data-tag*="Meeting"] {
 
 .check-container {
   padding-right: 4px;
+}
+
+[data-page-links*='"DONE"'] {
+  opacity: 0.65;
+  text-decoration: line-through;
 }
 
 /* Twitter embeds */
@@ -1391,6 +1414,12 @@ body {
   padding-top: 3px;
 }
 
+.rm-bullet {
+  position: absolute;
+}
+.rm-bullet:hover {
+  position: absolute;
+}
 .rm-bullet .rm-bullet__inner {
   background-color: var(--bullet);
 }
