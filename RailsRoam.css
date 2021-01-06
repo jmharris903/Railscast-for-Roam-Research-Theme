@@ -2,7 +2,7 @@
 ### ROAM Railscast THEME ###
 > Many thanks to the Roam Slack community for all the resources, particularly @Anthony, @Calhistoriaan, @Devon, @Murf, @Malcolm Ocean, and @David Cranall.
 > Edits by Jeff Harris
-> v2.0.3
+> v2.0.4
 */
 
 @charset "UTF-8";
@@ -68,6 +68,7 @@
   --page-brackets: rgba(228, 124, 67, 0.25);
   --page-link-color: #eb9854;
   --page-link-namespace-color: #ebd454;
+  --page-link-namespace-color: #f57030;
   --popover-font-color: #e98924;
   --popover-bg: #333;
   --ref-count-font-size: 0.8em;
@@ -127,6 +128,9 @@
   --select-bg: #232323;
   --topbar-bg: var(--body-bg);
   --topbar-border-color: #333;
+  --yt-play-button-border: rgba(225, 117, 28, 1);
+  --yt-play-button-bg: rgba(108, 109, 36, 0.1);
+  --yt-play-button-bg-hover: rgba(109, 77, 36, 0.25);
   /* Misc */
   --pages-delete-bg: #222;
   --pages-delete-border-color: #d8e1e8;
@@ -1380,6 +1384,34 @@ span[data-tag*="Meeting"]:before {
 
 .rm-button-selected {
   border-bottom: 2px solid var(--bullet-version);
+}
+
+/* Youtube Timestamp styles
+  https://c3founder.github.io/Roam-Enhancement/
+*/
+.timestamp-control {
+  background-color: var(--yt-play-button-bg);
+  color: var(--yt-play-button-border);
+  margin-right: 8px;
+  margin-top: 0px;
+  margin-left: 25px;
+  margin-bottom: 5px;
+  border-radius: 50% !important;
+  font-size: 0.9em;
+  padding: 5px 8px !important;
+  border: 1px solid;
+  opacity: 0.65;
+}
+
+.timestamp-control:hover {
+  background-color: var(--yt-play-button-bg-hover);
+  opacity: 1;
+}
+
+/* Hide YouTube Breadcrumb */
+.parent-path-wrapper > div > span > div > iframe,
+.parent-path-wrapper > div > span > .hoverparent {
+  display: none;
 }
 
 /* Body styles */
