@@ -2,7 +2,7 @@
 ### ROAM Railscast THEME ###
 > Many thanks to the Roam Slack community for all the resources, particularly @Anthony, @Calhistoriaan, @Devon, @Murf, @Malcolm Ocean, and @David Cranall.
 > Edits by Jeff Harris
-> v2.0.4
+> v2.0.5
 */
 
 @charset "UTF-8";
@@ -87,7 +87,7 @@
   --strong: #508bb5;
   --tag-font-color: #777;
   --tag-font-color-hover: #fff;
-  --tag-hashtag: #e9892475;
+  --tag-hashtag: #ab6634;
   --tag-hover-bg: #e98924;
   --tag-padding: 0.071428571em 0.428571429em 0.214285714em;
   --tag-radius: 2em;
@@ -752,6 +752,9 @@ a:hover {
   height: 16px;
   width: 16px;
 }
+.rm-spacer svg path {
+  fill: var(--icon-color);
+}
 .rm-spacer:hover {
   color: var(--icon-color);
 }
@@ -1124,6 +1127,55 @@ inspired by Matt Goldenberg */
   padding: 0;
 }
 
+.rm-g.rm-not-focused .rm-page-ref[data-tag=".rm-g"] {
+  display: none;
+  color: green;
+}
+
+.rm-g.rm-not-focused .rm-block {
+  background-color: var(--inline-search-bg);
+  margin: 0 0 0 35px;
+  /* fix for expand bullets feature */
+}
+
+.rm-g.rm-not-focused.rm-block--open.rm-not-focused > .rm-block__self {
+  position: absolute;
+  border-left: 2px solid transparent;
+  border-radius: 20px 0px 0px 20px;
+  width: 40px;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.rm-g.rm-not-focused.rm-block--open.rm-not-focused
+  > .rm-block__self
+  > .rm-block__input--view {
+  background-color: var(--tag-hashtag);
+  color: var(--highlight-font-color);
+  left: 5px;
+  transform: rotate(90deg) translateY(-1em);
+  transform-origin: top left;
+  padding-left: 10px;
+  margin-left: 7px;
+}
+
+.rm-g.rm-not-focused.rm-block--open > .rm-block__children {
+  margin-left: 0px !important;
+  min-width: 100%;
+}
+
+.rm-g.rm-not-focused.rm-block--open.rm-focused .rm-block__self {
+  flex: 1 1 100%;
+  width: 100%;
+}
+
+.rm-g.rm-not-focused.rm-block--closed > .rm-block__self .rm-block-separator {
+  height: 100%;
+  border-left: 2px solid #8a9ba8;
+  border-radius: 50px;
+}
+
 :root {
   --fg-flatpickr: var(--cl-dark-jungle-green);
   --bg-flatpickr: var(--cl-wild-sand);
@@ -1308,11 +1360,11 @@ span.rm-page-ref.rm-page-ref--tag:hover {
 
 /* Hashtag color */
 .rm-page-ref--tag[data-tag="42SmartBlock"]:before {
-  content: "#";
-  color: var(--tag-hashtag);
-  margin: 5px 0 0 -7px;
+  content: "#" !important;
+  color: var(--tag-hashtag) !important;
   position: absolute;
   visibility: visible;
+  background: none !important;
 }
 
 /* It is probably best to move these out and be used in roam/css code block */
@@ -1345,6 +1397,17 @@ span[data-tag*="Meeting"]:before {
   padding-left: 10px;
   clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%);
   border-radius: 4px 0 0 4px;
+}
+
+[data-tag]::before {
+  content: "#";
+  color: var(--tag-hashtag);
+  visibility: visible;
+  position: absolute;
+}
+
+[data-tag]:hover::before {
+  color: var(--tag-font-color-hover);
 }
 
 /* Todo checkmark */
