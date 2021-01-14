@@ -511,7 +511,7 @@
 }
 
 .rm-block-main .bp3-button:not([class*="bp3-intent-"]) {
-  min-height: 0;
+  min-height: 25px;
 }
 
 /* Alias */
