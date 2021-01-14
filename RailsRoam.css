@@ -2,10 +2,171 @@
 ### ROAM Railscast THEME ###
 > Many thanks to the Roam Slack community for all the resources, particularly @Anthony, @Calhistoriaan, @Devon, @Murf, @Malcolm Ocean, and @David Cranall.
 > Edits by Jeff Harris
-> v2.0.5
+> v2.0.6
 */
 
 @charset "UTF-8";
+
+:root {
+  /* Roam default variables */
+  --primary-color: #137cbd;
+  --s1: 8px;
+  --background-color: #e1e8ed;
+  /* Primary fonts */
+  --main-font: "Inter", sans-serif;
+  --main-font-color: #202b33;
+  --main-font-size: 14px;
+  --code-font: monospace;
+  --code-font-color: #6d9cbe;
+  --code-font-size: 1em;
+  --caret-color: #0080ff;
+  /* Fonts */
+  --alias-bg: rgb(235, 241, 245);
+  --alias-font-color: rgb(245, 86, 86);
+  --block-ref-bg: none;
+  --block-ref-border: #d8e1e8;
+  --block-ref-font-size: 1em;
+  --block-ref-hover: inherit;
+  --block-ref-hover-bg: #f5f8fa;
+  --breadcrumb-bg: white;
+  --breadcrumb-color: #5c7080;
+  --breadcrumb-font-size: 0.857142857rem;
+  --breadcrumb-line-height: 0.85rem;
+  --calculation-color: #ff6000;
+  --db-menu-bg: inherit;
+  --db-menu-border: inherit;
+  --db-menu-header: #182026;
+  --db-menu-item: #182026;
+  --db-title-font-color: #ced9e0;
+  --db-title-hover: #5c7080;
+  --dialog-bg: #333;
+  --dialog-font-color: #eee;
+  --emphasis: inherit;
+  --external-link-color: inherit;
+  --h1-font: var(--main-font);
+  --h1-font-color: #202b33;
+  --h1-font-size: 1.8rem;
+  --h2-font: var(--h1-font);
+  --h2-font-color: #202b33;
+  --h2-font-size: 1.4rem;
+  --h3-font: var(--h1-font);
+  --h3-font-color: #5c7080;
+  --h3-font-size: 1.2rem;
+  --highlight-background-color: #fef09f;
+  --highlight-font-color: inherit;
+  --highlight-link-color: inherit;
+  --left-sidebar-font-color: #5c7080;
+  --left-sidebar-font-color-hover: #f5f8fa;
+  --left-sidebar-font-size: 14px;
+  --left-sidebar-shortcuts-color: var(--left-sidebar-font-color);
+  --left-sidebar-shortcuts-font-size: 14px;
+  --left-sidebar-shortcuts-title-color: var(--left-sidebar-font-color);
+  --page-brackets: #a7b6c2;
+  --page-link-color: #106ba3;
+  --page-link-namespace-color: green;
+  --popover-font-color: inherit;
+  --popover-bg: #fff;
+  --ref-count-font-size: 0.8em;
+  --right-sidebar-link-color: inherit;
+  --right-sidebar-bg: rgb(216, 225, 232);
+  --right-sidebar-masonry-bg: inherit;
+  --right-sidebar-masonry-outline: inherit;
+  --right-sidebar-section-border-color: rgb(138, 155, 168);
+  --search-bg: inherit;
+  --search-body-font-color: #8a9ba8;
+  --search-font-color: #bfccd6;
+  --search-new-page-color: #0d8050;
+  --search-outline: 0 0 0 1px #137cbd, 0 0 0 3px rgba(19, 124, 189, 0.3),
+    inset 0 1px 1px rgba(16, 22, 26, 0.2);
+  --search-selected-row: rgb(213, 218, 223);
+  --strong: inherit;
+  --tag-font-color: #a7b6c2;
+  --tag-font-color-hover: inherit;
+  --tag-hover-bg: inherit;
+  --tag-padding: inherit;
+  --tag-radius: inherit;
+  /* Backgrounds and objects */
+  --block-highlight: #7cccff;
+  --block-highlight-current: transparent;
+  --block-highlight-bg: yellow;
+  --body-bg: white;
+  --bullet: #394b59;
+  --bullet-closed: #ced9e0;
+  --bullet-closed-right-sidebar: #a7b6c2;
+  --bullet-outline: #bfccd6;
+  --bullet-outline-highlight: inherit;
+  --bullet-position: 3px;
+  --bullet-version: rgb(16, 107, 163);
+  --checkmark-border: #a7b6c2;
+  --checkmark-bg: #fff;
+  --checkmark-color: #137cbd;
+  --code-bg: #eee;
+  --datepicker-bg: #fff;
+  --datepicker-day-wrapper: rgba(16, 22, 26, 0.15);
+  --datepicker-font-color: var(--popover-font-color);
+  --datepicker-select-bg: initial;
+  --hr: #eee;
+  --icon-bg-hover: rgba(167, 182, 194, 0.3);
+  --icon-color: #5c7080;
+  --icon-color-hover: #182026;
+  --inline-search-bg: white;
+  --left-sidebar-bg: #182026;
+  --left-sidebar-hover-bg: #10161a;
+  --reference-item-bg: #ebf1f5;
+  --reference-item-bg-2: #f5f8fa;
+  --reference-item-bg-3: #ced9e0;
+  --section-border-color: #738694;
+  --select-bg: inherit;
+  --topbar-bg: white;
+  --topbar-border-color: #eee;
+  /* Misc */
+  --pages-delete-bg: #f5f8fa;
+  --pages-delete-border-color: #d8e1e8;
+  --pages-header-row-bg: #e1e8ed;
+  --pages-header-row-font-color: #bfccd6;
+  --pages-mentions-bg-empty: white;
+  --pages-mentions-color: #2b95d6;
+  --pages-mentions-color-empty: #0e5a8a;
+  --pages-search-bg: #f5f8fa;
+  --pages-search-outline: #8a9ba8;
+  --pages-table-border: #e1e8ed;
+  --pages-sorted-color: #5c7080;
+  --table-border: grey;
+  --table-font-size: var(--main-font-size);
+  --kanban-board-bg: #a7b6c2;
+  --kanban-card-bg: white;
+  --kanban-card-font-color: #6d9cbe;
+  --kanban-column-bg: #ededed;
+  --kanban-column-font-color: #5c7080;
+  --encrypted-font-color: #8a9ba8;
+  --encrypted-bg: #f5f8fa;
+  --pomodoro-bg: transparent;
+  --pomodoro-color: #fc5963;
+  --pomodoro-border: #fc596370;
+  --blockquote-font-color: rgba(109, 156, 190, 0.89);
+  --blockquote-font-size: 14px;
+  --blockquote-border-color: #30404d;
+  --blockquote-bg: none;
+  --blockquote-cite: #777;
+  --emoji-bg: rgba(226, 236, 243, 0.6);
+  --emoji-border: rgb(19, 124, 189);
+  --emoji-color: rgb(14, 90, 138);
+  --no-query-results: "Query returned no results";
+  --no-query-results-color: #fc5963;
+  --query-results-border: #f2c98f1a;
+  /* Quarterly date page links */
+  --q1: #50b2c0;
+  --q2: #c5d86d;
+  --q3: #ff6b6b;
+  --q4: #ca7d4a;
+  /* Scrollbar settings - to disable set values to none */
+  --scrollbar-track: #2b2b2b;
+  --scrollbar-thumb: rgba(153, 153, 153, 0.1);
+  /* Saving icon colors */
+  --saving-local: #99280f;
+  --saving-remote: #d9822b;
+  --synched: #0f9960;
+}
 
 :root {
   /* Roam default variables */
@@ -22,7 +183,9 @@
   --caret-color: #0080ff;
   /* Fonts */
   --alias-bg: transparent;
+  /* Legacy alias */
   --alias-font-color: #fecf2b;
+  /* Legacy alias */
   --attr-font-color: rgba(17, 137, 189, 0.65);
   --block-ref-bg: none;
   --block-ref-border: rgba(254, 207, 43, 0.6);
@@ -128,6 +291,7 @@
   --select-bg: #232323;
   --topbar-bg: var(--body-bg);
   --topbar-border-color: #333;
+  /* YouTube Timestamp js extension */
   --yt-play-button-border: rgba(225, 117, 28, 1);
   --yt-play-button-bg: rgba(108, 109, 36, 0.1);
   --yt-play-button-bg-hover: rgba(109, 77, 36, 0.25);
@@ -156,6 +320,11 @@
   --pomodoro-bg: transparent;
   --pomodoro-color: #fc5963;
   --pomodoro-border: #fc596370;
+  --block-callout__bg--grey: #333;
+  --block-callout__bg--blue: rgba(0, 170, 255, 0.1);
+  --block-callout__bg--red: rgba(249, 87, 56, 0.25);
+  --block-callout__bg--orange: rgba(238, 150, 75, 0.25);
+  --block-callout__bg--yellow: rgba(244, 211, 94, 0.2);
   --blockquote-font-color: rgba(109, 156, 190, 0.89);
   --blockquote-font-size: 14px;
   --blockquote-border-color: #30404d;
@@ -167,6 +336,7 @@
   --no-query-results: "Query returned no results";
   --no-query-results-color: #fc5963;
   --query-results-border: #f2c98f1a;
+  /* Seasonal colors for date links */
   --q1: #50b2c0;
   --q2: #c5d86d;
   --q3: #ff6b6b;
@@ -340,19 +510,28 @@
   color: var(--icon-color);
 }
 
+.rm-block-main .bp3-button:not([class*="bp3-intent-"]) {
+  min-height: 0;
+}
+
 /* Alias */
-.rm-alias--block {
+.rm-alias-tooltip__content {
+  max-width: 500px;
+  font-family: var(--main-font);
+  font-size: var(--main-font-size);
+}
+
+.rm-alias--page {
+  font-style: italic;
+}
+
+/* Legacy Alias */
+span[style*="background-color: rgb(235, 241, 245); border-radius: 4px;"] {
   background-color: var(--alias-bg) !important;
   border-radius: 0 !important;
   color: var(--alias-font-color) !important;
   cursor: alias;
   padding: 0 !important;
-}
-
-.rm-alias-tooltip__content {
-  max-width: 500px;
-  font-family: var(--main-font);
-  font-size: var(--main-font-size);
 }
 
 /* Attributes */
@@ -366,6 +545,70 @@
 
 .rm-block-ref span .rm-attr-ref {
   pointer-events: pointer;
+}
+
+/*  Block Callouts
+    Use special tags to create colored callout blocks
+    #rm-block:grey will callout the entire block, including children
+    #rm-self:grey will only callout the block the tag is added to
+    #rm-child:grey will callout the children of the block the tag is added to
+
+    available colors
+    :grey
+    :blue
+    :red
+    :orange
+    :yellow
+*/
+.roam-block-container[data-page-links*='"rm-block:grey"'],
+.roam-block-container[data-page-links*='"rm-self:grey"'] > div.rm-block-main,
+.roam-block-container[data-page-links*='"rm-child:grey"'] .rm-block-children {
+  background-color: var(--block-callout__bg--grey);
+  border-radius: 0px 5px 5px 0px !important;
+}
+
+.roam-block-container[data-page-links*='"rm-block:blue"'],
+.roam-block-container[data-page-links*='"rm-self:blue"'] > div.rm-block-main,
+.roam-block-container[data-page-links*='"rm-child:blue"'] .rm-block-children {
+  background-color: var(--block-callout__bg--blue);
+  border-radius: 0px 5px 5px 0px !important;
+}
+
+.roam-block-container[data-page-links*='"rm-block:red"'],
+.roam-block-container[data-page-links*='"rm-self:red"'] > div.rm-block-main,
+.roam-block-container[data-page-links*='"rm-child:red"'] .rm-block-children {
+  background-color: var(--block-callout__bg--red);
+  border-radius: 0px 5px 5px 0px !important;
+}
+
+.roam-block-container[data-page-links*='"rm-block:orange"'],
+.roam-block-container[data-page-links*='"rm-self:orange"'] > div.rm-block-main,
+.roam-block-container[data-page-links*='"rm-child:orange"'] .rm-block-children {
+  background-color: var(--block-callout__bg--orange);
+  border-radius: 0px 5px 5px 0px !important;
+}
+
+.roam-block-container[data-page-links*='"rm-block:yellow"'],
+.roam-block-container[data-page-links*='"rm-self:yellow"'] > div.rm-block-main,
+.roam-block-container[data-page-links*='"rm-child:yellow"'] .rm-block-children {
+  background-color: var(--block-callout__bg--yellow);
+  border-radius: 0px 5px 5px 0px !important;
+}
+
+.rm-page-ref[data-tag*=":grey"],
+.rm-page-ref[data-tag*=":blue"],
+.rm-page-ref[data-tag*=":orange"],
+.rm-page-ref[data-tag*=":yellow"],
+.rm-page-ref[data-tag*=":red"] {
+  display: none;
+}
+
+.rm-block__self:hover .rm-page-ref[data-tag*=":grey"],
+.rm-block__self:hover .rm-page-ref[data-tag*=":blue"],
+.rm-block__self:hover .rm-page-ref[data-tag*=":orange"],
+.rm-block__self:hover .rm-page-ref[data-tag*=":yellow"],
+.rm-block__self:hover .rm-page-ref[data-tag*=":red"] {
+  display: inline;
 }
 
 /* Block Reference */
@@ -1664,12 +1907,10 @@ h1 textarea {
   font-family: var(--h1-font);
 }
 
-em,
 .rm-italics {
   color: var(--emphasis);
 }
 
-strong,
 .rm-bold {
   color: var(--strong) !important;
   font-weight: 700;
@@ -1867,6 +2108,10 @@ div[style*="border-bottom: 1px solid rgb(138, 155, 168);"] {
   border-bottom: 1px solid var(--right-sidebar-section-border-color) !important;
 }
 
+/* Bullet Collapse
+  Provides a larger target for collapsing a block
+  Provides better location tracking of which block is currently under the mouse
+ */
 .roam-block-container {
   position: relative;
 }
@@ -1917,14 +2162,8 @@ div[style*="border-bottom: 1px solid rgb(138, 155, 168);"] {
   .rm-block-main
   .controls
   .block-expand
-  .bp3-icon-caret-down {
-  border-color: var(--bullet-outline-highlight);
-}
-.roam-block-container
-  .rm-block-main
-  .controls
-  .block-expand
   .bp3-icon-caret-down:hover {
+  border-color: var(--bullet-outline-highlight);
   border-width: 4px;
 }
 .roam-block-container
@@ -1967,6 +2206,9 @@ div[style*="border-bottom: 1px solid rgb(138, 155, 168);"] {
 .roam-block-container:hover > .rm-block__self .controls .block-expand {
   border-left-style: solid;
   border-left-color: var(--bullet-outline-hover);
+}
+.roam-block-container:focus-within > .rm-block__self .controls .block-expand {
+  border-left: 1px solid var(--bullet-outline-hover);
 }
 .roam-block-container
   > .rm-block-main
