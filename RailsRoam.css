@@ -1746,7 +1746,8 @@ h1 textarea {
   font-family: var(--h1-font);
 }
 
-em {
+em,
+.rm-italics {
   color: var(--emphasis);
 }
 
