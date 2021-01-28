@@ -2,7 +2,7 @@
 ### ROAM Railscast THEME ###
 > Many thanks to the Roam Slack community for all the resources, particularly @Anthony, @Calhistoriaan, @Devon, @Murf, @Malcolm Ocean, and @David Cranall.
 > Edits by Jeff Harris
-> v2.0.8
+> v2.0.9
 */
 
 @charset "UTF-8";
@@ -512,7 +512,6 @@ span[style*="background-color: rgb(235, 241, 245); border-radius: 4px;"] {
 }
 .rm-multibar:hover {
   border-right: 3px solid var(--bullet-outline-hover);
-  width: calc(1px + calc(1px - -6px));
 }
 
 .rm-level-0 > .rm-multibar {
@@ -998,8 +997,8 @@ button[style*="border: 0.5px solid rgb(206, 217, 224);"] {
 .rm-mermaid svg .node polygon,
 .rm-mermaid svg .node path,
 .rm-mermaid svg .actor {
-  fill: var(--page-brackets) !important;
-  stroke: var(--search-outline) !important;
+  fill: var(--mermaid-element__fill) !important;
+  stroke: var(--mermain-element__stroke) !important;
   stroke-width: 1px;
 }
 
@@ -1017,7 +1016,7 @@ button[style*="border: 0.5px solid rgb(206, 217, 224);"] {
 }
 
 .rm-mermaid svg line {
-  stroke: var(--hr) !important;
+  stroke: var(--mermain-element__stroke) !important;
   fill: currentColor;
 }
 
@@ -1026,7 +1025,16 @@ button[style*="border: 0.5px solid rgb(206, 217, 224);"] {
 }
 
 #arrowhead {
-  stroke: var(--hr) !important;
+  fill: var(--mermain-element__stroke) !important;
+}
+
+.arrowheadPath {
+  fill: var(--mermaid-path__stroke) !important;
+}
+
+.edgePath .path {
+  stroke: var(--mermaid-path__stroke) !important;
+  stroke-width: 1.5px;
 }
 
 /* Page link */
@@ -2205,6 +2213,9 @@ div[style*="border-bottom: 1px solid rgb(138, 155, 168);"] {
   --encrypted__font-size: 0.857142857em;
   --external-link__color: #8dbb40;
   --external-link__text-decoration: underline;
+  --mermaid-path__stroke: #555;
+  --mermaid-element__fill: #594032;
+  --mermain-element__stroke: var(--accent__color);
   /* Refactored */
   /* Primary fonts */
   /* Fonts */
@@ -2404,37 +2415,4 @@ span.bp3-icon:empty::before {
   margin-left: -20px;
   overflow-wrap: break-spaces;
   word-break: break-word;
-}
-
-/* Bullet Zoom Focus
-When zoomed in on a bullet add the tag #.rm-focus to the parent block
-to create a minimal writing environment. This only works when zoomed in
-so there is no need to remove the tag when done.
-*/
-.zoom-path-view + div .rm-focus div,
-.zoom-path-view + div .rm-focus .rm-block-input {
-  font-family: "Calendas Plus", "Lora", "Droid Serif", "Georgia", serif;
-  font-size: 20px;
-  line-height: 1.5em;
-  /* space between lines */
-}
-
-.zoom-path-view + div .rm-focus.roam-block-container .roam-block-container {
-  margin-top: 0.7em;
-  /* space between blocks */
-}
-
-.zoom-path-view + div .rm-focus.roam-block-container .controls {
-  visibility: hidden;
-}
-.zoom-path-view + div .rm-focus.roam-block-container .controls:hover {
-  visibility: visible;
-}
-
-.zoom-path-view + div .rm-focus .block-border-left {
-  border: none !important;
-}
-
-.zoom-path-view + div .rm-focus .rm-level-1 {
-  margin-left: -4px;
 }
