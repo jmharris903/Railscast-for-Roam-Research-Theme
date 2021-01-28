@@ -1037,6 +1037,20 @@ button[style*="border: 0.5px solid rgb(206, 217, 224);"] {
   stroke-width: 1.5px;
 }
 
+.react-resizable-handle-se {
+  opacity: 0.7 !important;
+  background-color: var(--mermaid-element__fill) !important;
+  border: none !important;
+}
+
+.react-resizable-handle {
+  border-bottom: 3px solid var(--mermain-element__stroke) !important;
+  border-right: 3px solid var(--mermain-element__stroke) !important;
+  background: none !important;
+  height: 10px;
+  width: 10px;
+}
+
 /* Page link */
 .rm-page-ref-brackets,
 .rm-page-ref__brackets {
