@@ -2,7 +2,7 @@
 ### ROAM Railscast THEME ###
 > Many thanks to the Roam Slack community for all the resources, particularly @Anthony, @Calhistoriaan, @Devon, @Murf, @Malcolm Ocean, and @David Cranall.
 > Edits by Jeff Harris
-> v2.0.9
+> v2.0.10
 */
 
 @charset "UTF-8";
@@ -2429,4 +2429,38 @@ span.bp3-icon:empty::before {
   margin-left: -20px;
   overflow-wrap: break-spaces;
   word-break: break-word;
+}
+
+/* Bullet Zoom Focus
+When zoomed in on a bullet add the tag #.rm-focus to the parent block
+to create a minimal writing environment. This only works when zoomed in
+so there is no need to remove the tag when done.
+*/
+.zoom-path-view + div .rm-focus div,
+.zoom-path-view + div .rm-focus .rm-block-input {
+  font-family: "Calendas Plus", "Lora", "Droid Serif", "Georgia", serif;
+  font-size: 20px;
+  line-height: 1.5em;
+  /* space between lines */
+}
+
+.zoom-path-view + div .rm-focus .rm-multibar {
+  display: none;
+}
+
+.zoom-path-view + div .rm-focus.roam-block-container .roam-block-container {
+  margin-top: 0.7em;
+  /* space between blocks */
+}
+
+.zoom-path-view + div .rm-focus.roam-block-container .controls {
+  display: none;
+}
+
+.zoom-path-view + div .rm-focus .block-border-left {
+  border: none;
+}
+
+.zoom-path-view + div .rm-focus .rm-level-1 {
+  margin-left: -4px;
 }
