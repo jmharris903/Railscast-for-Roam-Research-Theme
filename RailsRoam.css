@@ -3,9 +3,8 @@
 ### ROAM Railscast THEME ###
 > Many thanks to the Roam Slack community for all the resources, particularly @Anthony, @Calhistoriaan, @Devon, @Murf, @Malcolm Ocean, and @David Cranall.
 > Edits by Jeff Harris
-> v2.0.11
+> v2.0.12
 */
-
 :root {
   /* Roam default variables */
   --primary-color: #137cbd;
@@ -15,8 +14,10 @@
   --main-font__color: #999;
   --main-font__font-family: "Inter", sans-serif;
   --main-font__font-size: 14px;
-  --caret-color: #0080ff;
+  --caret__color: #0080ff;
   --accent__color: #e98924;
+  --accent-font__color: #1189bd;
+  /* Components */
   --alias__background-color: transparent;
   /* Legacy alias */
   --alias__color: #d8ac11;
@@ -47,7 +48,7 @@
   --blockquote__text-align: justify;
   --blockquote__text-justify: inter-word;
   --code-font__color: #6d9cbe;
-  --code-font__font-family: "Source Code Pro", "Courier New", Courier, monospace;
+  --code-font__font-family: "Source Code Pro", monospace;
   --code-font__font-size: 0.9rem;
   --code__background: #002b36;
   --code__background_gutter: #073642;
@@ -82,11 +83,11 @@
   --kanban-card__background-color: #555555;
   --kanban-card__color: #6d9cbe;
   --kanban-column__background-color: #454545;
-  --kanban-column__color: #e98924;
+  --kanban-column__color: var(--accent__color);
   --linked-reference__backgound-color_1: #d8ac6e1a;
   --linked-reference__backgound-color_2: #d8ac6e1a;
   --linked-reference__backgound-color_3: #d8ac6e1a;
-  --menu__color: #e98924;
+  --menu__color: var(--accent__color);
   --menu__background: #333;
   --mermaid-path__stroke: #555;
   --mermaid-element__fill: #594032;
@@ -108,6 +109,24 @@
   --pomodoro__color: #fc5963;
   --pomodoro__color_break: #8dbb40;
   --pomodoro__color_running: var(--pomodoro__color);
+  --query__border: 0.75px solid #f2c98f1a;
+  --rm-g__background-color_block: var(--inline-search-bg);
+  --rm-g__background-color_left-border: #ab6634;
+  --table__border: 1px solid #444;
+  --table__font-size: 0.85em;
+  --tag__background-color_hover: var(--accent__color);
+  --tag__border-radius: 2em;
+  --tag__color: #777;
+  --tag__color_hover: #fff;
+  --tag__color_hashtag: #ab6634;
+  --tag__padding: 0.071428571em 0.428571429em 0.214285714em;
+  --todo-checkmark__background-color: #555;
+  --todo-checkmark__color: #137cbd;
+  /* Saving icon colors */
+  --status-icon__background-color_saving-local: #99280f;
+  --status-icon__background-color_saving-remote: #d9822b;
+  --status-icon__background-color_synched: #0f9960;
+  --help__background-color: #333;
   /* Refactored */
   /* Primary fonts */
   /* Fonts */
@@ -127,13 +146,13 @@
   --h2-font__link--color: var(--page-link__color);
   --h3-font: var(--h1-font);
   --h3-font-color: #1189bd;
-  --h3-font-size: 1.2rem;
+  --h3-font-size: 1.3em;
   --h3-font__link--color: var(--page-link__color);
   --highlight-background-color: #008aff5e;
   --highlight-font-color: #bbb;
   --highlight-link-color: #ff6000;
   --left-sidebar-font-color: #1189bd;
-  --left-sidebar-font-color-hover: #e98924;
+  --left-sidebar-font-color-hover: var(--accent__color);
   --left-sidebar-font-size: 1rem;
   --left-sidebar-shortcuts-color: var(--left-sidebar-font-color);
   --left-sidebar-shortcuts-font-size: 1rem;
@@ -152,12 +171,6 @@
   --search-outline: #e9892475;
   --search-selected-row: #4c4c4c;
   --strong: #508bb5;
-  --tag-font-color: #777;
-  --tag-font-color-hover: #fff;
-  --tag-hashtag: #ab6634;
-  --tag-hover-bg: #e98924;
-  --tag-padding: 0.071428571em 0.428571429em 0.214285714em;
-  --tag-radius: 2em;
   /* Backgrounds and objects */
   --block-highlight: #00588e;
   --block-highlight-current: rgba(255, 255, 255, 0.05);
@@ -171,9 +184,6 @@
   --bullet-outline-hover: rgba(255, 149, 0, 0.4);
   --bullet-position: 4px;
   --bullet-version: #137cbd;
-  --checkmark-border: #137cbd;
-  --checkmark-bg: #555;
-  --checkmark-color: #137cbd;
   --hr: rgba(225, 117, 28, 0.5);
   --inline-search-bg: #333;
   --left-sidebar-bg: #323232;
@@ -199,19 +209,10 @@
   --pages-search-outline: #e9892475;
   --pages-table-border: #2f373d;
   --pages-sorted-color: #508bb5;
-  --table-border: #444;
-  --table-font-size: 0.85rem;
-  --no-query-results: "Query returned no results";
-  --no-query-results-color: #fc5963;
-  --query-results-border: #f2c98f1a;
   /* Scrollbar settings - to disable set values to none */
   --scrollbar-thumb: #323232;
   --scrollbar-thumb: #ffffff10;
   --scrollbar-track: rgba(153, 153, 153, 0.1);
-  /* Saving icon colors */
-  --saving-local: #99280f;
-  --saving-remote: #d9822b;
-  --synched: #0f9960;
   /* JH overrides */
   /*   --main-font: 'Calendas Plus', serif;
   --main-font__font-size: 16px;
@@ -293,7 +294,7 @@
 
 /* Custom checkboxes */
 .bp3-control .bp3-control-indicator {
-  background-color: var(--checkmark-bg);
+  background-color: var(--todo-checkmark__background-color);
   background-image: -webkit-gradient(
     linear,
     left top,
@@ -309,7 +310,7 @@
 }
 
 .bp3-control:hover .bp3-control-indicator {
-  background-color: var(--checkmark-color);
+  background-color: var(--todo-checkmark__color);
   background-image: none;
 }
 
@@ -901,11 +902,20 @@ div .kanban-card {
 
 /* Linked reference */
 .rm-reference-container {
-  margin-bottom: 2em;
+  margin-bottom: 0em !important;
+}
+.rm-reference-container.dont-focus-block {
+  margin-bottom: 0 !important;
 }
 .rm-reference-container span[style*="color: red;"] {
   /* Embed link */
   color: var(--main-font__color) !important;
+}
+.rm-reference-container div[style*="color: rgb(206, 217, 224);"] {
+  font-size: var(--h3-font-size);
+}
+.rm-reference-container div[style*="color: rgb(206, 217, 224);"] strong {
+  font-weight: normal;
 }
 
 .rm-reference-item {
@@ -919,6 +929,17 @@ div .kanban-card {
 }
 .rm-reference-item .rm-block-text {
   padding-right: 30px;
+}
+
+/* Unlinked References */
+.rm-reference-container + div {
+  margin-top: 3em;
+  border-top: 1px solid var(--hr);
+  padding-top: 2em;
+}
+.rm-reference-container + div strong[style*="color: rgb(206, 217, 224);"] {
+  font-size: var(--h3-font-size);
+  font-weight: normal;
 }
 
 /* Menus */
@@ -1138,158 +1159,31 @@ span[data-link-title^="December "] .rm-page-ref--link {
 
 /* Query */
 .rm-query {
-  border: 0.75px solid var(--query-results-border);
-  border-radius: 7px;
+  border: var(--query__border);
 }
 .rm-query .rm-query-title {
   background-color: var(--linked-reference__backgound-color_1);
-  border-top-left-radius: 7px;
-  border-top-right-radius: 7px;
   color: var(--breadcrumb-color);
-  font-size: 0.8em;
   padding: var(--s1);
 }
 
-/* Custom message for empty querty results */
-.rm-block-text .rm-reference-main .rm-mentions:empty:after {
-  color: var(--no-query-results-color);
-  content: var(--no-query-results);
-  font-family: var(--main-font__font-family);
-  padding: var(--s1);
-}
-
-/* RR change: MINIMIZE QUERIES: add any one of the following tags before the beginning of your query (in the same block):
-
-    #min-title = hides the page reference link / page title
-    #min-con = hides the contextual reference information (breadcrumbs)
-    #minimal = hides both the title and the context
-    #min-q = hides the query string, similar to legacy behavior
-    #min-all = hides everything — title, context, and query string
-    #min-todo = hides everything and makes a compact list
-
-inspired by Matt Goldenberg */
-[data-tag="minimal"] {
-  display: none !important;
-}
-[data-tag="minimal"] + .rm-query .rm-title-arrow-wrapper {
-  display: none !important;
-}
-[data-tag="minimal"] + .rm-query .zoom-mentions-view {
-  display: none !important;
-}
-[data-tag="minimal"] + .rm-query .rm-query-title::after {
-  content: " #minimal";
-}
-
-[data-tag="min-title"] {
-  display: none !important;
-}
-[data-tag="min-title"] + .rm-query .rm-title-arrow-wrapper {
-  display: none !important;
-}
-[data-tag="min-title"] + .rm-query .rm-query-title::after {
-  content: " #minimal";
-}
-
-[data-tag="min-con"] {
-  display: none !important;
-}
-[data-tag="min-con"] + .rm-query .zoom-mentions-view {
-  display: none !important;
-}
-[data-tag="min-con"] + .rm-query .rm-query-title::after {
-  content: " #minimal";
-}
-
-[data-tag="min-q"] {
-  display: none !important;
-}
-[data-tag="min-q"] + .rm-query .rm-query-title {
-  display: none !important;
-}
-
-[data-tag="min-all"] {
-  display: none !important;
-}
-[data-tag="min-all"] + .rm-query .zoom-mentions-view {
-  display: none !important;
-}
-[data-tag="min-all"] + .rm-query .rm-title-arrow-wrapper {
-  display: none !important;
-}
-[data-tag="min-all"] + .rm-query .rm-query-title {
-  display: none !important;
-}
-
-[data-tag="min-todo"] {
-  display: none !important;
-}
-[data-tag="min-todo"] + .rm-query div[style*="margin-left: 12px;"] {
-  margin-left: 0 !important;
-}
-[data-tag="min-todo"] + .rm-query .zoom-mentions-view {
-  display: none !important;
-}
-[data-tag="min-todo"] + .rm-query .rm-title-arrow-wrapper {
-  display: none !important;
-}
-[data-tag="min-todo"] + .rm-query .rm-query-title {
-  display: none !important;
-}
-[data-tag="min-todo"] + .rm-query .rm-reference-item {
-  background: none;
-  margin-left: -12px;
-  margin-top: 3px;
-  padding: 0;
-}
-
-.rm-g.rm-not-focused .rm-page-ref[data-tag=".rm-g"] {
-  display: none;
-  color: green;
-}
-
+/* rm-g */
 .rm-g.rm-not-focused .rm-block {
-  background-color: var(--inline-search-bg);
-  margin: 0 0 0 35px;
+  background-color: var(--rm-g__background-color_block);
+  margin: 0 0 0 15px;
   /* fix for expand bullets feature */
 }
 
 .rm-g.rm-not-focused.rm-block--open.rm-not-focused > .rm-block__self {
-  position: absolute;
   border-left: 2px solid transparent;
-  border-radius: 20px 0px 0px 20px;
-  width: 40px;
-  top: 0;
-  bottom: 0;
-  overflow: hidden;
+  border-radius: 8px 0px 0px 8px;
 }
 
 .rm-g.rm-not-focused.rm-block--open.rm-not-focused
   > .rm-block__self
   > .rm-block__input--view {
-  background-color: var(--tag-hashtag);
-  color: var(--highlight-font-color);
-  left: 5px;
-  transform: rotate(90deg) translateY(-1em);
-  transform-origin: top left;
-  padding-left: 10px;
-  margin-left: 7px;
-}
-
-.rm-g.rm-not-focused.rm-block--open > .rm-block__children {
-  margin-left: 0px !important;
-  min-width: 100%;
-}
-
-.rm-g.rm-not-focused.rm-block--open.rm-focused .rm-block__self {
-  flex: 1 1 100%;
-  width: 100%;
-}
-
-.rm-g.rm-not-focused.rm-block--closed > .rm-block__self .rm-block-separator {
-  height: 100%;
-  border-left: 2px solid #8a9ba8;
-  border-radius: 50px;
+  background-color: var(--rm-g__background-color_left-border);
+  color: var(--rm-g__background-color_left-border);
 }
 
 :root {
@@ -1421,163 +1315,52 @@ span.flatpickr-weekday {
 }
 
 /* Select Menu */
-select {
-  background-color: var(--select-bg) !important;
-  border-color: var(--search-outline);
-  border-radius: 4px;
-  font-size: 0.857142857rem;
-  padding: 1px 5px;
+.rm-option {
+  border: 1px solid var(--accent-font__color);
+  color: var(--accent-font__color);
+  margin: 0 4px;
+}
+.rm-option:after {
+  border-top: 4px solid var(--accent-font__color);
 }
 
 /* Table */
 .roam-table {
-  overflow-x: scroll;
-  padding-bottom: 24px;
+  padding-bottom: 24px !important;
 }
-.roam-table th {
-  border: 1px solid var(--table-border);
-  font-family: var(--main-font__font-family);
-  font-size: var(--table-font-size);
-  margin: 0;
-}
-.roam-table td {
-  border: 1px solid var(--table-border);
-  font-family: var(--main-font__font-family);
-  font-size: var(--table-font-size);
-  margin: 0;
-}
+.roam-table th,
+.roam-table td,
 .roam-table tr {
-  border: 1px solid var(--table-border);
+  border: var(--table__border);
   font-family: var(--main-font__font-family);
-  font-size: var(--table-font-size);
-  margin: 0;
-}
-.roam-table div {
-  font-family: var(--main-font__font-family);
+  font-size: var(--table__font-size);
 }
 
 /* Tags */
 .rm-page-ref--tag {
-  border-radius: var(--tag-radius);
-  color: var(--tag-font-color);
-  padding: var(--tag-padding);
+  border-radius: var(--tag__border-radius);
+  color: var(--tag__color);
+  padding: var(--tag__padding);
 }
 .rm-page-ref--tag:hover {
-  background-color: var(--tag-hover-bg);
-  color: var(--tag-font-color-hover) !important;
+  background-color: var(--tag__background-color_hover);
+  color: var(--tag__color_hover) !important;
   text-decoration: none;
 }
 
 span.rm-page-ref.rm-page-ref--tag:hover {
-  background-color: var(--tag-hover-bg);
-  color: var(--tag-font-color-hover) !important;
+  background-color: var(--tag__background-color_hover);
+  color: var(--tag__color_hover) !important;
   text-decoration: none;
-}
-
-/* Hashtag color */
-.rm-page-ref--tag[data-tag="42SmartBlock"]:before {
-  content: "#" !important;
-  color: var(--tag-hashtag) !important;
-  position: absolute;
-  visibility: visible;
-  background: none !important;
-}
-
-/* It is probably best to move these out and be used in roam/css code block */
-/* CUSTOM LINKS: Uncomment to use the section below to create custom styles for specific links. Change "Theme" to match some portion of the title of the link you want to customize. Adjust the background-color value ("ff6000") and color value ("fff") to suite your preferences. Duplicate the section for each new link to be customized */
-/* 
-span[data-link-title*="Theme"] .rm-page-ref-link-color,
-span[data-link-title*="Theme"] .rm-page-ref-namespace-color {
-  background-color: #ff6000;
-  color: #fff;
-  padding: 3px 7px;
-  line-height: 2em;
-  font-weight: 500;
-  border-radius: 0.1875em;
-}
- */
-/* Template for creating tags in the shape of flags */
-span[data-tag*="Meeting"] {
-  visibility: hidden;
-  padding-right: 28px;
-  padding-left: 0;
-}
-
-span[data-tag*="Meeting"]:before {
-  content: "Meeting";
-  visibility: visible;
-  background-color: #1189bd;
-  position: absolute;
-  color: #ddd;
-  padding-right: 24px;
-  padding-left: 10px;
-  clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%);
-  border-radius: 4px 0 0 4px;
-}
-
-.rm-page-ref[data-tag*="meeting"] {
-  display: inline-flex;
-}
-
-span.rm-page-ref.rm-page-ref--tag[data-tag*="meeting"]:hover {
-  background: none !important;
-}
-
-span[data-tag*="meeting"] {
-  padding-right: 28px;
-  padding-left: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-span[data-tag*="meeting"]:before {
-  content: "Meeting";
-  visibility: visible;
-  background-color: #1189bd;
-  position: absolute;
-  color: #ddd;
-  padding-right: 24px;
-  padding-left: 10px;
-  clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%);
-  border-radius: 4px 0 0 4px;
-}
-
-.meeting > div.rm-block-main {
-  color: var(--strong);
-}
-
-[data-tag]::before {
-  content: "#";
-  color: var(--tag-hashtag);
-  visibility: visible;
-  position: absolute;
-}
-
-[data-tag]:hover::before {
-  color: var(--tag-font-color-hover);
 }
 
 /* Todo checkmark */
 .checkmark {
-  border: 1px solid var(--checkmark-color);
+  border: 1px solid var(--todo-checkmark__color);
 }
 
-.check-container {
-  padding-right: 4px;
-}
-
-[data-page-links*='"DONE"'] > .rm-block__self {
-  opacity: 0.55;
-}
-
-.rm-zoom-item .check-container {
-  padding-right: 0;
-}
-
-.rm-zoom-item .checkmark {
-  height: 10px;
-  width: 10px;
-  margin-top: 5px;
+.zoom-mentions-view .check-container {
+  top: 2px !important;
 }
 
 /* Twitter embeds */
@@ -1636,7 +1419,7 @@ span[data-tag*="meeting"]:before {
 /* Body styles */
 body {
   background-color: var(--body-bg);
-  caret-color: var(--caret-color);
+  caret-color: var(--caret__color);
   font-family: var(--main-font__font-family);
   font-size: var(--main-font__font-size);
 }
@@ -1882,6 +1665,18 @@ strong,
   color: var(--search-font-color);
 }
 
+.rm-sync--status-icon__background-color_saving-local {
+  background-color: var(--status-icon__background-color_saving-local);
+}
+
+.rm-sync--status-icon__background-color_saving-remote {
+  background-color: var(--status-icon__background-color_saving-remote);
+}
+
+.rm-sync--synced {
+  background-color: var(--status-icon__background-color_synched);
+}
+
 /* Breadcrumbs */
 .zoom-mentions-view {
   font-size: var(--breadcrumb-font-size);
@@ -1902,16 +1697,20 @@ strong,
   mix-blend-mode: saturation;
 }
 
-/* Comment/un-comment to remove checkboxes in breadcrumb navigation */
-.roam-article
-  > div:first-child:not(.roam-log-container)
-  > div:first-child
-  label.check-container,
-.roam-reference-item
-  > div:first-child:not(.roam-log-container)
-  > div:first-child
-  label.check-container {
-  display: none;
+/* Help */
+.rm-help-popup__drag-handle.bp3-card {
+  background-color: var(--help__background-color);
+}
+
+.rm-help-popup,
+.rm-help-results .rm-help-functions .rm-help-function__name,
+.rm-help-results .rm-help-functions .rm-help-function__shortcut {
+  color: var(--main-font__color);
+}
+
+.rm-help-results .rm-help-categories {
+  border-right: 1px solid #e8eaeb;
+  border-right: 1px solid var(--hr);
 }
 
 /* Scrollbars - NOTE: Requires 'gloabl/features/scrollbars/mosaic/main' or 'gloabl/features/scrollbars/simple/main' to be installed */
@@ -1999,6 +1798,9 @@ div::-webkit-scrollbar-thumb:hover {
 }
 #right-sidebar .rm-block-text {
   padding-right: 30px;
+}
+#right-sidebar .rm-title-textarea {
+  width: 95%;
 }
 
 #roam-right-sidebar-content div {
@@ -2092,10 +1894,110 @@ span.bp3-icon:empty::before {
   padding-right: 30px;
 }
 
+/* Query */
+.rm-query {
+  border-radius: 7px;
+}
+.rm-query .rm-query-title {
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  font-size: 0.8em;
+  display: flex;
+}
+
+/* Tags */
+/* Hashtag color */
+.rm-page-ref--tag[data-tag="42SmartBlock"]:before {
+  content: "#" !important;
+  color: var(--tag__color_hashtag) !important;
+  position: absolute;
+  visibility: visible;
+  background: none !important;
+}
+
+/* It is probably best to move these out and be used in roam/css code block */
+/* CUSTOM LINKS: Uncomment to use the section below to create custom styles for specific links. Change "Theme" to match some portion of the title of the link you want to customize. Adjust the background-color value ("ff6000") and color value ("fff") to suite your preferences. Duplicate the section for each new link to be customized */
+/* 
+span[data-link-title*="Theme"] .rm-page-ref-link-color,
+span[data-link-title*="Theme"] .rm-page-ref-namespace-color {
+  background-color: #ff6000;
+  color: #fff;
+  padding: 3px 7px;
+  line-height: 2em;
+  font-weight: 500;
+  border-radius: 0.1875em;
+}
+ */
+/* Template for creating tags in the shape of flags */
+span[data-tag*="Meeting"] {
+  visibility: hidden;
+  padding-right: 28px;
+  padding-left: 0;
+}
+
+span[data-tag*="Meeting"]:before {
+  content: "Meeting";
+  visibility: visible;
+  background-color: #1189bd;
+  position: absolute;
+  color: #ddd;
+  padding-right: 24px;
+  padding-left: 10px;
+  clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%);
+  border-radius: 4px 0 0 4px;
+}
+
+/* special meeting tag for #.meeting */
+.rm-page-ref[data-tag*="meeting"] {
+  display: inline-flex;
+}
+
+span.rm-page-ref.rm-page-ref--tag[data-tag*="meeting"]:hover {
+  background: none !important;
+}
+
+span[data-tag*="meeting"] {
+  padding-right: 28px;
+  padding-left: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+span[data-tag*="meeting"]:before {
+  content: "Meeting";
+  visibility: visible;
+  background-color: #1189bd;
+  position: absolute;
+  color: #ddd;
+  padding-right: 24px;
+  padding-left: 10px;
+  clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%);
+  border-radius: 4px 0 0 4px;
+}
+
+.meeting > div.rm-block-main {
+  color: var(--strong);
+}
+
+[data-tag]::before {
+  content: "#";
+  color: var(--tag__color_hashtag);
+  visibility: visible;
+  position: absolute;
+}
+
+[data-tag]:hover::before {
+  color: var(--tag__color_hover);
+}
+
+/* Todo checkmark */
+[data-page-links*='"DONE"'] > .rm-block__self {
+  opacity: 0.55;
+}
+
+/* Breadcrumbs */
 .rm-find-or-create-wrapper {
   flex: 0 1 100% !important;
-  position: relative;
-  transition: all 200ms ease-in;
 }
 .rm-find-or-create-wrapper .bp3-transition-container {
   width: 100%;
@@ -2154,4 +2056,89 @@ so there is no need to remove the tag when done.
 
 .zoom-path-view + div .rm-focus .rm-level-1 {
   margin-left: -4px;
+}
+
+/* RR change: MINIMIZE QUERIES: add any one of the following tags before the beginning of your query (in the same block):
+
+    #min-title = hides the page reference link / page title
+    #min-con = hides the contextual reference information (breadcrumbs)
+    #minimal = hides both the title and the context
+    #min-q = hides the query string, similar to legacy behavior
+    #min-all = hides everything — title, context, and query string
+    #min-todo = hides everything and makes a compact list
+
+inspired by Matt Goldenberg */
+[data-tag="minimal"] {
+  display: none !important;
+}
+[data-tag="minimal"] + .rm-query .rm-title-arrow-wrapper {
+  display: none !important;
+}
+[data-tag="minimal"] + .rm-query .zoom-mentions-view {
+  display: none !important;
+}
+[data-tag="minimal"] + .rm-query .rm-query-title::after {
+  content: " #minimal";
+}
+
+[data-tag="min-title"] {
+  display: none !important;
+}
+[data-tag="min-title"] + .rm-query .rm-title-arrow-wrapper {
+  display: none !important;
+}
+[data-tag="min-title"] + .rm-query .rm-query-title::after {
+  content: " #minimal";
+}
+
+[data-tag="min-con"] {
+  display: none !important;
+}
+[data-tag="min-con"] + .rm-query .zoom-mentions-view {
+  display: none !important;
+}
+[data-tag="min-con"] + .rm-query .rm-query-title::after {
+  content: " #minimal";
+}
+
+[data-tag="min-q"] {
+  display: none !important;
+}
+[data-tag="min-q"] + .rm-query .rm-query-title {
+  display: none !important;
+}
+
+[data-tag="min-all"] {
+  display: none !important;
+}
+[data-tag="min-all"] + .rm-query .zoom-mentions-view {
+  display: none !important;
+}
+[data-tag="min-all"] + .rm-query .rm-title-arrow-wrapper {
+  display: none !important;
+}
+[data-tag="min-all"] + .rm-query .rm-query-title {
+  display: none !important;
+}
+
+[data-tag="min-todo"] {
+  display: none !important;
+}
+[data-tag="min-todo"] + .rm-query div[style*="margin-left: 12px;"] {
+  margin-left: 0 !important;
+}
+[data-tag="min-todo"] + .rm-query .zoom-mentions-view {
+  display: none !important;
+}
+[data-tag="min-todo"] + .rm-query .rm-title-arrow-wrapper {
+  display: none !important;
+}
+[data-tag="min-todo"] + .rm-query .rm-query-title {
+  display: none !important;
+}
+[data-tag="min-todo"] + .rm-query .rm-reference-item {
+  background: none;
+  margin-left: -12px;
+  margin-top: 3px;
+  padding: 0;
 }
