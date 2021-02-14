@@ -129,7 +129,8 @@
   --main-font__font-size: 14px;
   --caret__color: #0080ff;
   --accent__color: #e98924;
-  --accent-font__color: #1189bd;
+  --accent__color_alert: #ff6000;
+  --accent__color-font: #1189bd;
   --block-highlight__background-color_selected: #00588e;
   --block-highlight__background-color_active: rgba(255, 255, 255, 0.05);
   --block-highlight__background-color_mentions: #312c28;
@@ -155,7 +156,7 @@
   --left-sidebar-shortcuts__color_title: var(--left-sidebar__color);
   --left-sidebar-shortcuts__font-size: 1rem;
   /* right sidebar */
-  --right-sidebar__color_title-closed: var(--accent-font__color);
+  --right-sidebar__color_title-closed: var(--accent__color-font);
   --right-sidebar__background-color: #323232;
   --right-sidebar__border: #e9892475;
   --right-sidebar-masonry__background-color: var(--body__background-color);
@@ -198,7 +199,7 @@
   --highlight-link-color: #ff6000;
   --hr__border: rgba(225, 117, 28, 0.5);
   --hr__margin-bottom: 2.5em;
-  --hr__margin-top: 0.785714286em;
+  --hr__margin-top: 11px;
   --strikethrough__color: inherit;
   --strikethrough__font-style: italic;
   --strikethrough__opacity: 0.6;
@@ -290,6 +291,10 @@
 
 .rm-block-main .bp3-button:not([class*="bp3-intent-"]) {
   min-height: 25px;
+}
+
+.rm-displaced-button {
+  color: var(--accent__color_alert);
 }
 
 /* All Pages */
@@ -1324,12 +1329,12 @@ span.flatpickr-weekday {
 
 /* Select Menu */
 .rm-option {
-  border: 1px solid var(--accent-font__color);
-  color: var(--accent-font__color);
+  border: 1px solid var(--accent__color-font);
+  color: var(--accent__color-font);
   margin: 0 4px;
 }
 .rm-option:after {
-  border-top: 4px solid var(--accent-font__color);
+  border-top: 4px solid var(--accent__color-font);
 }
 
 /* Table */
@@ -1582,15 +1587,18 @@ strong,
   color: var(--calculation__color) !important;
 }
 
+hr {
+  border-top: 1px solid var(--hr__border);
+}
+
 .rm-hr {
   border: 1px solid var(--hr__border);
   margin-bottom: var(--hr__margin-bottom);
   margin-top: var(--hr__margin-top);
 }
 
-hr {
-  margin-top: 0.785714286em;
-  border-top: 1px solid var(--hr__border);
+.level2 {
+  font-family: var(--main-font__font-family);
 }
 
 /* Topbar */
@@ -1885,7 +1893,7 @@ span.rm-page-ref.rm-page-ref--tag[data-tag*="meeting"]:hover {
 }
 
 span[data-tag*="meeting"] {
-  padding-right: 22px;
+  padding-right: 24px;
   padding-left: 0;
   padding-top: 0;
   padding-bottom: 0;
