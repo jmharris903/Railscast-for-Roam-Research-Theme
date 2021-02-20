@@ -4,8 +4,6 @@ to create a minimal writing environment. This only works when zoomed in
 so there is no need to remove the tag when done.
 */
 
-@import url('https://jmharris903.github.io/Railscast-for-Roam-Research-Theme/fonts/calendas-plus.css');
-
 .zoom-path-view + div .rm-focus div,
 .zoom-path-view + div .rm-focus .rm-block-input {
   font-family: "Calendas Plus", "Lora", "Droid Serif", "Georgia", serif !important;
