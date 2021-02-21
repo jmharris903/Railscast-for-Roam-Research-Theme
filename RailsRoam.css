@@ -3,7 +3,7 @@
 ### ROAM Railscast THEME ###
 > Many thanks to the Roam Slack community for all the resources, particularly @Anthony, @Calhistoriaan, @Devon, @Murf, @Malcolm Ocean, @David Cranall @Ahbay and most importantly Daniel van der Merwe @vandermerwed.
 > Edits by Jeff Harris
-> v2.0.13
+> v2.0.14
 */
 :root {
   /* Roam default variables */
@@ -16,6 +16,11 @@
   --alias__color: #d8ac11;
   --attr__color: rgba(17, 137, 189, 0.65);
   --attr__font-weight: 700;
+  --block-embed__background-color: #d8ac6e0e;
+  --block-embed__background-color_margin-action: var(
+    --blockquote__border_color
+  );
+  --block-embed__border-left_margin-action: var(--bullet-outline__border_hover);
   --block-ref__background-color: none;
   --block-ref__background-color_hover: #111;
   --block-ref__border-bottom: rgba(254, 207, 43, 0.4);
@@ -23,16 +28,6 @@
   --block-ref__font-size: 1em;
   --block-ref__background-color_inline: rgba(33, 33, 33, 0.5);
   --block-ref__border-left_inline: var(--blockquote__border_color);
-  --block-callout__background-color_grey: #333;
-  --block-callout__background-color_blue: rgba(0, 170, 255, 0.1);
-  --block-callout__background-color_red: rgba(249, 87, 56, 0.25);
-  --block-callout__background-color_orange: rgba(238, 150, 75, 0.25);
-  --block-callout__background-color_yellow: rgba(244, 211, 94, 0.2);
-  --block-embed__background-color: #d8ac6e0e;
-  --block-embed__background-color_margin-action: var(
-    --blockquote__border_color
-  );
-  --block-embed__border-left_margin-action: var(--bullet-outline__border_hover);
   --blockquote__background-color: none;
   --blockquote__border_color: #30404d;
   --blockquote__border-left: 5px solid;
@@ -75,6 +70,7 @@
   --kanban-card__color: #6d9cbe;
   --kanban-column__background-color: #454545;
   --kanban-column__color: var(--accent__color);
+  --latex__font-family: var(--main-font__font-family);
   --linked-reference__backgound-color_1: #d8ac6e1a;
   --linked-reference__backgound-color_2: #d8ac6e1a;
   --linked-reference__backgound-color_3: #d8ac6e1a;
@@ -83,11 +79,6 @@
   --mermaid-path__stroke: #555;
   --mermaid-element__fill: #594032;
   --mermaid-element__stroke: var(--accent__color);
-  /* Seasonal colors for date links */
-  --page-link-date__color_q1: #50b2c0;
-  --page-link-date__color_q2: #c5d86d;
-  --page-link-date__color_q3: #ff6b6b;
-  --page-link-date__color_q4: #ca7d4a;
   --page-brackets__color: rgba(228, 124, 67, 0.25);
   --page-link__color: #eb9854;
   --page-link-namespace__color: #f57030;
@@ -146,6 +137,15 @@
   --help__background-color: #333;
   --help__border: var(--hr__border);
   --help__color: var(--main-font__color);
+  --help-category__color: var(--h1__color);
+  --help-resource__color: var(--accent__color-font);
+  --help-resource__background-color_hover: var(
+    --search__background-color_selected-row
+  );
+  --help-resource-icon__background-color: var(
+    --left-sidebar__background-color_hover
+  );
+  --help-resource-icon__color: var(--accent__color-font);
   /* left sidebar */
   --left-sidebar__background-color: #323232;
   --left-sidebar__background-color_hover: #1f1f1f;
@@ -424,54 +424,6 @@ span[style*="background-color: rgb(235, 241, 245); border-radius: 4px;"] {
 .rm-attr-ref {
   color: var(--attr__color);
   font-weight: var(--attr__font-weight);
-}
-
-/*  Block Callouts
-    Use special tags to create colored callout blocks
-    #.rm-block--grey will callout the entire block, including children
-    #.rm-self--grey will only callout the block the tag is added to
-    #.rm-child--grey will callout the children of the block the tag is added to
-
-    Available colors
-    --grey
-    --blue
-    --red
-    --orange
-    --yellow
-*/
-.rm-block--grey,
-.rm-self--grey > div.rm-block-main,
-.rm-child--grey .rm-block-children {
-  background-color: var(--block-callout__background-color_grey);
-  border-radius: 0px 5px 5px 0px !important;
-}
-
-.rm-block--blue,
-.rm-self--blue > div.rm-block-main,
-.rm-child--blue .rm-block-children {
-  background-color: var(--block-callout__background-color_blue);
-  border-radius: 0px 5px 5px 0px !important;
-}
-
-.rm-block--red,
-.rm-self--red > div.rm-block-main,
-.rm-child--red .rm-block-children {
-  background-color: var(--block-callout__background-color_red);
-  border-radius: 0px 5px 5px 0px !important;
-}
-
-.rm-block--orange,
-.rm-self--orange > div.rm-block-main,
-.rm-child--orange .rm-block-children {
-  background-color: var(--block-callout__background-color_orange);
-  border-radius: 0px 5px 5px 0px !important;
-}
-
-.rm-block--yellow,
-.rm-self--yellow > div.rm-block-main,
-.rm-child--yellow .rm-block-children {
-  background-color: var(--block-callout__background-color_yellow);
-  border-radius: 0px 5px 5px 0px !important;
 }
 
 /* Block Reference */
@@ -913,6 +865,15 @@ div .kanban-card {
   font-family: var(--main-font__font-family);
 }
 
+/* Latex */
+.katex {
+  font: normal 1.21em
+    var(--latex__font-family, KaTeX_Main, "Times New Roman", serif);
+}
+.katex .mathdefault {
+  font-family: var(--latex__font-family, KaTeX_Main, "Times New Roman", serif);
+}
+
 /* Linked reference */
 .rm-reference-container {
   margin-bottom: 0em !important;
@@ -1120,31 +1081,6 @@ button[style*="border: 0.5px solid rgb(206, 217, 224);"] {
   color: var(--h3__color_link);
 }
 
-/* Page date link - organized by quarter */
-span[data-link-title^="January "] .rm-page-ref--link,
-span[data-link-title^="February "] .rm-page-ref--link,
-span[data-link-title^="March "] .rm-page-ref--link {
-  color: var(--page-link-date__color_q1);
-}
-
-span[data-link-title^="April "] .rm-page-ref--link,
-span[data-link-title^="May "] .rm-page-ref--link,
-span[data-link-title^="June "] .rm-page-ref--link {
-  color: var(--page-link-date__color_q2);
-}
-
-span[data-link-title^="July "] .rm-page-ref--link,
-span[data-link-title^="August "] .rm-page-ref--link,
-span[data-link-title^="September "] .rm-page-ref--link {
-  color: var(--page-link-date__color_q3);
-}
-
-span[data-link-title^="October "] .rm-page-ref--link,
-span[data-link-title^="November "] .rm-page-ref--link,
-span[data-link-title^="December "] .rm-page-ref--link {
-  color: var(--page-link-date__color_q4);
-}
-
 /* Pomodoro timer */
 .rm-pomodoro {
   background: var(--pomodoro__background) !important;
@@ -1180,7 +1116,7 @@ span[data-link-title^="December "] .rm-page-ref--link {
   padding: var(--s1);
 }
 
-/* rm-g */
+/* #.rm-g */
 .rm-g.rm-not-focused .rm-block {
   background-color: var(--rm-g__background-color_block);
   margin: 0 0 0 15px;
@@ -1655,7 +1591,6 @@ hr {
 
 .rm-zoom.zoom-path-view .rm-zoom-mask {
   background-color: var(--breadcrumb__background-color);
-  mix-blend-mode: unset;
 }
 
 /* Help */
@@ -1663,19 +1598,55 @@ hr {
   background-color: var(--help__background-color);
 }
 
-.rm-help-popup,
-.rm-help-results .rm-help-functions .rm-help-function__name,
-.rm-help-results .rm-help-functions .rm-help-function__shortcut {
+.rm-help-popup {
   color: var(--help__color);
+}
+
+.rm-help-results .rm-help-functions .rm-help-function__name,
+.rm-help-results .rm-help-functions .rm-help-function__shortcut,
+.rm-help-results .rm-help-functions .rm-help-markdown-function__markdown,
+.rm-help-results .rm-help-functions .rm-help-markdown-function__style {
+  color: var(--help__color, #202b33);
+}
+
+.rm-help-results .rm-help-functions .rm-help-category__name {
+  color: var(--help-category__color, #8a9ba8);
 }
 
 .rm-help-results .rm-help-categories {
   border-right: 1px solid var(--help__border);
 }
+.rm-help-results .rm-help-categories .rm-help-category-menu-item:hover {
+  background-color: var(--help-resource__background-color_hover, #f5f5f5);
+}
 
 .intercom-lightweight-app-launcher-icon-open svg path,
 .intercom-dlvlg4 svg path {
   fill: var(--accent__color) !important;
+}
+
+.rm-help-resource:hover {
+  background-color: var(--help-resource__background-color_hover, #f5f5f5);
+}
+
+.rm-help-resource__title,
+.rm-help-resource__description {
+  color: var(--help-resource__color, #202b33);
+}
+
+.rm-help-resource__icon {
+  background-color: var(--help-resource-icon__background-color, #e0eef5);
+  color: var(--help-resource-icon__color, #07659e);
+}
+
+.rm-help-component__title,
+.rm-help-component__description {
+  color: var(--help__color, #202b33);
+}
+
+.rm-help-component__notation {
+  background: var(--help-resource-icon__background-color, #edf0f3);
+  color: var(--help__color, #202b33);
 }
 
 /* Scrollbars - NOTE: Requires 'gloabl/features/scrollbars/mosaic/main' or 'gloabl/features/scrollbars/simple/main' to be installed */
@@ -2060,14 +2031,70 @@ span[data-tag*="meeting"]:before {
   word-break: break-word;
 }
 
-/* Bullet Zoom Focus
+/*  Block Callouts
+    Use special tags to create colored callout blocks
+    #.rm-block--grey will callout the entire block, including children
+    #.rm-self--grey will only callout the block the tag is added to
+    #.rm-child--grey will callout the children of the block the tag is added to
+
+    Available colors
+    --grey
+    --blue
+    --red
+    --orange
+    --yellow
+*/
+:root {
+  --block-callout__background-color_grey: #333;
+  --block-callout__background-color_blue: rgba(0, 170, 255, 0.1);
+  --block-callout__background-color_red: rgba(249, 87, 56, 0.25);
+  --block-callout__background-color_orange: rgba(238, 150, 75, 0.25);
+  --block-callout__background-color_yellow: rgba(244, 211, 94, 0.2);
+}
+
+.rm-block--grey,
+.rm-self--grey > div.rm-block-main,
+.rm-child--grey .rm-block-children {
+  background-color: var(--block-callout__background-color_grey);
+  border-radius: 0px 5px 5px 0px !important;
+}
+
+.rm-block--blue,
+.rm-self--blue > div.rm-block-main,
+.rm-child--blue .rm-block-children {
+  background-color: var(--block-callout__background-color_blue);
+  border-radius: 0px 5px 5px 0px !important;
+}
+
+.rm-block--red,
+.rm-self--red > div.rm-block-main,
+.rm-child--red .rm-block-children {
+  background-color: var(--block-callout__background-color_red);
+  border-radius: 0px 5px 5px 0px !important;
+}
+
+.rm-block--orange,
+.rm-self--orange > div.rm-block-main,
+.rm-child--orange .rm-block-children {
+  background-color: var(--block-callout__background-color_orange);
+  border-radius: 0px 5px 5px 0px !important;
+}
+
+.rm-block--yellow,
+.rm-self--yellow > div.rm-block-main,
+.rm-child--yellow .rm-block-children {
+  background-color: var(--block-callout__background-color_yellow);
+  border-radius: 0px 5px 5px 0px !important;
+}
+
+/* Bullet Zoom Focus v2.4 by Jeff Harris
 When zoomed in on a bullet add the tag #.rm-focus to the parent block
 to create a minimal writing environment. This only works when zoomed in
 so there is no need to remove the tag when done.
 */
 .zoom-path-view + div .rm-focus div,
 .zoom-path-view + div .rm-focus .rm-block-input {
-  font-family: "Calendas Plus", "Lora", "Droid Serif", "Georgia", serif;
+  font-family: "Calendas Plus", "Lora", "Droid Serif", "Georgia", serif !important;
   font-size: 20px;
   line-height: 1.5em;
   /* space between lines */
@@ -2077,21 +2104,108 @@ so there is no need to remove the tag when done.
   display: none;
 }
 
+.zoom-path-view + div .rm-focus .rm-bq {
+  font-size: 18px;
+}
+
+.zoom-path-view + div .rm-focus .rm-hide-bullet > .rm-embed-inner-block-hide {
+  margin-left: -30px;
+}
+
+.zoom-path-view
+  + div
+  .rm-focus
+  .rm-embed-show-bullet
+  .rm-embed-inner-block-hide {
+  margin-left: -2px;
+}
+
 .zoom-path-view + div .rm-focus.roam-block-container .roam-block-container {
   margin-top: 0.7em;
   /* space between blocks */
 }
 
-.zoom-path-view + div .rm-focus.roam-block-container .controls {
-  display: none;
+.zoom-path-view + div .rm-focus .rm-block__controls {
+  visibility: hidden;
 }
 
-.zoom-path-view + div .rm-focus .block-border-left {
-  border: none;
+.zoom-path-view + div .rm-focus .rm-block__self:hover .rm-block__controls {
+  visibility: visible;
 }
 
-.zoom-path-view + div .rm-focus .rm-level-1 {
-  margin-left: -4px;
+/* Outline Highlight
+Highlights where the curser is currently in the outline and highlights the currently active block using the rm-multibar
+*/
+.roam-block-container div.roam-block-container:focus-within {
+  box-shadow: -1px 0px var(--bullet-outline__border_hover);
+}
+
+.roam-block-container div.roam-block-container:hover {
+  box-shadow: -1px 0px var(--bullet__border_closed);
+}
+
+.rm-block__self:focus-within {
+  box-shadow: -3px 0px var(--bullet__border_closed);
+  transition: box-shadow 0.2s;
+}
+
+.roam-block-container
+  > .rm-block-main
+  > div:nth-child(1)
+  .rm-bullet
+  .rm-bullet__inner {
+  background-color: default;
+  width: default;
+  height: default;
+  border-radius: default;
+  transition: width 200ms linear, height 200ms linear,
+    border-radius 200ms linear;
+}
+
+.roam-block-container:focus-within
+  > .rm-block-main
+  > div:nth-child(1)
+  .rm-bullet
+  .rm-bullet__inner {
+  background-color: var(--bullet__border_closed);
+  width: 8px;
+  height: 3px;
+  border-radius: 0;
+  transition: width 200ms linear, height 200ms linear,
+    border-radius 200ms linear;
+}
+
+/* Page date link - organized by quarter */
+:root {
+  /* Seasonal colors for date links */
+  --page-link-date__color_q1: #50b2c0;
+  --page-link-date__color_q2: #c5d86d;
+  --page-link-date__color_q3: #ff6b6b;
+  --page-link-date__color_q4: #ca7d4a;
+}
+
+span[data-link-title^="January "] .rm-page-ref--link,
+span[data-link-title^="February "] .rm-page-ref--link,
+span[data-link-title^="March "] .rm-page-ref--link {
+  color: var(--page-link-date__color_q1);
+}
+
+span[data-link-title^="April "] .rm-page-ref--link,
+span[data-link-title^="May "] .rm-page-ref--link,
+span[data-link-title^="June "] .rm-page-ref--link {
+  color: var(--page-link-date__color_q2);
+}
+
+span[data-link-title^="July "] .rm-page-ref--link,
+span[data-link-title^="August "] .rm-page-ref--link,
+span[data-link-title^="September "] .rm-page-ref--link {
+  color: var(--page-link-date__color_q3);
+}
+
+span[data-link-title^="October "] .rm-page-ref--link,
+span[data-link-title^="November "] .rm-page-ref--link,
+span[data-link-title^="December "] .rm-page-ref--link {
+  color: var(--page-link-date__color_q4);
 }
 
 /* RR change: MINIMIZE QUERIES: add any one of the following tags before the beginning of your query (in the same block):
