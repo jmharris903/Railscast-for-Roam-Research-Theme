@@ -231,6 +231,11 @@
   --icon__color: #e78924;
   --icon__color_hover: #e78924;
   --filter__color_subscript: #5c7080;
+  /* ======================================== */
+  /* features */
+  /* masonry */
+  --masonry__background-color: var(--body__background-color);
+  --masonry__border-color: rgba(228, 124, 67, 0.25);
 }
 
 /* Icons */
@@ -2003,6 +2008,9 @@ span[data-tag*="meeting"]:before {
   color: var(--main-font__color);
 }
 
+/* Full Width Search
+  Changes the search bar to be full screen width all the time, no animations
+*/
 .rm-find-or-create-wrapper {
   flex: 0 1 100% !important;
 }
@@ -2134,7 +2142,7 @@ so there is no need to remove the tag when done.
 }
 
 /* Outline Highlight
-Highlights where the curser is currently in the outline and highlights the currently active block using the rm-multibar
+  Highlights where the curser is currently in the outline and highlights the currently active block using the rm-multibar
 */
 .roam-block-container div.roam-block-container:focus-within {
   box-shadow: -1px 0px var(--bullet-outline__border_hover);
@@ -2175,7 +2183,10 @@ Highlights where the curser is currently in the outline and highlights the curre
     border-radius 200ms linear;
 }
 
-/* Page date link - organized by quarter */
+/* Page date link 
+  A fun little feature to change the color of dates to match the seasons, organized by quarter 
+  
+*/
 :root {
   /* Seasonal colors for date links */
   --page-link-date__color_q1: #50b2c0;
@@ -2208,7 +2219,7 @@ span[data-link-title^="December "] .rm-page-ref--link {
   color: var(--page-link-date__color_q4);
 }
 
-/* RR change: MINIMIZE QUERIES: add any one of the following tags before the beginning of your query (in the same block):
+/* MINIMIZE QUERIES: add any one of the following tags before the beginning of your query (in the same block):
 
     #min-title = hides the page reference link / page title
     #min-con = hides the contextual reference information (breadcrumbs)

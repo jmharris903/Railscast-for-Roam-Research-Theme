@@ -5,9 +5,6 @@
 */
 
 :root {
-  --masonry__background-color: var(--body__background-color);
-  --masonry__border-color: rgba(228, 124, 67, 0.25);
-
   --main-left-bg: white;
   --right-sidebar-bg: rgb(247 248 249);
   --right-sidebar-drag-bg: #337ac6;
