@@ -1,17 +1,59 @@
-/* Bullet Zoom Focus v2.4 by Jeff Harris
+/* Bullet Zoom Focus v2.5 by Jeff Harris
 When zoomed in on a bullet add the tag #.rm-focus to the parent block
 to create a minimal writing environment. This only works when zoomed in
 so there is no need to remove the tag when done.
 */
 
-@import url('https://jmharris903.github.io/Railscast-for-Roam-Research-Theme/fonts/calendas-plus.css');
+@import url("https://jmharris903.github.io/Railscast-for-Roam-Research-Theme/fonts/calendas-plus.css");
+
+.zoom-path-view + div .rm-focus {
+  font-size: 1.43em;
+  /* space between lines */
+  line-height: 1.5em;
+}
 
 .zoom-path-view + div .rm-focus div,
-.zoom-path-view + div .rm-focus .rm-block-input {
+.zoom-path-view + div .rm-focus textarea {
   font-family: "Calendas Plus", "Lora", "Droid Serif", "Georgia", serif !important;
-  font-size: 20px;
-  line-height: 1.5em;
-  /* space between lines */
+}
+
+.zoom-path-view
+  + div
+  .rm-focus.rm-heading-level-1
+  > .rm-block__self
+  .rm-block__input,
+.zoom-path-view
+  + div
+  .rm-focus
+  .rm-heading-level-1
+  > .rm-block__self
+  .rm-block__input,
+.zoom-path-view
+  + div
+  .rm-focus.rm-heading-level-2
+  > .rm-block__self
+  .rm-block__input,
+.zoom-path-view
+  + div
+  .rm-focus
+  .rm-heading-level-2
+  > .rm-block__self
+  .rm-block__input,
+.zoom-path-view
+  + div
+  .rm-focus.rm-heading-level-3
+  > .rm-block__self
+  .rm-block__input,
+.zoom-path-view
+  + div
+  .rm-focus
+  .rm-heading-level-3
+  > .rm-block__self
+  .rm-block__input,
+.zoom-path-view + div .rm-focus .rm-heading-level-1,
+.zoom-path-view + div .rm-focus .rm-heading-level-2,
+.zoom-path-view + div .rm-focus .rm-heading-level-3 {
+  font-family: "Calendas Plus", "Lora", "Droid Serif", "Georgia", serif !important;
 }
 
 .zoom-path-view + div .rm-focus .rm-multibar {
