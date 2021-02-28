@@ -6,7 +6,8 @@ so there is no need to remove the tag when done.
 
 @import url("https://jmharris903.github.io/Railscast-for-Roam-Research-Theme/fonts/calendas-plus.css");
 
-.zoom-path-view + div .rm-focus {
+.zoom-path-view + div .rm-focus,
+.zoom-path-view + div .rm-focus .rm-block-input{
   font-size: 1.43em;
   /* space between lines */
   line-height: 1.5em;
