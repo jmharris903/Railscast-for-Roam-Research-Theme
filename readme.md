@@ -29,30 +29,65 @@ At the top of the [CSS file](https://github.com/jmharris903/Railscast-for-Roam-R
 
 Roam Railscast includes native support for the following optional add-on features:
 
-**Masonry** by @shawnpmurphy8 and @AbhayPrasanna based on the original version by @vandermerwed
+### **Masonry** by @shawnpmurphy8 and @AbhayPrasanna based on the original version by @vandermerwed
 
 Note: For compatibility, the orignal Masonry had to be edited slightly. To work with Railscast, you must use the version below
 
 `@import url('https://jmharris903.github.io/Railscast-for-Roam-Research-Theme/features/masonry-main.css');`
 
-**Bullet Zoom Focus** by @jeffharrissays
+Having trouble with the Masonry import? Try adding this a CSS code block on the `roam/css` page
+```
+
+@import url('https://gitmurf.github.io/masonry-vanilla/masonry-main.css');
+
+:root {
+  /* ======================================== */
+  /* features */
+
+  /* masonry */
+
+  --masonry__background-color: var(--rm-body__background-color);
+  --main-left-bg: var(--rm-body__background-color);
+  --masonry-bg: var(--rm-body__background-color);
+  --right-sidebar-bg: var(--rm-right-sidebar__background-color);
+  --masonry-border: 1px solid rgba(228, 124, 67, 0.25);
+  --masonry-resizer-color: var(--rm-icon__color);
+  
+  //--rm-main-font__font-size: 1.2rem;
+}
+
+#right-sidebar {
+  border-left: var(--masonry-border);
+}
+
+```
+
+### **Bullet Zoom Focus** by @jeffharrissays
 
 When zoomed in on a bullet add the tag #.rm-focus to the parent block to create a minimal writing environment. This only works when zoomed in so there is no need to remove the tag when done.
 
 `@import url('https://jmharris903.github.io/Railscast-for-Roam-Research-Theme/features/bullet-zoom-focus.css');`
 
-### Built in features include
+## Built in features include
 
 ```
-/* MINIMIZE QUERIES: add any one of the following tags before the beginning of your query (in the same block):
+/* MINIMIZE QUERIES v2.1 by Jeff Harris
+A feature of Roam Mosaic https://github.com/roam-mosaic/theme-boilerplate
 
-    #min-title = hides the page reference link / page title
-    #min-con = hides the contextual reference information (breadcrumbs)
-    #minimal = hides both the title and the context
-    #min-q = hides the query string, similar to legacy behavior
-    #min-all = hides everything — title, context, and query string
+  Add any of the following tags to your query (in the same block). They can be used in combination to customize what information is hidden
+
+    #.q--q = hides the query
+    #.q--title = hides the page title of the reference
+    #.q--mentions = hides the contextual reference information (breadcrumbs) 
+    #.q--bg = hides the background of each individual query result
+    #.q--compact = removes extra space between each query result
+
+    #.q--hover = shows title and mentions on hover of an individual query result
+    
+    #.q--all = hides everything with one tag, rendering the query nearly invisible
+
+inspired by Matt Goldenberg 
 */
-
 
 
 /*  Block Callouts
