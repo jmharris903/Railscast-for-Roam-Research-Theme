@@ -1,9 +1,8 @@
-@charset "UTF-8";
 /*
 ### ROAM Railscast THEME ###
 > Many thanks to the Roam Slack community for all the resources, particularly @Anthony, @Calhistoriaan, @Devon, @Murf, @Malcolm Ocean, @David Cranall @Ahbay and most importantly Daniel van der Merwe @vandermerwed.
 > Edits by Jeff Harris
-> v2.0.16
+> v2.0.17
 */
 :root {
   /* Roam default variables */
@@ -460,6 +459,10 @@ span[style*='background-color: rgb(235, 241, 245); border-radius: 4px;'] {
 }
 
 /* When clicking the number of references and viewing them inline  */
+.rm-nested-refs {
+  background: var(--rm-block-ref__background-color_inline);
+}
+
 .rm-inline-references {
   background-color: var(--rm-block-ref__background-color_inline);
   border-left: 4px solid var(--rm-block-ref__border-left_inline);
@@ -511,10 +514,6 @@ span[style*='background-color: rgb(235, 241, 245); border-radius: 4px;'] {
 }
 .rm-multibar:hover {
   border-right: 3px solid var(--rm-bullet-outline__border_hover);
-}
-
-.rm-level-0 > .rm-multibar {
-  opacity: 1;
 }
 
 .dnd-separator .dnd-drop-bar {
@@ -2206,6 +2205,43 @@ span[data-tag*='meeting']:before {
 
 .zoom-path-view + div .rm-focus .rm-block__self:hover .rm-block__controls {
   visibility: visible;
+}
+
+/* Full width kanban board, regardless of the column width setting
+add tag #.kb-large to the same line with the kanban
+Probably only works well if the kanaban is not indented under another block
+*/
+.kb-large .kanban-board {
+  max-width: 100vw;
+  margin: 30px calc(-50vw + 55%) 0;
+  z-index: 11;
+}
+
+.rm-spacing--left-sidebar-open .kb-large .kanban-board {
+  margin: 30px calc(-50vw + 70%) 0;
+}
+
+.rm-spacing--left-sidebar-open.rm-spacing--medium .kb-large .kanban-board {
+  margin: 30px calc(-50vw + 65%) 0;
+}
+
+.rm-spacing--left-sidebar-open.rm-spacing--large .kb-large .kanban-board {
+  margin: 30px calc(-50vw + 62%) 0;
+}
+
+.rm-spacing--left-sidebar-open.rm-spacing--full .kb-large .kanban-board {
+  margin: 30px calc(-50vw + 60%) 0;
+}
+
+#right-sidebar .kb-large .kanban-board,
+.rm-spacing--full .kb-large .kanban-board,
+.rm-spacing--right-sidebar-open .kb-large .kanban-board,
+.rm-spacing--left-sidebar-open.rm-spacing--right-sidebar-open .kb-large .kanban-board {
+  margin: unset;
+}
+
+.rm-level-0 > .rm-multibar:hover {
+  z-index: 0;
 }
 
 /* Outline Highlight
