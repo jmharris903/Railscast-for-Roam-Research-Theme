@@ -2,7 +2,7 @@
 ### ROAM Railscast THEME ###
 > Many thanks to the Roam Slack community for all the resources, particularly @Anthony, @Calhistoriaan, @Devon, @Murf, @Malcolm Ocean, @David Cranall @Ahbay and most importantly Daniel van der Merwe @vandermerwed.
 > Edits by Jeff Harris
-> v2.0.17
+> v2.0.18
 */
 :root {
   /* Roam default variables */
@@ -14,7 +14,7 @@
   --rm-alias__background-color: transparent;
   /* Legacy alias */
   --rm-alias__color: #d8ac11;
-  --rm-attr__color: rgba(17, 137, 189, 0.65);
+  --rm-attr__color: var(--rm-accent__color-font);
   --rm-attr__font-weight: 700;
   --rm-block-embed__background-color: #d8ac6e0e;
   --rm-block-embed__background-color_margin-action: var(--rm-blockquote__border_color);
@@ -1477,18 +1477,6 @@ h1 textarea {
   height: 0.5em;
 }
 
-.rm-heading-level-1 > .rm-block-main > .controls > .rm-bullet {
-  top: calc(var(--rm-h1__font-size) / 2.25);
-}
-
-.rm-heading-level-2 > .rm-block-main > .controls > .rm-bullet {
-  top: calc(var(--rm-h2__font-size) / 3.25);
-}
-
-.rm-heading-level-3 > .rm-block-main > .controls > .rm-bullet {
-  top: calc(var(--rm-h3__font-size) / 4.6);
-}
-
 .rm-heading-level-2 > .rm-block__self .rm-block__input {
   color: var(--rm-h2__color);
   font-family: var(--rm-h2__font-family) !important;
@@ -1556,6 +1544,11 @@ strong,
 }
 .rm-highlight .rm-page-ref-link-color {
   color: var(--rm-highlight-link-color);
+}
+
+/* Numbered bullets */
+.rm-bullet--numbered {
+  color: var(--rm-accent__color_alert);
 }
 
 /* Calculation Results */
