@@ -1,5 +1,5 @@
 /*
-### ROAM Railscast THEME - Purple ###
+### ROAM Railscast THEME ###
 > Many thanks to the Roam Slack community for all the resources, particularly @Anthony, @Calhistoriaan, @Devon, @Murf, @Malcolm Ocean, @David Cranall @Ahbay and most importantly Daniel van der Merwe @vandermerwed.
 > Edits by Jeff Harris
 > v2.0.18
@@ -70,8 +70,11 @@
   --rm-kanban-column__color: var(--rm-accent__color);
   --rm-latex__font-family: var(--rm-main-font__font-family);
   --rm-linked-reference__backgound-color_1: #d8ac6e1a;
+  --rm-linked-reference__backgound-color_1: #926ed81a;
   --rm-linked-reference__backgound-color_2: #d8ac6e1a;
+  --rm-linked-reference__backgound-color_2: #926ed81a;
   --rm-linked-reference__backgound-color_3: #d8ac6e1a;
+  --rm-linked-reference__backgound-color_3: #926ed81a;
   --rm-menu__color: var(--rm-accent__color);
   --rm-menu__background: #333;
   --rm-mermaid-path__stroke: #555;
