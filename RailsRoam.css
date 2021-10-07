@@ -2,7 +2,7 @@
 ### ROAM Railscast THEME ###
 > Many thanks to the Roam Slack community for all the resources, particularly @Anthony, @Calhistoriaan, @Devon, @Murf, @Malcolm Ocean, @David Cranall @Ahbay and most importantly Daniel van der Merwe @vandermerwed.
 > Edits by Jeff Harris
-> v2.0.18
+> v2.0.19
 */
 :root {
   /* Roam default variables */
@@ -891,10 +891,10 @@ div .kanban-card {
 
 /* Latex */
 .katex {
-  font: normal 1.21em var(--rm-latex__font-family, KaTeX_Main, 'Times New Roman', serif);
+  font: normal 1.21em var(--rm-latex__font-family, KaTeX_Math, 'Times New Roman', serif);
 }
 .katex .mathdefault {
-  font-family: var(--rm-latex__font-family, KaTeX_Main, 'Times New Roman', serif);
+  font-family: var(--rm-latex__font-family, KaTeX_Math, 'Times New Roman', serif);
 }
 
 /* Linked reference */
@@ -2249,7 +2249,7 @@ Probably only works well if the kanaban is not indented under another block
 }
 
 .rm-block__self:focus-within {
-  box-shadow: -3px 0px var(--rm-bullet__border_closed);
+  box-shadow: -4px 0px var(--rm-bullet__border_closed);
   transition: box-shadow 0.2s;
 }
 
@@ -2273,6 +2273,11 @@ Probably only works well if the kanaban is not indented under another block
   transition: width 200ms linear, height 200ms linear, border-radius 200ms linear;
   margin-left: -3px;
   margin-bottom: -1px;
+}
+
+.rm-focused > .rm-block-children > .rm-multibar {
+  border-right: 1px solid var(--rm-bullet__border_closed);
+  transition: border-right 0.2s;
 }
 
 /* Page date link 
