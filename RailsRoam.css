@@ -2,7 +2,7 @@
 ### ROAM Railscast THEME ###
 > Many thanks to the Roam Slack community for all the resources, particularly @Anthony, @Calhistoriaan, @Devon, @Murf, @Malcolm Ocean, @David Cranall @Ahbay and most importantly Daniel van der Merwe @vandermerwed.
 > Edits by Jeff Harris
-> v2.0.19
+> v2.0.20
 */
 :root {
   /* Roam default variables */
@@ -887,14 +887,6 @@ div .kanban-title {
 
 div .kanban-card {
   font-family: var(--rm-main-font__font-family);
-}
-
-/* Latex */
-.katex {
-  font: normal 1.21em var(--rm-latex__font-family, KaTeX_Math, 'Times New Roman', serif);
-}
-.katex .mathdefault {
-  font-family: var(--rm-latex__font-family, KaTeX_Math, 'Times New Roman', serif);
 }
 
 /* Linked reference */
